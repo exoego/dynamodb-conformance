@@ -122,11 +122,10 @@ describe('Nesting depth — 32-level document limit', { tags: ['put-item', 'upda
 
 // The same 32-level cap applies to the items a batch or a transaction writes.
 // Captured against eu-west-2 and us-east-1 real DynamoDB, 2026-09-12: a too
-// deep Put item is a top-level ValidationException on both surfaces, checked
-// before the table lookup. Inside a transaction the ExpressionAttributeValues
-// split by action: an Update's value is checked and surfaces as a cancellation
-// with a 'ValidationError' reason, while a ConditionCheck's value is not
-// checked at all and the condition simply runs.
+// deep Put item is a top-level ValidationException on both surfaces. Unlike
+// UpdateItem, TransactWriteItems does not check the depth of
+// ExpressionAttributeValues for any action, in all 33 regions. An Update that
+// writes a too deep value into the item still cancels on the stored-item cap.
 
 // no negative-path: acceptance-mixed (asserts accepted and rejected cases)
 describe('Nesting depth — BatchWriteItem', { tags: ['batch', 'data-plane'] }, () => {
@@ -206,7 +205,7 @@ describe('Nesting depth — TransactWriteItems', { tags: ['transactions', 'data-
     )
   })
 
-  it('cancels on a 32-level ExpressionAttributeValue in an Update with a ValidationError reason', async () => {
+  it('cancels an Update that writes a 32-level value into the item with a ValidationError reason', async () => {
     try {
       await ddb.send(
         new TransactWriteItemsCommand({
@@ -232,6 +231,41 @@ describe('Nesting depth — TransactWriteItems', { tags: ['transactions', 'data-
       )
       expect(txErr.CancellationReasons?.map((r) => r.Code)).toEqual([...expectedReasons])
       expect(txErr.CancellationReasons?.[0]?.Message).toMatch(NEST_MSG)
+    }
+  })
+
+  it('does not check the depth of an Update ExpressionAttributeValue (the condition is evaluated)', async () => {
+    // The value stays out of the item, so only the condition sees it. Against an
+    // item with no `data`, `#d = :deep` is false and the transaction cancels on
+    // the condition. UpdateItem rejects the same request with ValidationException.
+    await ddb.send(
+      new PutItemCommand({
+        TableName: hashTableDef.name,
+        Item: { pk: { S: 'nest-twi-eav' }, marker: { S: 'x' } },
+      }),
+    )
+    try {
+      await ddb.send(
+        new TransactWriteItemsCommand({
+          TransactItems: [
+            {
+              Update: {
+                TableName: hashTableDef.name,
+                Key: { pk: { S: 'nest-twi-eav' } },
+                UpdateExpression: 'SET touched = :t',
+                ConditionExpression: '#d = :deep',
+                ExpressionAttributeNames: { '#d': 'data' },
+                ExpressionAttributeValues: { ':t': { S: 'y' }, ':deep': deepMap(32) },
+              },
+            },
+          ],
+        }),
+      )
+      expect.unreachable('should have thrown')
+    } catch (err) {
+      expect(err).toBeInstanceOf(TransactionCanceledException)
+      const txErr = err as TransactionCanceledException
+      expect(txErr.CancellationReasons?.map((r) => r.Code)).toEqual(['ConditionalCheckFailed'])
     }
   })
 
