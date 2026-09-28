@@ -1,5 +1,6 @@
 import {
   BatchWriteItemCommand,
+  GetItemCommand,
   PutItemCommand,
   TransactWriteItemsCommand,
   TransactionCanceledException,
@@ -23,6 +24,15 @@ function deepMap(depth: number): AttributeValue {
   let v: AttributeValue = { S: 'leaf' }
   for (let i = 0; i < depth; i++) v = { M: { n: v } }
   return v
+}
+
+function depthOf(v: AttributeValue | undefined): number {
+  let depth = 0
+  while (v?.M?.n) {
+    depth++
+    v = v.M.n
+  }
+  return depth
 }
 
 // Region wording varies; pin the invariant. AWS returns (eu-west-2):
@@ -128,7 +138,7 @@ describe('Nesting depth — 32-level document limit', { tags: ['put-item', 'upda
 // writes a too deep value into the item still cancels on the stored-item cap.
 
 // no negative-path: acceptance-mixed (asserts accepted and rejected cases)
-describe('Nesting depth — BatchWriteItem', { tags: ['batch', 'data-plane'] }, () => {
+describe('Nesting depth — BatchWriteItem', { tags: ['batch', 'get-item', 'data-plane'] }, () => {
   const keys = [{ pk: { S: 'nest-bw-31' } }]
 
   afterAll(async () => {
@@ -145,7 +155,11 @@ describe('Nesting depth — BatchWriteItem', { tags: ['batch', 'data-plane'] }, 
         },
       }),
     )
-    expect(res.UnprocessedItems ?? {}).toEqual({})
+    expect(res.UnprocessedItems).toEqual({})
+    const get = await ddb.send(
+      new GetItemCommand({ TableName: hashTableDef.name, Key: { pk: { S: 'nest-bw-31' } }, ConsistentRead: true }),
+    )
+    expect(depthOf(get.Item?.data)).toBe(31)
   })
 
   it('rejects a Put item nested 32 levels (leaf at level 33)', async () => {
@@ -168,7 +182,7 @@ describe('Nesting depth — BatchWriteItem', { tags: ['batch', 'data-plane'] }, 
 })
 
 // no negative-path: acceptance-mixed (asserts accepted and rejected cases)
-describe('Nesting depth — TransactWriteItems', { tags: ['transactions', 'put-item', 'data-plane'] }, () => {
+describe('Nesting depth — TransactWriteItems', { tags: ['transactions', 'put-item', 'get-item', 'data-plane'] }, () => {
   // An empty TransactItems is rejected by any target that implements the
   // operation, so this separates "not implemented" from "implemented".
   skipUnlessSupported(() => ddb.send(new TransactWriteItemsCommand({ TransactItems: [] })))
@@ -187,6 +201,10 @@ describe('Nesting depth — TransactWriteItems', { tags: ['transactions', 'put-i
         ],
       }),
     )
+    const get = await ddb.send(
+      new GetItemCommand({ TableName: hashTableDef.name, Key: { pk: { S: 'nest-twi-31' } }, ConsistentRead: true }),
+    )
+    expect(depthOf(get.Item?.data)).toBe(31)
   })
 
   it('rejects a Put item nested 32 levels with a top-level ValidationException', async () => {

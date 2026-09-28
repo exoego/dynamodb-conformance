@@ -1320,11 +1320,13 @@
       ],
       "Nesting depth — BatchWriteItem": [
         "batch",
+        "get-item",
         "data-plane"
       ],
       "Nesting depth — TransactWriteItems": [
         "transactions",
         "put-item",
+        "get-item",
         "data-plane"
       ]
     },
