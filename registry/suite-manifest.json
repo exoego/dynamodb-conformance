@@ -1,7 +1,7 @@
 {
-  "generated": "2026-09-11",
-  "commit": "bf21d8294275d88470d7f89b73ba0b640a242a8d",
-  "count": 1261,
+  "generated": "2026-09-28",
+  "commit": "9b4f04a612b4cbcf5467ae94491d254890205a0a",
+  "count": 1262,
   "tests": [
     "tests/tier1/batchGetItem/basic.test.ts::BatchGetItem — ProjectionExpression returns only projected attributes",
     "tests/tier1/batchGetItem/basic.test.ts::BatchGetItem — basic handles a mix of existing and non-existing keys",
@@ -966,6 +966,7 @@
     "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages TotalSegments without Segment: full required-parameter error",
     "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages begins_with with non-string operand: full operand-type error",
     "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+    "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error",
     "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages non-existent table: full ResourceNotFoundException message",
     "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages redundant parentheses in FilterExpression: full error string",
     "tests/tier3/error-messages/searchVectors.test.ts::SearchVectors — exact error messages L-wrapped search vector",

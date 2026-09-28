@@ -8,6 +8,21 @@ section its date and version, so several branches can write ahead of one.
 
 ## Unreleased
 
+Five Scan error messages are now regional splits. The validation-framework
+rollout reached Scan's parameter checks in September, and eu-west-2,
+eu-central-1, us-west-1 and ap-northeast-2 now word the errors for `Segment` >=
+`TotalSegments`, a `Limit` of 0, a negative `Segment`, a mismatched
+`ExclusiveStartKey` and `SPECIFIC_ATTRIBUTES` without a projection differently
+from the other 29 regions. Four passes across all 33 regions agreed. The
+assertions follow eu-west-2, the pinned region, onto the new wording, and an
+engine giving the old wording is credited in the regions that still use it. The
+negative `Segment` message had no exact-wording test, so it gains one, taking
+the suite to 1252 tests.
+
+The negative `Segment` ordering test now accepts either wording, since it only
+checks which validation fires. The capture harness gains the matching Scan
+probes and a `--table-prefix` option for taking them locally.
+
 Ten cases for the 4096-byte expression cap and the 32-level nesting cap on the
 batch and transact write surfaces, captured against eu-west-2 and us-east-1.
 

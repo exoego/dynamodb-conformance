@@ -5,6 +5,7 @@ import {
   ResourceNotFoundException,
 } from '@aws-sdk/client-dynamodb'
 import { ddb } from '../../../src/client.js'
+import { observeSplit } from '../../../src/observation-sink.js'
 import {
   hashTableDef,
   cleanupItems,
@@ -33,21 +34,33 @@ describe('Scan — exact error messages', { tags: ['scan', 'data-plane', 'negati
     }
   })
 
-  it('Segment >= TotalSegments: full out-of-range error', async () => {
+  // Five tests in this block are regional splits, and each names its registry
+  // row. The validation-framework rollout reached Scan's parameter checks in
+  // September 2026: eu-central-1 and us-west-1 crossed before the 2026-09-19
+  // sweep, ap-northeast-2 and the pinned eu-west-2 before the 2026-09-26 one,
+  // and the other 29 answering regions still give the older wording each row
+  // records. The two Segment/TotalSegments pairing checks either side of this
+  // test have not moved anywhere.
+
+  it('Segment >= TotalSegments: full out-of-range error', async (ctx) => {
+    // Split behaviour (registry row scan-segment-out-of-range-message): the new
+    // cohort drops the trailing `: Segment: 5 is not less than TotalSegments: 5`.
     try {
-      await ddb.send(
-        new ScanCommand({
-          TableName: hashTableDef.name,
-          Segment: 5,
-          TotalSegments: 5,
-        }),
+      await observeSplit(ctx.task, () =>
+        ddb.send(
+          new ScanCommand({
+            TableName: hashTableDef.name,
+            Segment: 5,
+            TotalSegments: 5,
+          }),
+        ),
       )
       expect.unreachable('should have thrown')
     } catch (err) {
       expect(err).toBeInstanceOf(DynamoDBServiceException)
       expect((err as DynamoDBServiceException).name).toBe('ValidationException')
       expect((err as DynamoDBServiceException).message).toBe(
-        'The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5',
+        'The Segment parameter is zero-based and must be less than parameter TotalSegments',
       )
     }
   })
@@ -70,20 +83,49 @@ describe('Scan — exact error messages', { tags: ['scan', 'data-plane', 'negati
     }
   })
 
-  it('Limit of 0: full minimum-value error', async () => {
+  it('Limit of 0: full minimum-value error', async (ctx) => {
+    // Split behaviour (registry row scan-limit-zero-message): the new cohort
+    // stops echoing the value and names the member as `Limit`, where the old
+    // one answers `Value '0' at 'limit'`.
     try {
-      await ddb.send(
-        new ScanCommand({
-          TableName: hashTableDef.name,
-          Limit: 0,
-        }),
+      await observeSplit(ctx.task, () =>
+        ddb.send(
+          new ScanCommand({
+            TableName: hashTableDef.name,
+            Limit: 0,
+          }),
+        ),
       )
       expect.unreachable('should have thrown')
     } catch (err) {
       expect(err).toBeInstanceOf(DynamoDBServiceException)
       expect((err as DynamoDBServiceException).name).toBe('ValidationException')
       expect((err as DynamoDBServiceException).message).toBe(
-        "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+        "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+      )
+    }
+  })
+
+  it('negative Segment: full minimum-value error', async (ctx) => {
+    // Split behaviour (registry row scan-segment-negative-message): the same
+    // rewording as Limit above. The old cohort answers
+    // `Value '-1' at 'segment'`.
+    try {
+      await observeSplit(ctx.task, () =>
+        ddb.send(
+          new ScanCommand({
+            TableName: hashTableDef.name,
+            Segment: -1,
+            TotalSegments: 4,
+          }),
+        ),
+      )
+      expect.unreachable('should have thrown')
+    } catch (err) {
+      expect(err).toBeInstanceOf(DynamoDBServiceException)
+      expect((err as DynamoDBServiceException).name).toBe('ValidationException')
+      expect((err as DynamoDBServiceException).message).toBe(
+        "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
       )
     }
   })
@@ -147,42 +189,52 @@ describe('Scan — exact error messages', { tags: ['scan', 'data-plane', 'negati
     }
   })
 
-  // Scan returns the long form of the invalid-starting-key error; Query returns
-  // a shorter one (see query.test.ts). Pin each separately.
-  it('malformed ExclusiveStartKey: long schema-mismatch error', async () => {
+  // Scan used to return the long form of the invalid-starting-key error where
+  // Query returns a shorter one (see query.test.ts). The new cohort answers
+  // Scan with the same short form as Query.
+  it('malformed ExclusiveStartKey: long schema-mismatch error', async (ctx) => {
+    // Split behaviour (registry row scan-bad-start-key-message): the old cohort
+    // appends `: The provided key element does not match the schema`.
     try {
-      await ddb.send(
-        new ScanCommand({
-          TableName: hashTableDef.name,
-          ExclusiveStartKey: { bad: { S: 'p' } },
-        }),
+      await observeSplit(ctx.task, () =>
+        ddb.send(
+          new ScanCommand({
+            TableName: hashTableDef.name,
+            ExclusiveStartKey: { bad: { S: 'p' } },
+          }),
+        ),
       )
       expect.unreachable('should have thrown')
     } catch (err) {
       expect(err).toBeInstanceOf(DynamoDBServiceException)
       expect((err as DynamoDBServiceException).name).toBe('ValidationException')
       expect((err as DynamoDBServiceException).message).toBe(
-        'The provided starting key is invalid: The provided key element does not match the schema',
+        'The provided starting key is invalid',
       )
     }
   })
 
   // Parity with Query: SPECIFIC_ATTRIBUTES needs a ProjectionExpression (or legacy
   // AttributesToGet); with neither, real DynamoDB rejects before reading.
-  it('Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message', async () => {
+  it('Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message', async (ctx) => {
+    // Split behaviour (registry row scan-specific-attributes-message): the new
+    // cohort wraps the same sentence in the `1 validation error detected: `
+    // envelope.
     try {
-      await ddb.send(
-        new ScanCommand({
-          TableName: hashTableDef.name,
-          Select: 'SPECIFIC_ATTRIBUTES',
-        }),
+      await observeSplit(ctx.task, () =>
+        ddb.send(
+          new ScanCommand({
+            TableName: hashTableDef.name,
+            Select: 'SPECIFIC_ATTRIBUTES',
+          }),
+        ),
       )
       expect.unreachable('should have thrown')
     } catch (err) {
       expect(err).toBeInstanceOf(DynamoDBServiceException)
       expect((err as DynamoDBServiceException).name).toBe('ValidationException')
       expect((err as DynamoDBServiceException).message).toBe(
-        'Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES',
+        '1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES',
       )
     }
   })
