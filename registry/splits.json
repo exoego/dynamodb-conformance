@@ -1029,15 +1029,10 @@
         "file": "tests/tier3/error-messages/batchWriteItem.test.ts",
         "fullName": "BatchWriteItem — exact error messages empty RequestItems: full required-parameter error"
       },
-      "behaviour": "BatchWriteItem with an empty RequestItems map: the 2026-06 validation-framework rollout reaching the operation beside BatchGetItem. eu-north-1 answers the framework's generic constraint message; the other 32 answering regions answer the bespoke required-parameter sentence. The 2026-08-17 capture found every answering region on the bespoke wording, which dates the crossing to that week. Unlike its BatchGetItem neighbour this one is answering consistently: eu-north-1 gave the generic message on five sweep re-runs and on every observation since, and no other region has given it once.",
+      "behaviour": "BatchWriteItem with an empty RequestItems map: the 2026-06 validation-framework rollout reaching the operation beside BatchGetItem. eu-north-1 answers the framework's generic constraint message; the other 32 answering regions answer the bespoke required-parameter sentence. The 2026-08-17 capture found every answering region on the bespoke wording, which dates the crossing to that week. The rollout has not held steady since: the 2026-09-05 sweep also found eu-west-2, eu-central-1, ap-east-2 and ap-southeast-1 on the generic message, the 2026-09-12 and 2026-09-19 sweeps found every region on the bespoke sentence, eu-north-1 included, and the 2026-09-26 sweep and the 2026-09-28 capture found eu-north-1 back on the generic message and nowhere else. The row records the current answer; if eu-north-1 goes back again, the sweep reports the row as converged.",
       "pinned": "eu-west-2",
       "firstObserved": "2026-08-22",
-      "lastRefreshed": "2026-08-22",
-      "captures": [
-        "captures/2026-08-17-batch-empty-request-items.json",
-        "captures/2026-08-22-batch-validation-messages.json",
-        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/32549181630"
-      ],
+      "lastRefreshed": "2026-09-28",
       "regions": {
         "af-south-1": {
           "outcome": "rejected",
@@ -1270,6 +1265,18 @@
             "message": "The requestItems parameter is required for BatchWriteItem"
           }
         }
+      },
+      "evidence": [
+        "captures/2026-08-17-batch-empty-request-items.json",
+        "captures/2026-08-22-batch-validation-messages.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/32549181630",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
+        "captures/2026-09-28-batch-empty-request-items.json"
+      ],
+      "admitted": {
+        "by": "Martin Hicks",
+        "date": "2026-08-22",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/issues/165"
       }
     },
     {
