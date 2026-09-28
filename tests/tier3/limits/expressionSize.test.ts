@@ -378,6 +378,29 @@ describe('Expression size limit (4KB) — TransactWriteItems', { tags: ['transac
     )
   })
 
+  it('accepts an Update UpdateExpression at the 4096-byte limit', async () => {
+    const k = key('twi-upd-at')
+    const { expr, values } = updateExpression(LIMIT)
+    await ddb.send(
+      new TransactWriteItemsCommand({
+        TransactItems: [
+          {
+            Update: {
+              TableName: hashTableDef.name,
+              Key: k,
+              UpdateExpression: expr,
+              ExpressionAttributeValues: values,
+            },
+          },
+        ],
+      }),
+    )
+    const get = await ddb.send(
+      new GetItemCommand({ TableName: hashTableDef.name, Key: k, ConsistentRead: true }),
+    )
+    expect(get.Item![padName(0)].S).toBe('x')
+  })
+
   it('rejects an Update UpdateExpression over the 4096-byte limit', async () => {
     const { expr, values } = updateExpression(OVER)
     await expectDynamoError(
@@ -391,6 +414,48 @@ describe('Expression size limit (4KB) — TransactWriteItems', { tags: ['transac
                   Key: key('twi-upd-over'),
                   UpdateExpression: expr,
                   ExpressionAttributeValues: values,
+                },
+              },
+            ],
+          }),
+        ),
+      'ValidationException',
+      SIZE_MSG,
+    )
+  })
+
+  it('rejects a Delete ConditionExpression over the 4096-byte limit', async () => {
+    await expectDynamoError(
+      () =>
+        ddb.send(
+          new TransactWriteItemsCommand({
+            TransactItems: [
+              {
+                Delete: {
+                  TableName: hashTableDef.name,
+                  Key: key('twi-del-over'),
+                  ConditionExpression: conditionExpression(OVER),
+                },
+              },
+            ],
+          }),
+        ),
+      'ValidationException',
+      SIZE_MSG,
+    )
+  })
+
+  it('rejects a ConditionCheck ConditionExpression over the 4096-byte limit', async () => {
+    await expectDynamoError(
+      () =>
+        ddb.send(
+          new TransactWriteItemsCommand({
+            TransactItems: [
+              {
+                ConditionCheck: {
+                  TableName: hashTableDef.name,
+                  Key: key('twi-cc-over'),
+                  ConditionExpression: conditionExpression(OVER),
                 },
               },
             ],

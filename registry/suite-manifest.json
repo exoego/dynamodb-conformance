@@ -1,7 +1,7 @@
 {
   "generated": "2026-09-28",
-  "commit": "e12cf32576c51c37629bca9c6ed6c94822982b02",
-  "count": 1263,
+  "commit": "8760ac90613ae8060f4b3c4638f82514d2a2e908",
+  "count": 1266,
   "tests": [
     "tests/tier1/batchGetItem/basic.test.ts::BatchGetItem — ProjectionExpression returns only projected attributes",
     "tests/tier1/batchGetItem/basic.test.ts::BatchGetItem — basic handles a mix of existing and non-existing keys",
@@ -1105,6 +1105,9 @@
     "tests/tier3/limits/expressionSize.test.ts::Expression size limit (4KB) — Scan FilterExpression accepts a Scan FilterExpression at the 4096-byte limit",
     "tests/tier3/limits/expressionSize.test.ts::Expression size limit (4KB) — Scan FilterExpression rejects a Scan FilterExpression over the 4096-byte limit",
     "tests/tier3/limits/expressionSize.test.ts::Expression size limit (4KB) — TransactWriteItems accepts a Put ConditionExpression at the 4096-byte limit",
+    "tests/tier3/limits/expressionSize.test.ts::Expression size limit (4KB) — TransactWriteItems accepts an Update UpdateExpression at the 4096-byte limit",
+    "tests/tier3/limits/expressionSize.test.ts::Expression size limit (4KB) — TransactWriteItems rejects a ConditionCheck ConditionExpression over the 4096-byte limit",
+    "tests/tier3/limits/expressionSize.test.ts::Expression size limit (4KB) — TransactWriteItems rejects a Delete ConditionExpression over the 4096-byte limit",
     "tests/tier3/limits/expressionSize.test.ts::Expression size limit (4KB) — TransactWriteItems rejects a Put ConditionExpression over the 4096-byte limit",
     "tests/tier3/limits/expressionSize.test.ts::Expression size limit (4KB) — TransactWriteItems rejects an Update UpdateExpression over the 4096-byte limit",
     "tests/tier3/limits/expressionSize.test.ts::Expression size limit (4KB) — TransactWriteItems rejects the whole request when only the second member is oversized",
