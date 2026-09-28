@@ -77,7 +77,14 @@ describe('Scan — validation ordering', { tags: ['scan', 'data-plane', 'negativ
       expect(e).toBeInstanceOf(DynamoDBServiceException)
       const err = e as DynamoDBServiceException
       expect(err.name).toBe('ValidationException')
-      expect(err.message).toContain('segment')
+      // The rollout that reached Scan in September 2026 answers
+      // `Value at 'Segment'` where older regions say `Value '-1' at 'segment'`.
+      // Which one a region gives is not this tier's business: the exact
+      // wording is pinned in the error-messages tier under registry row
+      // scan-segment-negative-message. Matching the quoted member name
+      // case-insensitively spans both, and keeps TotalSegments from
+      // satisfying it.
+      expect(err.message).toMatch(/at 'segment'/i)
       expect(err.message).toContain('greater than or equal to 0')
     }
   })
