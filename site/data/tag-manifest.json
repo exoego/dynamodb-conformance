@@ -1324,6 +1324,7 @@
       ],
       "Nesting depth — TransactWriteItems": [
         "transactions",
+        "put-item",
         "data-plane"
       ]
     },
