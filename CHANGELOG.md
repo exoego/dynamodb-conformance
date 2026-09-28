@@ -23,17 +23,19 @@ The negative `Segment` ordering test now accepts either wording, since it only
 checks which validation fires. The capture harness gains the matching Scan
 probes and a `--table-prefix` option for taking them locally.
 
-Ten cases for the 4096-byte expression cap and the 32-level nesting cap on the
-batch and transact write surfaces, captured against eu-west-2 and us-east-1.
+Fourteen cases for the 4096-byte expression cap and the 32-level nesting cap on
+the batch and transact write surfaces, captured against eu-west-2 and us-east-1.
 
 - **Expression size in a transaction.** A `TransactWriteItems` member's
   `ConditionExpression` or `UpdateExpression` over 4096 bytes is a top-level
-  `ValidationException`, not a cancellation, even when an earlier member is
-  fine.
-- **Nesting depth on batch and transact writes.** A Put item with a leaf below
-  level 32 is refused up front by `BatchWriteItem` and `TransactWriteItems`. A
-  transacted Update's `ExpressionAttributeValues` entry cancels with a
-  `ValidationError` reason, and a `ConditionCheck`'s is not checked at all.
+  `ValidationException`, not a cancellation, for all four member types and
+  even when an earlier member is fine.
+- **Nesting depth on batch and transact writes.** A Put item nested beyond the
+  32-level cap is refused up front by `BatchWriteItem` and
+  `TransactWriteItems`. UpdateItem checks the depth of an
+  `ExpressionAttributeValues` entry, but `TransactWriteItems` does not check it
+  for any action. An Update that writes a too deep value into the item still
+  cancels with a `ValidationError` reason on the stored-item cap.
 
 ## 2026-09-20 (3.4.0)
 
