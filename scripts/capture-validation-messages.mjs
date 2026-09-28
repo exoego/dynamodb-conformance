@@ -13,8 +13,8 @@
 //   AWS_PROFILE=conformance-test node scripts/capture-validation-messages.mjs eu-west-2 us-east-1 > capture.json
 //
 // Default regions are the four used for the June 2026 capture. The script
-// creates two temporary tables under the _conformance_ prefix per region and
-// deletes them by exact name afterwards.
+// creates two temporary tables under the _conformance_ prefix per region
+// (--table-prefix overrides it) and deletes them by exact name afterwards.
 //
 // Why it exists: AWS varies validation wording by region and over time. When a
 // laggard region is due to flip, re-run this to see what actually changed, and
@@ -61,6 +61,23 @@ const probeFilter = flags
   .flatMap((f) => f.slice('--probes='.length).split(',').map((x) => x.trim()).filter(Boolean))
 const selected = probeFilter.length ? new Set(probeFilter) : null
 const noTables = flags.includes('--no-tables')
+
+// `--table-prefix=` names the fixtures. The default is the CI role's
+// _conformance_ namespace, which a local capture identity cannot create in, so
+// a maintainer capturing a probe that needs a fixture passes their own
+// _capture_ prefix instead (see scripts/cleanup-orphans.mjs for why the two
+// namespaces are kept apart). Anything outside those two is refused, since
+// nothing would ever clean it up if a run died before its own teardown.
+export function resolveTablePrefix(flags) {
+  const prefix =
+    flags.find((f) => f.startsWith('--table-prefix='))?.slice('--table-prefix='.length) ??
+    '_conformance_capdrift'
+  if (!/^_(conformance|capture)_/.test(prefix)) {
+    throw new Error(`--table-prefix must start with _conformance_ or _capture_, got '${prefix}'`)
+  }
+  return prefix
+}
+let tablePrefix
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 /** A value nested `depth` maps deep. Mirrors deepMap in the nesting-depth test. */
@@ -137,9 +154,9 @@ async function captureRegion(region) {
   // only by the kernel's TCP timeout, and this loop is serial.
   const ddb = new DynamoDBClient({ region, requestHandler: { connectionTimeout: 5_000 } })
   const suffix = `${Date.now()}${Math.floor(Math.random() * 1e6)}`
-  const H = `_conformance_capdrift_h_${suffix}`
-  const C = `_conformance_capdrift_c_${suffix}`
-  const CT3 = `_conformance_capdrift_ct3_${suffix}`
+  const H = `${tablePrefix}_h_${suffix}`
+  const C = `${tablePrefix}_c_${suffix}`
+  const CT3 = `${tablePrefix}_ct3_${suffix}`
   const pt = { ReadCapacityUnits: 5, WriteCapacityUnits: 5 }
 
   // H carries a KEYS_ONLY GSI so the projection family can probe reads that ask
@@ -240,6 +257,21 @@ async function captureRegion(region) {
     // ConditionalCheckFailedException either way. The two answers are what
     // separate the cohorts, and both survive an absent item.
     await p('o_upd_nested_32_eav', 'ordering', 'UpdateItem 32-level ExpressionAttributeValue', () => ddb.send(new UpdateItemCommand({ TableName: H, Key: { pk: { S: 'capdrift-nest-cond' } }, UpdateExpression: 'SET touched = :t', ConditionExpression: '#d = :deep', ExpressionAttributeNames: { '#d': 'data' }, ExpressionAttributeValues: { ':t': { S: 'y' }, ':deep': deepMap(32) } })))
+
+    // Scan's parameter checks, which the validation-framework rollout reached in
+    // September 2026. Each mirrors a Tier 3 Scan test's request. The first four
+    // are refused before a table is read, so --no-tables captures them; the
+    // starting-key check needs H's key schema to disagree with. The last two,
+    // the Segment/TotalSegments pairing checks, answer the same in every region
+    // and are the control: a region that moved on the five above moved on those
+    // checks alone, not on Scan's validation as a whole.
+    await p('scan_segment_ge_total', 'scan-params', 'Scan Segment=5 TotalSegments=5', () => ddb.send(new ScanCommand({ TableName: H, Segment: 5, TotalSegments: 5 })))
+    await p('scan_limit_zero', 'scan-params', 'Scan Limit=0', () => ddb.send(new ScanCommand({ TableName: H, Limit: 0 })))
+    await p('scan_segment_negative', 'scan-params', 'Scan Segment=-1 TotalSegments=4', () => ddb.send(new ScanCommand({ TableName: H, Segment: -1, TotalSegments: 4 })))
+    await p('scan_specific_no_projection', 'scan-params', 'Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression', () => ddb.send(new ScanCommand({ TableName: H, Select: 'SPECIFIC_ATTRIBUTES' })))
+    await p('scan_bad_start_key', 'scan-params', "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table", () => ddb.send(new ScanCommand({ TableName: H, ExclusiveStartKey: { bad: { S: 'p' } } })))
+    await p('scan_segment_without_total', 'scan-params', 'Scan Segment=0 without TotalSegments (control)', () => ddb.send(new ScanCommand({ TableName: H, Segment: 0 })))
+    await p('scan_total_without_segment', 'scan-params', 'Scan TotalSegments=4 without Segment (control)', () => ddb.send(new ScanCommand({ TableName: H, TotalSegments: 4 })))
 
     // Invalid key-VALUE coverage for the batch / lookup / transact paths.
     // batch-key: real AWS collapses wrong-type and non-scalar table keys to the
@@ -441,6 +473,7 @@ async function captureRegion(region) {
 }
 
 async function main() {
+  tablePrefix = resolveTablePrefix(flags)
   const out = {
     capturedAt: new Date().toISOString(),
     ...(selected ? { probes: [...selected] } : {}),
@@ -462,7 +495,9 @@ async function main() {
   process.stdout.write(JSON.stringify(out, null, 2) + '\n')
 }
 
-main().catch((e) => {
-  console.error('CAPTURE FAILED:', e?.name, e?.message)
-  process.exit(1)
-})
+if (import.meta.url === `file://${process.argv[1]}`) {
+  main().catch((e) => {
+    console.error('CAPTURE FAILED:', e?.name, e?.message)
+    process.exit(1)
+  })
+}

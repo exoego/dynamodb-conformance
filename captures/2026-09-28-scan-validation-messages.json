@@ -1,0 +1,3017 @@
+{
+  "capturedAt": "2026-09-28T12:58:47.999Z",
+  "probes": [
+    "scan_segment_ge_total",
+    "scan_limit_zero",
+    "scan_segment_negative",
+    "scan_specific_no_projection",
+    "scan_bad_start_key",
+    "scan_segment_without_total",
+    "scan_total_without_segment"
+  ],
+  "regions": {
+    "eu-west-2": {
+      "region": "eu-west-2",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "Limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "Segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": 1,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "us-east-1": {
+      "region": "us-east-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "eu-central-1": {
+      "region": "eu-central-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "Limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "Segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": 1,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-southeast-2": {
+      "region": "ap-southeast-2",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "af-south-1": {
+      "region": "af-south-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-east-1": {
+      "region": "ap-east-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-east-2": {
+      "region": "ap-east-2",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-northeast-1": {
+      "region": "ap-northeast-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-northeast-2": {
+      "region": "ap-northeast-2",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "Limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "Segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": 1,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-northeast-3": {
+      "region": "ap-northeast-3",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-south-1": {
+      "region": "ap-south-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-south-2": {
+      "region": "ap-south-2",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-southeast-1": {
+      "region": "ap-southeast-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-southeast-3": {
+      "region": "ap-southeast-3",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-southeast-4": {
+      "region": "ap-southeast-4",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-southeast-5": {
+      "region": "ap-southeast-5",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-southeast-6": {
+      "region": "ap-southeast-6",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ap-southeast-7": {
+      "region": "ap-southeast-7",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ca-central-1": {
+      "region": "ca-central-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "ca-west-1": {
+      "region": "ca-west-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "eu-central-2": {
+      "region": "eu-central-2",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "eu-north-1": {
+      "region": "eu-north-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "eu-south-1": {
+      "region": "eu-south-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "eu-south-2": {
+      "region": "eu-south-2",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "eu-west-1": {
+      "region": "eu-west-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "eu-west-3": {
+      "region": "eu-west-3",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "il-central-1": {
+      "region": "il-central-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "me-central-1": {
+      "region": "me-central-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "mx-central-1": {
+      "region": "mx-central-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "sa-east-1": {
+      "region": "sa-east-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "us-east-2": {
+      "region": "us-east-2",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "us-west-1": {
+      "region": "us-west-1",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "Limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "Segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": 1,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    },
+    "us-west-2": {
+      "region": "us-west-2",
+      "probes": [
+        {
+          "id": "scan_segment_ge_total",
+          "family": "scan-params",
+          "note": "Scan Segment=5 TotalSegments=5",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_limit_zero",
+          "family": "scan-params",
+          "note": "Scan Limit=0",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1",
+          "n": 1,
+          "fields": [
+            "limit"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_negative",
+          "family": "scan-params",
+          "note": "Scan Segment=-1 TotalSegments=4",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0",
+          "n": 1,
+          "fields": [
+            "segment"
+          ],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_specific_no_projection",
+          "family": "scan-params",
+          "note": "Scan Select=SPECIFIC_ATTRIBUTES without ProjectionExpression",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_bad_start_key",
+          "family": "scan-params",
+          "note": "Scan ExclusiveStartKey={ bad: 'p' } against a pk-only table",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The provided starting key is invalid: The provided key element does not match the schema",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_segment_without_total",
+          "family": "scan-params",
+          "note": "Scan Segment=0 without TotalSegments (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The TotalSegments parameter is required but was not present in the request when Segment parameter is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        },
+        {
+          "id": "scan_total_without_segment",
+          "family": "scan-params",
+          "note": "Scan TotalSegments=4 without Segment (control)",
+          "threw": true,
+          "name": "ValidationException",
+          "message": "The Segment parameter is required but was not present in the request when parameter TotalSegments is present",
+          "n": null,
+          "fields": [],
+          "cancellationReasons": null
+        }
+      ],
+      "nullRoundTrip": {
+        "put": "rejected",
+        "name": "ValidationException",
+        "message": "1 validation error detected: One or more parameter values were invalid: Null attribute value types must have the value of true"
+      }
+    }
+  }
+}

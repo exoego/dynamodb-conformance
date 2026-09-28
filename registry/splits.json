@@ -1271,6 +1271,1281 @@
           }
         }
       }
+    },
+    {
+      "id": "scan-segment-out-of-range-message",
+      "test": {
+        "file": "tests/tier3/error-messages/scan.test.ts",
+        "fullName": "Scan — exact error messages Segment >= TotalSegments: full out-of-range error"
+      },
+      "behaviour": "Scan with Segment equal to TotalSegments: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions answer the out-of-range sentence alone; old-cohort regions append ': Segment: 5 is not less than TotalSegments: 5'. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. The other 29 answering regions give the old wording. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
+      "pinned": "eu-west-2",
+      "firstObserved": "2026-09-19",
+      "lastRefreshed": "2026-09-28",
+      "regions": {
+        "af-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-east-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-northeast-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-northeast-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
+          }
+        },
+        "ap-northeast-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-south-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-southeast-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-southeast-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-southeast-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-southeast-4": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-southeast-5": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-southeast-6": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ap-southeast-7": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ca-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "ca-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "eu-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
+          }
+        },
+        "eu-central-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "eu-north-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "eu-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "eu-south-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "eu-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "eu-west-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
+          }
+        },
+        "eu-west-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "il-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "me-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "mx-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "sa-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "us-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "us-east-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        },
+        "us-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
+          }
+        },
+        "us-west-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+          }
+        }
+      },
+      "evidence": [
+        "captures/2026-09-28-scan-validation-messages.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/35429705876",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36310693620"
+      ],
+      "admitted": {
+        "by": "Martin Hicks",
+        "date": "2026-09-28",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/issues/183"
+      }
+    },
+    {
+      "id": "scan-limit-zero-message",
+      "test": {
+        "file": "tests/tier3/error-messages/scan.test.ts",
+        "fullName": "Scan — exact error messages Limit of 0: full minimum-value error"
+      },
+      "behaviour": "Scan with Limit 0: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions name the member as 'Limit' without echoing the value; old-cohort regions answer Value '0' at 'limit'. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. The other 29 answering regions give the old wording. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
+      "pinned": "eu-west-2",
+      "firstObserved": "2026-09-19",
+      "lastRefreshed": "2026-09-28",
+      "regions": {
+        "af-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-east-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-northeast-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-northeast-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-northeast-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-south-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-southeast-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-southeast-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-southeast-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-southeast-4": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-southeast-5": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-southeast-6": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ap-southeast-7": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ca-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "ca-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "eu-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "eu-central-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "eu-north-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "eu-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "eu-south-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "eu-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "eu-west-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "eu-west-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "il-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "me-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "mx-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "sa-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "us-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "us-east-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "us-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        },
+        "us-west-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+          }
+        }
+      },
+      "evidence": [
+        "captures/2026-09-28-scan-validation-messages.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/35429705876",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36310693620"
+      ],
+      "admitted": {
+        "by": "Martin Hicks",
+        "date": "2026-09-28",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/issues/181"
+      }
+    },
+    {
+      "id": "scan-segment-negative-message",
+      "test": {
+        "file": "tests/tier3/error-messages/scan.test.ts",
+        "fullName": "Scan — exact error messages negative Segment: full minimum-value error"
+      },
+      "behaviour": "Scan with a negative Segment: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions name the member as 'Segment' without echoing the value; old-cohort regions answer Value '-1' at 'segment'. The validation-ordering test for the same request matches both wordings, so this row is where the per-region answers are pinned. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. The other 29 answering regions give the old wording. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
+      "pinned": "eu-west-2",
+      "firstObserved": "2026-09-19",
+      "lastRefreshed": "2026-09-28",
+      "regions": {
+        "af-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-east-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-northeast-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-northeast-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-northeast-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-south-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-southeast-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-southeast-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-southeast-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-southeast-4": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-southeast-5": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-southeast-6": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ap-southeast-7": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ca-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "ca-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "eu-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "eu-central-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "eu-north-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "eu-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "eu-south-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "eu-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "eu-west-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "eu-west-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "il-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "me-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "mx-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "sa-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "us-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "us-east-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "us-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        },
+        "us-west-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+          }
+        }
+      },
+      "evidence": [
+        "captures/2026-09-28-scan-validation-messages.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/35429705876",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36310693620"
+      ],
+      "admitted": {
+        "by": "Martin Hicks",
+        "date": "2026-09-28",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/issues/189"
+      }
+    },
+    {
+      "id": "scan-bad-start-key-message",
+      "test": {
+        "file": "tests/tier3/error-messages/scan.test.ts",
+        "fullName": "Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error"
+      },
+      "behaviour": "Scan with an ExclusiveStartKey that does not match the table's key schema: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions answer the short form Query already gives; old-cohort regions append ': The provided key element does not match the schema'. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. The other 29 answering regions give the old wording. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
+      "pinned": "eu-west-2",
+      "firstObserved": "2026-09-19",
+      "lastRefreshed": "2026-09-28",
+      "regions": {
+        "af-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-east-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-northeast-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-northeast-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid"
+          }
+        },
+        "ap-northeast-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-south-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-southeast-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-southeast-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-southeast-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-southeast-4": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-southeast-5": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-southeast-6": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ap-southeast-7": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ca-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "ca-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "eu-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid"
+          }
+        },
+        "eu-central-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "eu-north-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "eu-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "eu-south-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "eu-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "eu-west-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid"
+          }
+        },
+        "eu-west-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "il-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "me-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "mx-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "sa-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "us-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "us-east-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        },
+        "us-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid"
+          }
+        },
+        "us-west-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+          }
+        }
+      },
+      "evidence": [
+        "captures/2026-09-28-scan-validation-messages.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/35429705876",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36310693620"
+      ],
+      "admitted": {
+        "by": "Martin Hicks",
+        "date": "2026-09-28",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/issues/182"
+      }
+    },
+    {
+      "id": "scan-specific-attributes-message",
+      "test": {
+        "file": "tests/tier3/error-messages/scan.test.ts",
+        "fullName": "Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message"
+      },
+      "behaviour": "Scan with Select SPECIFIC_ATTRIBUTES and no projection: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions wrap the required-projection sentence in the '1 validation error detected: ' envelope; old-cohort regions answer it bare. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. The other 29 answering regions give the old wording. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
+      "pinned": "eu-west-2",
+      "firstObserved": "2026-09-19",
+      "lastRefreshed": "2026-09-28",
+      "regions": {
+        "af-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-east-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-northeast-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-northeast-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-northeast-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-south-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-southeast-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-southeast-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-southeast-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-southeast-4": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-southeast-5": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-southeast-6": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ap-southeast-7": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ca-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "ca-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "eu-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "eu-central-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "eu-north-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "eu-south-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "eu-south-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "eu-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "eu-west-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "eu-west-3": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "il-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "me-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "mx-central-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "sa-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "us-east-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "us-east-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "us-west-1": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        },
+        "us-west-2": {
+          "outcome": "rejected",
+          "error": {
+            "name": "ValidationException",
+            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+          }
+        }
+      },
+      "evidence": [
+        "captures/2026-09-28-scan-validation-messages.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/35429705876",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36310693620"
+      ],
+      "admitted": {
+        "by": "Martin Hicks",
+        "date": "2026-09-28",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/issues/184"
+      }
     }
   ]
 }
