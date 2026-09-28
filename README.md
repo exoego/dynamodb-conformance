@@ -4,7 +4,7 @@
 [![Licence: Apache 2.0](https://img.shields.io/badge/licence-Apache%202.0-blue.svg)](LICENSE)
 [![Live results](https://img.shields.io/badge/live%20results-paritysuite.org-brightgreen)](https://paritysuite.org)
 
-An independent test suite that validates any DynamoDB-compatible endpoint against real DynamoDB behaviour. It works against DynamoDB, DynamoDB Local, Dynoxide, Dynoxide (wasm), Dynalite, LocalStack, ExtendDB, Floci, Ministack, or anything else that implements the DynamoDB HTTP API.
+An independent test suite that validates any DynamoDB-compatible endpoint against real DynamoDB behaviour. It works against DynamoDB, DynamoDB Local, Dynoxide, Dynoxide (wasm), Dynalite, LocalStack, ExtendDB, Floci, Ministack, Kumo, or anything else that implements the DynamoDB HTTP API.
 
 ## Why this exists
 
@@ -58,20 +58,21 @@ Rows are sorted by divergence. The tier columns are divergence within that tier,
 
 `me-south-1` has been dropped from the observed set and is not scored against.
 
-_Suite v3.3.0, measured against real DynamoDB on 2026-09-03. Region health as of 2026-09-02._
+_Suite v3.4.0, measured against real DynamoDB on 2026-09-20. Region health as of 2026-09-02._
 
 | Target | Grade | Version | Divergence | Coverage | Fail | Skip | Tier 1 | Tier 2 | Tier 3 | Regions |
 |--------|-------|---------|-----------|----------|------|------|--------|--------|--------|---------|
 | [DynamoDB](https://aws.amazon.com/dynamodb/) | baseline | live (AWS) | 0.0% | 100.0% | 0 | 0 | 0.0% | 0.0% | 0.0% | 33 of 33 |
-| [Dynoxide](https://github.com/nubo-db/dynoxide) · native SQLite | A | 1.1.0 | 0.2% | 98.9% | 2 | 14 | 0.0% | 0.0% | 0.5% | 22 of 33 |
-| ↳ WebAssembly / OPFS | A | 1.1.0 | 0.2% | 88.8% | 2 | 140 | 0.0% | 0.0% | 0.5% | 16 of 33 |
-| [ExtendDB](https://github.com/ExtendDB/extenddb) · PostgreSQL | B | v0.1.10 | 1.8% | 78.7% | 23 | 267 | 0.0% | 0.0% | 5.6% | 16 of 33 |
-| ↳ SQLite | B | v0.1.10 | 2.1% | 82.8% | 26 | 215 | 0.0% | 1.2% | 5.4% | 16 of 33 |
-| [LocalStack](https://github.com/localstack/localstack) | B | 2026.8.1 | 8.1% | 95.3% | 101 | 59 | 2.8% | 12.5% | 10.7% | 1 of 33 |
+| [Dynoxide](https://github.com/nubo-db/dynoxide) · self-contained binary | A | 1.2.1 | 0.2% | 98.9% | 2 | 14 | 0.0% | 0.0% | 0.5% | 22 of 33 |
+| ↳ WebAssembly / OPFS | A | 1.2.1 | 0.2% | 88.8% | 2 | 140 | 0.0% | 0.0% | 0.5% | 16 of 33 |
+| [ExtendDB](https://github.com/ExtendDB/extenddb) · PostgreSQL | B | v0.1.12 | 1.8% | 78.7% | 23 | 267 | 0.0% | 0.0% | 5.6% | 16 of 33 |
+| ↳ SQLite | B | v0.1.12 | 2.1% | 82.8% | 26 | 215 | 0.0% | 1.2% | 5.4% | 16 of 33 |
+| [Ministack](https://github.com/ministackorg/ministack) | B | 62c0ac878ea8 | 7.1% | 95.8% | 89 | 52 | 0.0% | 0.3% | 21.5% | 6 of 33 |
+| [LocalStack](https://github.com/localstack/localstack) | B | 2026.8.3 | 8.1% | 95.3% | 101 | 59 | 2.8% | 12.5% | 10.7% | 1 of 33 |
 | [Dynalite](https://github.com/architect/dynalite) | C | 4.0.0 | 11.5% | 69.1% | 144 | 386 | 10.7% | 8.1% | 15.4% | 11 of 33 |
+| [Floci](https://github.com/floci-io/floci) | C | f5aa8c18302c | 15.0% | 95.3% | 188 | 59 | 0.0% | 27.5% | 22.7% | 16 of 33 |
 | [DynamoDB Local](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.html) | C | ff89bd48ff32 | 15.7% | 94.2% | 196 | 73 | 7.5% | 15.4% | 25.9% | 16 of 33 |
-| [Ministack](https://github.com/ministackorg/ministack) | C | 9b67e6f8e53d | 17.6% | 95.8% | 220 | 52 | 5.6% | 25.5% | 25.4% | 6 of 33 |
-| [Floci](https://github.com/floci-io/floci) | D | 4e451c39c7bb | 26.9% | 95.1% | 337 | 61 | 10.1% | 44.6% | 32.4% | 6 of 33 |
+| [Kumo](https://github.com/sivchari/kumo) | F | 07a1ad2616ef | 45.2% | 78.3% | 566 | 272 | 47.2% | 13.9% | 69.3% | 5 of 33 |
 <!-- results:end -->
 
 **Divergence** is `Fail / Total` and **Coverage** is `(Pass + Fail) / Total`,
@@ -443,6 +444,14 @@ security posture, and these two rows are meant to differ only in storage engine.
 docker run -d --name floci -p 4566:4566 floci/floci:latest
 DYNAMODB_ENDPOINT=http://localhost:4566 npm test
 docker stop floci && docker rm floci
+```
+
+### Kumo
+
+```bash
+docker run -d --name kumo -p 4566:4566 ghcr.io/sivchari/kumo:latest
+DYNAMODB_ENDPOINT=http://localhost:4566 npm test
+docker stop kumo && docker rm kumo
 ```
 
 ### LocalStack

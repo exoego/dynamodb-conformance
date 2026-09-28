@@ -24,7 +24,7 @@
     "updated": 0,
     "didUpdate": false
   },
-  "startTime": 1788444865002,
+  "startTime": 1789934770996,
   "success": true,
   "testResults": [
     {
@@ -36,7 +36,7 @@
           "fullName": "UpdateTable — add GSI adds a hash-only GSI to an existing table",
           "status": "passed",
           "title": "adds a hash-only GSI to an existing table",
-          "duration": 683982.089143,
+          "duration": 1006027.904601,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -53,7 +53,7 @@
           "fullName": "UpdateTable — add GSI adds a composite GSI (hash + range) to an existing table",
           "status": "passed",
           "title": "adds a composite GSI (hash + range) to an existing table",
-          "duration": 536252.7190270001,
+          "duration": 1015204.349598,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -70,7 +70,7 @@
           "fullName": "UpdateTable — add GSI adds a GSI with KEYS_ONLY projection",
           "status": "passed",
           "title": "adds a GSI with KEYS_ONLY projection",
-          "duration": 558665.1618250001,
+          "duration": 538221.4307579999,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -87,7 +87,7 @@
           "fullName": "UpdateTable — add GSI adds a GSI with INCLUDE projection and NonKeyAttributes",
           "status": "passed",
           "title": "adds a GSI with INCLUDE projection and NonKeyAttributes",
-          "duration": 553352.363833,
+          "duration": 552562.545411,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -104,7 +104,7 @@
           "fullName": "UpdateTable — add GSI can query a newly created GSI after putting items",
           "status": "passed",
           "title": "can query a newly created GSI after putting items",
-          "duration": 1009714.66916,
+          "duration": 618213.4453739999,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -121,7 +121,7 @@
           "fullName": "UpdateTable — add GSI adds multiple GSIs sequentially",
           "status": "passed",
           "title": "adds multiple GSIs sequentially",
-          "duration": 1546477.8807389997,
+          "duration": 1545107.9506659997,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -138,7 +138,7 @@
           "fullName": "UpdateTable — add GSI accepts a conflicting redeclaration of an existing key attribute and keeps the stored type",
           "status": "passed",
           "title": "accepts a conflicting redeclaration of an existing key attribute and keeps the stored type",
-          "duration": 1011304.6508679995,
+          "duration": 547147.2515050005,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -155,7 +155,7 @@
           "fullName": "UpdateTable — add GSI drops an unused AttributeDefinition supplied with a GSI add",
           "status": "passed",
           "title": "drops an unused AttributeDefinition supplied with a GSI add",
-          "duration": 1006368.5037510004,
+          "duration": 684267.4576070001,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -172,7 +172,7 @@
           "fullName": "UpdateTable — remove GSI removes a GSI from a table",
           "status": "passed",
           "title": "removes a GSI from a table",
-          "duration": 20380.767098999582,
+          "duration": 18308.78183500003,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -189,7 +189,7 @@
           "fullName": "UpdateTable — remove GSI base table operations still work after removing a GSI",
           "status": "passed",
           "title": "base table operations still work after removing a GSI",
-          "duration": 22313.567352999933,
+          "duration": 21591.94184799958,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -206,7 +206,7 @@
           "fullName": "UpdateTable — GSI validation rejects adding a GSI with a name that already exists",
           "status": "passed",
           "title": "rejects adding a GSI with a name that already exists",
-          "duration": 15659.70397900045,
+          "duration": 14563.584448000416,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -224,7 +224,7 @@
           "fullName": "UpdateTable — GSI validation rejects adding a GSI with an attribute not in AttributeDefinitions",
           "status": "passed",
           "title": "rejects adding a GSI with an attribute not in AttributeDefinitions",
-          "duration": 7129.051109999418,
+          "duration": 6284.313432999887,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -242,7 +242,7 @@
           "fullName": "UpdateTable — GSI validation rejects a GSI keyed on a table attribute omitted from the request AttributeDefinitions",
           "status": "passed",
           "title": "rejects a GSI keyed on a table attribute omitted from the request AttributeDefinitions",
-          "duration": 5316.177508000284,
+          "duration": 5647.4587119994685,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -260,7 +260,7 @@
           "fullName": "UpdateTable — GSI validation rejects removing a non-existent GSI",
           "status": "passed",
           "title": "rejects removing a non-existent GSI",
-          "duration": 5927.110958999954,
+          "duration": 5023.883848999627,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -272,8 +272,8 @@
           ]
         }
       ],
-      "startTime": 1788444867084,
-      "endTime": 1788451864393.1108,
+      "startTime": 1789934772790,
+      "endTime": 1789941367470.8838,
       "status": "passed",
       "message": "",
       "name": "tests/tier2/updateTable/gsi.test.ts"
@@ -287,7 +287,7 @@
           "fullName": "UpdateTable — vector index lifecycle adds an index that backfills like a GSI, enforces one online action, then deletes it",
           "status": "passed",
           "title": "adds an index that backfills like a GSI, enforces one online action, then deletes it",
-          "duration": 544586.8440089999,
+          "duration": 1024228.200216,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -306,7 +306,7 @@
           "fullName": "UpdateTable — vector index lifecycle refuses to delete the table while a vector index is still being created",
           "status": "passed",
           "title": "refuses to delete the table while a vector index is still being created",
-          "duration": 43007.42928500008,
+          "duration": 38558.00141400006,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -325,7 +325,7 @@
           "fullName": "UpdateTable — vector index lifecycle reports UPDATING with Backfilling false while allocating, and takes a cancel only once backfilling starts",
           "status": "passed",
           "title": "reports UPDATING with Backfilling false while allocating, and takes a cancel only once backfilling starts",
-          "duration": 41650.132478999905,
+          "duration": 35223.43593200017,
           "failureMessages": [],
           "meta": {},
           "tags": [
@@ -338,8 +338,8 @@
           ]
         }
       ],
-      "startTime": 1788451890533,
-      "endTime": 1788452519777.1326,
+      "startTime": 1789941394260,
+      "endTime": 1789942492270.436,
       "status": "passed",
       "message": "",
       "name": "tests/tier2/vectorSearch/updateLifecycle.test.ts"
