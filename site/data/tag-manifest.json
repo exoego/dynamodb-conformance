@@ -1251,6 +1251,7 @@
       ],
       "Expression size limit (4KB) — TransactWriteItems": [
         "transactions",
+        "get-item",
         "data-plane"
       ]
     },

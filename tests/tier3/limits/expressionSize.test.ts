@@ -325,7 +325,7 @@ describe('Expression size limit (4KB) — ProjectionExpression', { tags: ['get-i
 })
 
 // no negative-path: acceptance-mixed (asserts accepted and rejected cases)
-describe('Expression size limit (4KB) — TransactWriteItems', { tags: ['transactions', 'data-plane'] }, () => {
+describe('Expression size limit (4KB) — TransactWriteItems', { tags: ['transactions', 'get-item', 'data-plane'] }, () => {
   // An empty TransactItems is rejected by any target that implements the
   // operation, so this separates "not implemented" from "implemented".
   skipUnlessSupported(() => ddb.send(new TransactWriteItemsCommand({ TransactItems: [] })))
