@@ -1,0 +1,2295 @@
+{
+  "capturedAt": "2026-09-28T22:43:19.258Z",
+  "method": "Two passes of a probe (UpdateItem, one-byte key, SET b = :pad, finished items of 409,581, 409,582, 409,600 and 409,601 bytes), and tests/tier3/limits/itemSizeBySurface.test.ts run once in every region with each test recording the flat side of the split. eu-central-1 was throttled on the PartiQL test and that one test was re-run.",
+  "probes": {
+    "A": {
+      "capturedAt": "2026-09-28T22:43:19.258Z",
+      "regions": {
+        "eu-west-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "us-east-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-central-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "af-south-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-east-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-east-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-northeast-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-northeast-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-northeast-3": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-south-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-south-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-3": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-4": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-5": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-6": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-7": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ca-central-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ca-west-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-central-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-north-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-south-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-south-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-west-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-west-3": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "il-central-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "me-central-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "mx-central-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "sa-east-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "us-east-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "us-west-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "us-west-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        }
+      }
+    },
+    "B": {
+      "capturedAt": "2026-09-28T22:47:02.008Z",
+      "regions": {
+        "eu-west-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "us-east-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-central-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "af-south-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-east-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-east-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-northeast-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-northeast-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-northeast-3": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-south-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-south-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-3": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-4": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-5": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-6": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ap-southeast-7": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ca-central-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "ca-west-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-central-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-north-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-south-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-south-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-west-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "eu-west-3": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "il-central-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "me-central-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "mx-central-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "sa-east-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "us-east-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "accepted (stored 409582)",
+          "409600": "accepted (stored 409600)",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "us-west-1": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        },
+        "us-west-2": {
+          "409581": "accepted (stored 409581)",
+          "409582": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409600": "ValidationException: Item size to update has exceeded the maximum allowed size",
+          "409601": "ValidationException: Item size to update has exceeded the maximum allowed size"
+        }
+      }
+    }
+  },
+  "tests": {
+    "eu-west-2": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "us-east-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "eu-central-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-southeast-2": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "af-south-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-east-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-east-2": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-northeast-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "ap-northeast-2": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-northeast-3": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-south-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-south-2": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "ap-southeast-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-southeast-3": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-southeast-4": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-southeast-5": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "ap-southeast-6": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "ap-southeast-7": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "ca-central-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "ca-west-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "eu-central-2": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "eu-north-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "eu-south-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "eu-south-2": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "eu-west-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "eu-west-3": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "il-central-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "me-central-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "mx-central-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "sa-east-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "us-east-2": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "failed",
+        "observed": {
+          "outcome": "accepted",
+          "detail": "stored an update the statement-sized rule refuses"
+        }
+      }
+    },
+    "us-west-1": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    },
+    "us-west-2": {
+      "UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem does not charge for the key buys back a sort key’s own bytes as well": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a second SET clause exactly 19 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the value it writes": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action does not charge for an attribute the statement leaves alone": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem charges per action charges the clause, not the attribute name or its alias": {
+        "status": "passed",
+        "observed": null
+      },
+      "UpdateItem through a document path charges a SET through a list index exactly one byte more": {
+        "status": "passed",
+        "observed": null
+      },
+      "a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      },
+      "a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key": {
+        "status": "passed",
+        "observed": null
+      }
+    }
+  }
+}

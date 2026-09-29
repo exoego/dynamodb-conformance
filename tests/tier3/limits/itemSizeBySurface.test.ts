@@ -12,6 +12,7 @@ import {
 } from '@aws-sdk/client-dynamodb'
 import type { AttributeValue } from '@aws-sdk/client-dynamodb'
 import { ddb } from '../../../src/client.js'
+import { recordObserved } from '../../../src/observation-sink.js'
 import { isUnsupportedFault, skipUnlessSupported } from '../../../src/infra.js'
 import {
   itemSizeTableDef,
@@ -38,7 +39,9 @@ declareTables(itemSizeTableDef, itemSizeCompositeTableDef, longKeyNameTableDef)
 //
 // Six of the seven are flat: the ceiling is the item's own size, exactly
 // 409,600, with no key exclusion and no per-action term. Standalone UpdateItem
-// is the outlier and has its own describes below.
+// is the outlier in eu-west-2 and has its own describes below. It is not the
+// outlier everywhere: in ten regions UpdateItem is flat too (see the note above
+// updateCeilingIs).
 //
 // The reporting split follows whether the size can be known from the request
 // alone. A put's can, so a transacted Put over the limit is a plain
@@ -306,6 +309,37 @@ const UPDATE_BASE_COST = 3
 const SET_COST = 19
 const REMOVE_COST = 2
 
+// The statement-sized rule is regional. Ten regions (ap-south-2, ap-southeast-6,
+// ap-southeast-7, ca-central-1, eu-central-2, eu-south-1, eu-south-2, eu-west-1,
+// me-central-1 and us-east-2) size an UpdateItem like every other write: the
+// finished item, capped at exactly 409,600, with no key exclusion and no
+// per-clause cost. So every case below that puts the ceiling under 409,600 fails
+// there on its first refusal, which those regions accept and store. The other 22
+// apply the rule; ap-northeast-1 has answered both ways and is in no row.
+// Measured across all 33 regions on 2026-09-28 and 2026-09-29.
+//
+// Each such test is a split, and what it records for per-region scoring is only
+// the flat side: that the target stored an update this rule refuses, confirmed
+// by reading it back. The refusing side needs no record, because a pass already
+// means the pinned eu-west-2 answer. Recording refusals would be wrong here,
+// since these tests go on past the refusal, and a target refusing at the right
+// point but failing a later step would be credited as matching the regions that
+// refuse.
+const STATEMENT_RULE_STORED = 'stored an update the statement-sized rule refuses'
+
+async function recordStoredDespiteRule(
+  task: Parameters<typeof recordObserved>[0] | undefined,
+  table: string,
+  k: Record<string, AttributeValue>,
+  landed: (item: Record<string, AttributeValue>) => boolean,
+): Promise<void> {
+  if (!task) return
+  const got = await ddb.send(new GetItemCommand({ TableName: table, Key: { ...k }, ConsistentRead: true }))
+  if (got.Item && landed(got.Item)) {
+    recordObserved(task, { outcome: 'accepted', detail: STATEMENT_RULE_STORED })
+  }
+}
+
 /**
  * The largest finished item UpdateItem accepts.
  *
@@ -344,6 +378,7 @@ async function updateCeilingIs(
   table: string,
   keys: { accepted: Record<string, AttributeValue>; refused: Record<string, AttributeValue> },
   shape: UpdateShape,
+  task?: Parameters<typeof recordObserved>[0],
 ): Promise<number> {
   const uncounted = itemBytes(keys.accepted) + itemBytes(shape.untouched ?? {})
   const ceiling = updateCeiling(uncounted, shape.actionCost)
@@ -375,7 +410,10 @@ async function updateCeilingIs(
   expect(itemBytes(stored.Item as Record<string, AttributeValue>)).toBe(ceiling)
 
   await expectDynamoError(
-    () => send(keys.refused, ceiling + 1),
+    async () => {
+      await send(keys.refused, ceiling + 1)
+      await recordStoredDespiteRule(task, table, keys.refused, (item) => itemBytes(item) === ceiling + 1)
+    },
     'ValidationException',
     UPDATE_WORDING,
   )
@@ -400,10 +438,12 @@ describe('Item size limit by surface — UpdateItem does not charge for the key'
   // so the exclusion is what binds and the ceiling sits under 400KB.
   const shortKey = () => ({ accepted: { pk: { S: 'K' } }, refused: { pk: { S: 'L' } } })
 
-  it('sits below 409,600 at a one-byte key, so the exclusion binds', async () => {
+  it('sits below 409,600 at a one-byte key, so the exclusion binds', async (ctx) => {
+    // Split behaviour (registry row update-item-size-short-key): flat in ten
+    // regions, see the note above updateCeilingIs.
     const keys = shortKey()
     keysToClean.push(keys.accepted, keys.refused)
-    const ceiling = await updateCeilingIs(TABLE, keys, oneSet())
+    const ceiling = await updateCeilingIs(TABLE, keys, oneSet(), ctx.task)
     expect(ceiling).toBeLessThan(MAX_ITEM_BYTES)
     // 2 bytes of key name plus 1 of key value, against a 22-byte single SET.
     expect(ceiling).toBe(MAX_ITEM_BYTES - 19)
@@ -422,7 +462,9 @@ describe('Item size limit by surface — UpdateItem does not charge for the key'
   // The name is excluded as well as the value, so the two are interchangeable.
   // Sixteen bytes of key name and one of value buys back what two bytes of name
   // and fifteen of value does.
-  it('buys back the same headroom from the key name as from the key value', async () => {
+  it('buys back the same headroom from the key name as from the key value', async (ctx) => {
+    // Split behaviour (registry row update-item-size-key-name): flat in ten
+    // regions, see the note above updateCeilingIs.
     const byValue = { accepted: { pk: { S: 'v'.repeat(15) } }, refused: { pk: { S: 'w'.repeat(15) } } }
     keysToClean.push(byValue.accepted, byValue.refused)
     const byName = {
@@ -432,15 +474,17 @@ describe('Item size limit by surface — UpdateItem does not charge for the key'
     longKeyNameKeysToClean.push(byName.accepted, byName.refused)
     expect(itemBytes(byValue.accepted)).toBe(itemBytes(byName.accepted))
 
-    const fromValue = await updateCeilingIs(TABLE, byValue, oneSet())
-    const fromName = await updateCeilingIs(longKeyNameTableDef.name, byName, oneSet())
+    const fromValue = await updateCeilingIs(TABLE, byValue, oneSet(), ctx.task)
+    const fromName = await updateCeilingIs(longKeyNameTableDef.name, byName, oneSet(), ctx.task)
     expect(fromName).toBe(fromValue)
     // Both still under the cap, or the comparison would be two tables agreeing
     // on 409,600 for reasons that have nothing to do with the key.
     expect(fromValue).toBeLessThan(MAX_ITEM_BYTES)
   })
 
-  it('buys back a sort key’s own bytes as well', async () => {
+  it('buys back a sort key’s own bytes as well', async (ctx) => {
+    // Split behaviour (registry row update-item-size-sort-key): flat in ten
+    // regions, see the note above updateCeilingIs.
     const hashOnly = { accepted: { pk: { S: 'S' } }, refused: { pk: { S: 'T' } } }
     keysToClean.push(hashOnly.accepted, hashOnly.refused)
     const withSort = {
@@ -449,8 +493,8 @@ describe('Item size limit by surface — UpdateItem does not charge for the key'
     }
     compositeKeysToClean.push(withSort.accepted, withSort.refused)
 
-    const flat = await updateCeilingIs(TABLE, hashOnly, oneSet())
-    const composite = await updateCeilingIs(itemSizeCompositeTableDef.name, withSort, oneSet())
+    const flat = await updateCeilingIs(TABLE, hashOnly, oneSet(), ctx.task)
+    const composite = await updateCeilingIs(itemSizeCompositeTableDef.name, withSort, oneSet(), ctx.task)
     expect(composite - flat).toBe(itemBytes({ sk: withSort.accepted.sk }))
   })
 })
@@ -466,43 +510,49 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
     return keys
   }
 
-  it('charges a second SET clause exactly 19 bytes', async () => {
-    const one = await updateCeilingIs(TABLE, shortPair('1'), oneSet())
+  it('charges a second SET clause exactly 19 bytes', async (ctx) => {
+    // Split behaviour (registry row update-item-size-second-set): flat in ten
+    // regions, see the note above updateCeilingIs.
+    const one = await updateCeilingIs(TABLE, shortPair('1'), oneSet(), ctx.task)
     const two = await updateCeilingIs(TABLE, shortPair('2'), oneSet({
       expression: 'SET b = :pad, c = :c',
       values: { ':c': { S: 'y' } },
       extra: { c: { S: 'y' } },
       actionCost: UPDATE_BASE_COST + SET_COST * 2,
-    }))
+    }), ctx.task)
     expect(one - two).toBe(SET_COST)
   })
 
-  it('charges a REMOVE alongside a SET exactly 2 bytes', async () => {
-    const setOnly = await updateCeilingIs(TABLE, shortPair('3'), oneSet())
+  it('charges a REMOVE alongside a SET exactly 2 bytes', async (ctx) => {
+    // Split behaviour (registry row update-item-size-remove): flat in ten
+    // regions, see the note above updateCeilingIs.
+    const setOnly = await updateCeilingIs(TABLE, shortPair('3'), oneSet(), ctx.task)
     const withRemove = await updateCeilingIs(TABLE, shortPair('4'), oneSet({
       expression: 'SET b = :pad REMOVE r',
       seed: { r: { S: 'z' } },
       actionCost: UPDATE_BASE_COST + SET_COST + REMOVE_COST,
-    }))
+    }), ctx.task)
     expect(setOnly - withRemove).toBe(REMOVE_COST)
   })
 
   // The clause is charged, not what it carries. A second clause writing 500
   // bytes costs what one writing a single byte costs, and the threshold does not
   // move when the attribute is reached through an alias instead of by name.
-  it('charges the clause, not the value it writes', async () => {
+  it('charges the clause, not the value it writes', async (ctx) => {
+    // Split behaviour (registry row update-item-size-clause-not-value): flat in ten
+    // regions, see the note above updateCeilingIs.
     const small = await updateCeilingIs(TABLE, shortPair('5'), oneSet({
       expression: 'SET b = :pad, c = :c',
       values: { ':c': { S: 'y' } },
       extra: { c: { S: 'y' } },
       actionCost: UPDATE_BASE_COST + SET_COST * 2,
-    }))
+    }), ctx.task)
     const large = await updateCeilingIs(TABLE, shortPair('6'), oneSet({
       expression: 'SET b = :pad, c = :c',
       values: { ':c': { S: 'y'.repeat(500) } },
       extra: { c: { S: 'y'.repeat(500) } },
       actionCost: UPDATE_BASE_COST + SET_COST * 2,
-    }))
+    }), ctx.task)
     expect(large).toBe(small)
     // Both sides collapse onto 409,600 the moment the key outgrows the action
     // cost, and the equality then holds whatever the per-clause cost is. The
@@ -514,20 +564,24 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
   // names is in the stored item and out of the figure, so it buys back its own
   // bytes exactly as a key attribute does — which is what shows the exclusion is
   // about what the update writes rather than about keys.
-  it('does not charge for an attribute the statement leaves alone', async () => {
+  it('does not charge for an attribute the statement leaves alone', async (ctx) => {
+    // Split behaviour (registry row update-item-size-untouched-attribute): flat in ten
+    // regions, see the note above updateCeilingIs.
     const untouched = { u: { S: 'y'.repeat(10) } }
-    const written = await updateCeilingIs(TABLE, shortPair('9'), oneSet())
-    const alongside = await updateCeilingIs(TABLE, shortPair('a'), oneSet({ untouched }))
+    const written = await updateCeilingIs(TABLE, shortPair('9'), oneSet(), ctx.task)
+    const alongside = await updateCeilingIs(TABLE, shortPair('a'), oneSet({ untouched }), ctx.task)
     expect(alongside - written).toBe(itemBytes(untouched))
     expect(alongside).toBeLessThan(MAX_ITEM_BYTES)
   })
 
-  it('charges the clause, not the attribute name or its alias', async () => {
-    const byName = await updateCeilingIs(TABLE, shortPair('7'), oneSet())
+  it('charges the clause, not the attribute name or its alias', async (ctx) => {
+    // Split behaviour (registry row update-item-size-alias): flat in ten
+    // regions, see the note above updateCeilingIs.
+    const byName = await updateCeilingIs(TABLE, shortPair('7'), oneSet(), ctx.task)
     const byAlias = await updateCeilingIs(TABLE, shortPair('8'), oneSet({
       expression: 'SET #twelvechars = :pad',
       names: { '#twelvechars': 'b' },
-    }))
+    }), ctx.task)
     expect(byAlias).toBe(byName)
     expect(byName).toBeLessThan(MAX_ITEM_BYTES)
   })
@@ -614,7 +668,9 @@ describe('Item size limit by surface — UpdateItem through a document path', { 
   // one. Asserted as the difference against the plain clause's own measured
   // threshold rather than against either constant, so what fails is the one byte
   // rather than a figure nothing else checks.
-  it('charges a SET through a list index exactly one byte more', async () => {
+  it('charges a SET through a list index exactly one byte more', async (ctx) => {
+    // Split behaviour (registry row update-item-size-list-index): flat in ten
+    // regions, see the note above updateCeilingIs.
     const plainly = (at: Record<string, AttributeValue>) => (padding: number) =>
       update(at, 'SET d = :whole', { ':whole': wholeList(padding) })
     const throughIndex = (at: Record<string, AttributeValue>) => (padding: number) =>
@@ -624,7 +680,10 @@ describe('Item size limit by surface — UpdateItem through a document path', { 
     await update(k, 'SET d = :whole', { ':whole': wholeList(1) })
     await update(over, 'SET d = :whole', { ':whole': wholeList(1) })
 
-    expect(await accepts(() => throughIndex(over)(reference))).toBe(false)
+    expect(await accepts(async () => {
+      await throughIndex(over)(reference)
+      await recordStoredDespiteRule(ctx.task, TABLE, over, (item) => item.d?.L?.[0]?.S?.length === reference)
+    })).toBe(false)
     expect(await accepts(() => throughIndex(k)(reference - 1))).toBe(true)
   })
 })
@@ -638,18 +697,21 @@ describe('Item size limit by surface — UpdateItem through a document path', { 
  * makes the acceptance on the other surfaces mean anything: the same item, at
  * the same key, written by an operation that measures it differently.
  */
-async function keyUpdateItemRefusesAt(id: string) {
+async function keyUpdateItemRefusesAt(id: string, task?: Parameters<typeof recordObserved>[0]) {
   const at = { pk: { S: id } }
   keysToClean.push(at)
   await ddb.send(new PutItemCommand({ TableName: TABLE, Item: { ...at } }))
   const item = itemOfBytes(MAX_ITEM_BYTES, at, 'p')
   await expectDynamoError(
-    () => ddb.send(new UpdateItemCommand({
-      TableName: TABLE,
-      Key: { ...at },
-      UpdateExpression: 'SET p = :p',
-      ExpressionAttributeValues: { ':p': item.p },
-    })),
+    async () => {
+      await ddb.send(new UpdateItemCommand({
+        TableName: TABLE,
+        Key: { ...at },
+        UpdateExpression: 'SET p = :p',
+        ExpressionAttributeValues: { ':p': item.p },
+      }))
+      await recordStoredDespiteRule(task, TABLE, at, (stored) => itemBytes(stored) === MAX_ITEM_BYTES)
+    },
     'ValidationException',
     UPDATE_WORDING,
   )
@@ -674,8 +736,10 @@ describe('Item size limit by surface — a PartiQL UPDATE does not inherit the e
 
   beforeEach(({ skip }) => { if (!supported) skip() })
 
-  it('writes what UpdateItem refuses at the same key', async () => {
-    const { at, item } = await keyUpdateItemRefusesAt('X')
+  it('writes what UpdateItem refuses at the same key', async (ctx) => {
+    // Split behaviour (registry row partiql-update-size-exclusion): flat in ten
+    // regions, see the note above updateCeilingIs.
+    const { at, item } = await keyUpdateItemRefusesAt('X', ctx.task)
     await ddb.send(new ExecuteStatementCommand({
       Statement: `UPDATE "${TABLE}" SET p = ? WHERE pk = ?`,
       Parameters: [item.p, at.pk],
@@ -688,8 +752,10 @@ describe('Item size limit by surface — a PartiQL UPDATE does not inherit the e
 describe('Item size limit by surface — a transacted Update does not inherit the exclusion', { tags: ['transactions', 'update-item', 'data-plane'] }, () => {
   skipUnlessSupported(() => ddb.send(new TransactWriteItemsCommand({ TransactItems: [] })))
 
-  it('writes what UpdateItem refuses at the same key', async () => {
-    const { at, item } = await keyUpdateItemRefusesAt('Y')
+  it('writes what UpdateItem refuses at the same key', async (ctx) => {
+    // Split behaviour (registry row transact-update-size-exclusion): flat in ten
+    // regions, see the note above updateCeilingIs.
+    const { at, item } = await keyUpdateItemRefusesAt('Y', ctx.task)
     await ddb.send(new TransactWriteItemsCommand({
       TransactItems: [{
         Update: {

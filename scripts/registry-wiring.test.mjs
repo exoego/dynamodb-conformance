@@ -71,10 +71,16 @@ const testBlock = (source, fullName) => {
 // Whether a block calls observeSplit or recordObserved, ignoring comments: the
 // row id lives in a comment by convention, and a comment that merely mentions
 // the helper must not pass for a test that never records its answer.
+const withoutComments = (text) =>
+  text.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/.*$/gm, '$1')
 const recordsObservation = (block) =>
-  /\b(?:observeSplit|recordObserved)\s*\(/.test(
-    block.replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|[^:])\/\/.*$/gm, '$1'),
-  )
+  /\b(?:observeSplit|recordObserved)\s*\(/.test(withoutComments(block))
+
+// A test whose split answer comes out of a multi-step helper hands its task to
+// that helper instead of calling the sink itself. That counts only when the test
+// really passes `ctx.task` on and the file really calls the sink somewhere.
+const handsTaskToRecorder = (block, source) =>
+  /\bctx\.task\b/.test(withoutComments(block)) && recordsObservation(source)
 
 describe('every registry row resolves to a wired split test', () => {
   it('no two rows share a test block, which keeps per-test assertions exact', () => {
@@ -119,16 +125,20 @@ describe('every registry row resolves to a wired split test', () => {
         // the test would score as fail-everywhere for every target.
         expect(block, `no it() block in ${row.test.file} for ${row.test.fullName}`).not.toBeNull()
         expect(block).toContain(row.id)
-        expect(recordsObservation(block), `${row.test.fullName} never calls observeSplit`).toBe(true)
+        expect(
+          recordsObservation(block) || handsTaskToRecorder(block, source),
+          `${row.test.fullName} never records an observation`,
+        ).toBe(true)
       })
 
-      it('has every accepted detail it records present verbatim in the test', () => {
-        // An accepted answer is stamped from a literal in the test, so a
+      it('has every accepted detail it records present verbatim in the test file', () => {
+        // An accepted answer is stamped from a literal in the test file, so a
         // reworded registry detail silently stops matching unless the test
-        // moves in lockstep. Rejected answers are captured verbatim from the
-        // target at run time and need no literal.
+        // moves in lockstep. The file rather than the block, because a shared
+        // helper may do the stamping. Rejected answers are captured verbatim
+        // from the target at run time and need no literal.
         for (const detail of acceptedDetails) {
-          expect(block, `detail "${detail}" not found in the test's block`).toContain(detail)
+          expect(source, `detail "${detail}" not found in ${row.test.file}`).toContain(detail)
         }
       })
 
@@ -200,5 +210,21 @@ describe('recordsObservation', () => {
   it('does not count a helper named only in a comment', () => {
     expect(recordsObservation('// wired through observeSplit(ctx.task, ...) later\nawait send()')).toBe(false)
     expect(recordsObservation('/* observeSplit( */ await send()')).toBe(false)
+  })
+})
+
+describe('handsTaskToRecorder', () => {
+  const recorder = 'function helper(task) { recordObserved(task, obs) }'
+
+  it('counts a test that passes ctx.task to a file that records', () => {
+    expect(handsTaskToRecorder('await helper(ctx.task)', recorder)).toBe(true)
+  })
+
+  it('does not count ctx.task named only in a comment', () => {
+    expect(handsTaskToRecorder('// passes ctx.task later\nawait helper()', recorder)).toBe(false)
+  })
+
+  it('does not count a file that never records', () => {
+    expect(handsTaskToRecorder('await helper(ctx.task)', 'function helper(task) {}')).toBe(false)
   })
 })

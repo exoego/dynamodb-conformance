@@ -27,6 +27,11 @@ The nesting-depth row moves af-south-1, ap-southeast-3, ap-southeast-4,
 ap-southeast-5 and il-central-1 to the strict side, leaving 22 regions strict
 and 11 lax. ap-northeast-1 answers both ways and stays lax for now.
 
+UpdateItem's item size is now a regional split, across eleven tests.
+Twenty-two regions, eu-west-2 among them, size an update by what the statement
+writes, as the suite already pinned, while ten cap the finished item at 409,600
+like any other write. Engines that apply the plain cap are credited in those ten.
+
 ## 2026-09-20 (3.4.0)
 
 Kumo joins the board, suggested by [@exoego](https://github.com/exoego). It is a
