@@ -32,8 +32,9 @@ Twenty-two regions, eu-west-2 among them, size an update by what the statement
 writes, as the suite already pinned, while ten cap the finished item at 409,600
 like any other write. Engines that apply the plain cap are credited in those ten.
 
-Fourteen cases for the 4096-byte expression cap and the 32-level nesting cap on
-the batch and transact write surfaces, captured against eu-west-2 and us-east-1.
+Fourteen cases from [@exoego](https://github.com/exoego) for the 4096-byte
+expression cap and the 32-level nesting cap on the batch and transact write
+surfaces, captured against eu-west-2 and us-east-1.
 
 - **Expression size in a transaction.** A `TransactWriteItems` member's
   `ConditionExpression` or `UpdateExpression` over 4096 bytes is a top-level
