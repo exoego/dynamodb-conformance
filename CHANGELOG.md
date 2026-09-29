@@ -23,6 +23,10 @@ The negative `Segment` ordering test now accepts either wording, since it only
 checks which validation fires. The capture harness gains the matching Scan
 probes and a `--table-prefix` option for taking them locally.
 
+The nesting-depth row moves af-south-1, ap-southeast-3, ap-southeast-4,
+ap-southeast-5 and il-central-1 to the strict side, leaving 22 regions strict
+and 11 lax. ap-northeast-1 answers both ways and stays lax for now.
+
 ## 2026-09-20 (3.4.0)
 
 Kumo joins the board, suggested by [@exoego](https://github.com/exoego). It is a

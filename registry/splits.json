@@ -518,16 +518,16 @@
         "file": "tests/tier3/limits/nestingDepth.test.ts",
         "fullName": "Nesting depth — 32-level document limit rejects a 32-level ExpressionAttributeValue with ValidationException"
       },
-      "behaviour": "UpdateItem carrying a 32-level ExpressionAttributeValue. 32 is the documented limit, so this is a boundary disagreement rather than a violation: strict regions reject it in validation, the rest accept the value and go on to evaluate the condition. Probed against a key that is never written, so the condition is false everywhere and a ConditionalCheckFailedException is proof the value was accepted rather than a sign of differing regional state. The test lives in tests/tier3/limits/, which sets no assertion-strictness convention, and its regex matches both wordings: it does not enforce which side a region is on, so this row is the only place the exact answers are pinned.",
+      "behaviour": "UpdateItem carrying a 32-level ExpressionAttributeValue. 32 is the documented limit, so this is a boundary disagreement rather than a violation: strict regions reject it in validation, the rest accept the value and go on to evaluate the condition. Probed against a key that is never written, so the condition is false everywhere and a ConditionalCheckFailedException is proof the value was accepted rather than a sign of differing regional state. The test lives in tests/tier3/limits/, which sets no assertion-strictness convention. It asserts a ValidationException but matches the message with a regex that tolerates wording variants, so it pins the strict side without pinning the exact message, and this row is the only place the exact answers are pinned. Between the 2026-09-12 and 2026-09-19 sweeps af-south-1, ap-southeast-3, ap-southeast-4, ap-southeast-5 and il-central-1 moved to the strict side, leaving 22 strict and 11 lax as of the 2026-09-28 capture. ap-northeast-1 is answering both ways: lax on the 2026-09-19 sweep, strict on the 2026-09-26 one, and both from separate processes on 2026-09-28, mostly lax. It stays recorded as lax until one answer holds.",
       "pinned": "eu-west-2",
       "firstObserved": "2026-07-15",
-      "lastRefreshed": "2026-09-02",
+      "lastRefreshed": "2026-09-28",
       "regions": {
         "af-south-1": {
           "outcome": "rejected",
           "error": {
-            "name": "ConditionalCheckFailedException",
-            "message": "The conditional request failed"
+            "name": "ValidationException",
+            "message": "1 validation error detected: Nesting Levels have exceeded supported limits: Attributes in the item have nested levels beyond supported limit"
           }
         },
         "ap-east-1": {
@@ -596,22 +596,22 @@
         "ap-southeast-3": {
           "outcome": "rejected",
           "error": {
-            "name": "ConditionalCheckFailedException",
-            "message": "The conditional request failed"
+            "name": "ValidationException",
+            "message": "1 validation error detected: Nesting Levels have exceeded supported limits: Attributes in the item have nested levels beyond supported limit"
           }
         },
         "ap-southeast-4": {
           "outcome": "rejected",
           "error": {
-            "name": "ConditionalCheckFailedException",
-            "message": "The conditional request failed"
+            "name": "ValidationException",
+            "message": "1 validation error detected: Nesting Levels have exceeded supported limits: Attributes in the item have nested levels beyond supported limit"
           }
         },
         "ap-southeast-5": {
           "outcome": "rejected",
           "error": {
-            "name": "ConditionalCheckFailedException",
-            "message": "The conditional request failed"
+            "name": "ValidationException",
+            "message": "1 validation error detected: Nesting Levels have exceeded supported limits: Attributes in the item have nested levels beyond supported limit"
           }
         },
         "ap-southeast-6": {
@@ -701,8 +701,8 @@
         "il-central-1": {
           "outcome": "rejected",
           "error": {
-            "name": "ConditionalCheckFailedException",
-            "message": "The conditional request failed"
+            "name": "ValidationException",
+            "message": "1 validation error detected: Nesting Levels have exceeded supported limits: Attributes in the item have nested levels beyond supported limit"
           }
         },
         "mx-central-1": {
@@ -760,7 +760,11 @@
         "https://github.com/paritysuite/dynamodb-conformance/issues/88",
         "captures/2026-08-12-batch-empty-and-nesting.json",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/31586467950",
-        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/33670413331"
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/33670413331",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/35429705876",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
+        "captures/2026-09-28-nesting-depth-expression-value.json",
+        "captures/2026-09-28-nesting-depth-ap-northeast-1.json"
       ],
       "admitted": {
         "by": "Martin Hicks",
