@@ -7,12 +7,16 @@ import { splitFor } from './lib/registry.mjs'
 import {
   buildCandidateIssue,
   buildDriftIssue,
+  buildMatchComment,
   buildPageIssue,
+  commentOnOpenDriftIssue,
   confirmCandidates,
+  detectMatchingRows,
   detectRegistryDrift,
   detectSplitCandidates,
   evidenceFor,
   fileIssue,
+  noteMatchesAgain,
   parseArgs,
   relativeTestFile,
   reportFailures,
@@ -215,6 +219,38 @@ describe('detectRegistryDrift', () => {
       rowFor(),
     )
     expect(findings).toEqual([])
+  })
+})
+
+describe('detectMatchingRows', () => {
+  it('reports a row every named region answers as recorded', () => {
+    expect(
+      detectMatchingRows(
+        { 'eu-west-2': [verdict('pass')], 'us-east-1': [verdict('fail')] },
+        rowFor(),
+      ),
+    ).toEqual([{ id: 'row-1', test: { file: TEST.file, fullName: TEST.fullName } }])
+  })
+
+  it('does not report a row a region contradicts: that is drift', () => {
+    expect(
+      detectMatchingRows(
+        { 'eu-west-2': [verdict('pass')], 'us-east-1': [verdict('pass')] },
+        rowFor(),
+      ),
+    ).toEqual([])
+  })
+
+  it('does not report a row a named region gave no definite answer on', () => {
+    // An indeterminate or absent region cannot vouch for the row, so "matches
+    // again" would claim more than the sweep saw.
+    const indeterminate = verdict('indeterminate', {
+      reason: { reason: 'throttle-exhausted', at: 'test' },
+    })
+    expect(
+      detectMatchingRows({ 'eu-west-2': [verdict('pass')], 'us-east-1': [indeterminate] }, rowFor()),
+    ).toEqual([])
+    expect(detectMatchingRows({ 'eu-west-2': [verdict('pass')] }, rowFor())).toEqual([])
   })
 })
 
@@ -448,6 +484,96 @@ describe('fileIssue', () => {
   })
 })
 
+describe('a drifted row that matches again', () => {
+  const match = { id: 'row-1', test: { file: TEST.file, fullName: TEST.fullName } }
+  const body = buildMatchComment(match, {
+    date: '2026-09-26',
+    runUrl: 'https://github.com/o/r/actions/runs/1',
+  })
+
+  it('says the row matches again, with the sweep that saw it, and leaves closing to a human', () => {
+    expect(body).toContain('matches again')
+    expect(body).toContain('2026-09-26')
+    expect(body).toContain('https://github.com/o/r/actions/runs/1')
+    expect(body).toContain('registry/README.md')
+  })
+
+  it('comments on the open drift issue for the row, whichever kind it was filed as', () => {
+    // The #179 case: filed as converged, and the row was accurate again by
+    // the time a later sweep ran.
+    const calls = []
+    const exec = (args) => {
+      calls.push(args)
+      return args[0] === 'issue' && args[1] === 'list'
+        ? JSON.stringify([
+            { number: 3, title: 'Registry drift: row-10 (moved)' },
+            { number: 179, title: 'Registry drift: row-1 (converged)' },
+          ])
+        : ''
+    }
+    expect(commentOnOpenDriftIssue(match, body, { exec })).toEqual({
+      action: 'commented',
+      numbers: [179],
+    })
+    expect(calls.at(-1)).toEqual(['issue', 'comment', '179', '--body', body])
+  })
+
+  it('does nothing when no drift issue is open for the row', () => {
+    const calls = []
+    const exec = (args) => {
+      calls.push(args)
+      return args[0] === 'issue' && args[1] === 'list'
+        ? JSON.stringify([{ number: 3, title: 'Registry drift: row-10 (moved)' }])
+        : ''
+    }
+    expect(commentOnOpenDriftIssue(match, body, { exec })).toEqual({ action: 'none', numbers: [] })
+    expect(calls.some((a) => a[1] === 'comment' || a[1] === 'create')).toBe(false)
+  })
+
+  it('does not let a failed lookup stop the sweep: nothing is commented and nothing throws', () => {
+    // These comments are a courtesy. A gh failure here used to throw out of
+    // run() before the report was written or any candidate confirmed.
+    const exec = (args) => {
+      if (args[1] === 'list') throw new Error('gh issue list failed: HTTP 502')
+      throw new Error('should not comment when the lookup failed')
+    }
+    const outcome = noteMatchesAgain([match], { date: '2026-09-26', exec })
+    expect(outcome.noted).toEqual([])
+    expect(outcome.failed).toEqual([{ id: 'row-1', error: 'gh issue list failed: HTTP 502' }])
+  })
+
+  it('carries on to the next row when one comment fails', () => {
+    const other = { id: 'row-2', test: match.test }
+    const exec = (args) => {
+      if (args[1] === 'list') {
+        return JSON.stringify([
+          { number: 179, title: 'Registry drift: row-1 (converged)' },
+          { number: 180, title: 'Registry drift: row-2 (moved)' },
+        ])
+      }
+      if (args[2] === '179') throw new Error('gh issue comment failed: rate limited')
+      return ''
+    }
+    const outcome = noteMatchesAgain([match, other], { date: '2026-09-26', exec })
+    expect(outcome.failed).toEqual([{ id: 'row-1', error: 'gh issue comment failed: rate limited' }])
+    expect(outcome.noted).toEqual([{ id: 'row-2', numbers: [180] }])
+  })
+
+  it('uses a list of open issues it is handed rather than asking again', () => {
+    const calls = []
+    const exec = (args) => {
+      calls.push(args)
+      return ''
+    }
+    const open = [{ number: 179, title: 'Registry drift: row-1 (converged)' }]
+    expect(commentOnOpenDriftIssue(match, body, { exec, open })).toEqual({
+      action: 'commented',
+      numbers: [179],
+    })
+    expect(calls).toEqual([['issue', 'comment', '179', '--body', body]])
+  })
+})
+
 describe('parseArgs', () => {
   it('refuses any output path that resolves to the split registry', () => {
     expect(() => parseArgs(['gt', '--out', 'registry/splits.json'])).toThrow(
@@ -674,6 +800,34 @@ describe('the CLI, end to end on fixtures', () => {
     // recorded is not drift.
     expect(report.candidates).toEqual([])
     expect(report.drift).toEqual([])
+  })
+
+  it('reports a row that matches, and would note it on an open drift issue, without touching the registry', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'sweep-detect-'))
+    const { gt, registryPath } = writeFixtures(dir)
+    // The fixture regions answer exactly as the row records: eu-west-2 on the
+    // pinned side, us-east-1 off it.
+    writeFileSync(registryPath, JSON.stringify(rowFor(), null, 2))
+    const registryBefore = readFileSync(registryPath, 'utf8')
+
+    const res = runCli(
+      [
+        gt,
+        '--registry', registryPath,
+        '--expect', 'eu-west-2,us-east-1',
+        '--date', '2026-09-26',
+        '--out', join(dir, 'report.json'),
+      ],
+      dir,
+    )
+    expect(res.status, res.stderr).toBe(0)
+    expect(readFileSync(registryPath, 'utf8')).toBe(registryBefore)
+    expect(res.stdout).toContain(
+      'would comment "matches again" on an open drift issue for row-1, if there is one',
+    )
+    const report = JSON.parse(readFileSync(join(dir, 'report.json'), 'utf8'))
+    expect(report.drift).toEqual([])
+    expect(report.matching).toEqual([{ id: 'row-1', test: { file: TEST.file, fullName: TEST.fullName } }])
   })
 
   it('surfaces drift on an admitted row as an issue body, still without touching the registry', () => {
