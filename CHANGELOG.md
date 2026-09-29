@@ -32,6 +32,21 @@ Twenty-two regions, eu-west-2 among them, size an update by what the statement
 writes, as the suite already pinned, while ten cap the finished item at 409,600
 like any other write. Engines that apply the plain cap are credited in those ten.
 
+Fourteen cases for the 4096-byte expression cap and the 32-level nesting cap on
+the batch and transact write surfaces, captured against eu-west-2 and us-east-1.
+
+- **Expression size in a transaction.** A `TransactWriteItems` member's
+  `ConditionExpression` or `UpdateExpression` over 4096 bytes is a top-level
+  `ValidationException`, not a cancellation, for all four member types and
+  even when an earlier member is fine.
+- **Nesting depth on batch and transact writes.** A Put item nested beyond the
+  32-level cap is refused up front by `BatchWriteItem` and
+  `TransactWriteItems`. UpdateItem checks the depth of an
+  `ExpressionAttributeValues` entry in most regions, but `TransactWriteItems`
+  does not check it for any action in any region. An Update that writes a too
+  deep value into the item still cancels with a `ValidationError` reason on the
+  stored-item cap.
+
 ## 2026-09-20 (3.4.0)
 
 Kumo joins the board, suggested by [@exoego](https://github.com/exoego). It is a
