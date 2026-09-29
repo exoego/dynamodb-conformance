@@ -2771,7 +2771,8 @@
       ],
       "admitted": {
         "by": "Martin Hicks",
-        "date": "2026-09-29"
+        "date": "2026-09-29",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/pull/197"
       }
     },
     {
@@ -2987,7 +2988,8 @@
       ],
       "admitted": {
         "by": "Martin Hicks",
-        "date": "2026-09-29"
+        "date": "2026-09-29",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/pull/197"
       }
     },
     {
@@ -3854,7 +3856,8 @@
       ],
       "admitted": {
         "by": "Martin Hicks",
-        "date": "2026-09-29"
+        "date": "2026-09-29",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/pull/197"
       }
     },
     {
@@ -4070,7 +4073,8 @@
       ],
       "admitted": {
         "by": "Martin Hicks",
-        "date": "2026-09-29"
+        "date": "2026-09-29",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/pull/197"
       }
     },
     {
@@ -4503,7 +4507,8 @@
       ],
       "admitted": {
         "by": "Martin Hicks",
-        "date": "2026-09-29"
+        "date": "2026-09-29",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/pull/197"
       }
     },
     {
@@ -4719,7 +4724,8 @@
       ],
       "admitted": {
         "by": "Martin Hicks",
-        "date": "2026-09-29"
+        "date": "2026-09-29",
+        "issue": "https://github.com/paritysuite/dynamodb-conformance/pull/197"
       }
     },
     {

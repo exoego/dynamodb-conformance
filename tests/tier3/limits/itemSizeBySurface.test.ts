@@ -320,7 +320,10 @@ const REMOVE_COST = 2
 //
 // Each such test is a split, and what it records for per-region scoring is only
 // the flat side: that the target stored an update this rule refuses, confirmed
-// by reading it back. The refusing side needs no record, because a pass already
+// by reading it back. A test that measures two ceilings hands its task to the
+// first measurement only. A flat region stores that first write and the test
+// stops there, so a target that refuses it and then stores the second has not
+// answered the way a flat region does. The refusing side needs no record, because a pass already
 // means the pinned eu-west-2 answer. Recording refusals would be wrong here,
 // since these tests go on past the refusal, and a target refusing at the right
 // point but failing a later step would be credited as matching the regions that
@@ -475,7 +478,7 @@ describe('Item size limit by surface — UpdateItem does not charge for the key'
     expect(itemBytes(byValue.accepted)).toBe(itemBytes(byName.accepted))
 
     const fromValue = await updateCeilingIs(TABLE, byValue, oneSet(), ctx.task)
-    const fromName = await updateCeilingIs(longKeyNameTableDef.name, byName, oneSet(), ctx.task)
+    const fromName = await updateCeilingIs(longKeyNameTableDef.name, byName, oneSet())
     expect(fromName).toBe(fromValue)
     // Both still under the cap, or the comparison would be two tables agreeing
     // on 409,600 for reasons that have nothing to do with the key.
@@ -494,7 +497,7 @@ describe('Item size limit by surface — UpdateItem does not charge for the key'
     compositeKeysToClean.push(withSort.accepted, withSort.refused)
 
     const flat = await updateCeilingIs(TABLE, hashOnly, oneSet(), ctx.task)
-    const composite = await updateCeilingIs(itemSizeCompositeTableDef.name, withSort, oneSet(), ctx.task)
+    const composite = await updateCeilingIs(itemSizeCompositeTableDef.name, withSort, oneSet())
     expect(composite - flat).toBe(itemBytes({ sk: withSort.accepted.sk }))
   })
 })
@@ -519,7 +522,7 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
       values: { ':c': { S: 'y' } },
       extra: { c: { S: 'y' } },
       actionCost: UPDATE_BASE_COST + SET_COST * 2,
-    }), ctx.task)
+    }))
     expect(one - two).toBe(SET_COST)
   })
 
@@ -531,7 +534,7 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
       expression: 'SET b = :pad REMOVE r',
       seed: { r: { S: 'z' } },
       actionCost: UPDATE_BASE_COST + SET_COST + REMOVE_COST,
-    }), ctx.task)
+    }))
     expect(setOnly - withRemove).toBe(REMOVE_COST)
   })
 
@@ -552,7 +555,7 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
       values: { ':c': { S: 'y'.repeat(500) } },
       extra: { c: { S: 'y'.repeat(500) } },
       actionCost: UPDATE_BASE_COST + SET_COST * 2,
-    }), ctx.task)
+    }))
     expect(large).toBe(small)
     // Both sides collapse onto 409,600 the moment the key outgrows the action
     // cost, and the equality then holds whatever the per-clause cost is. The
@@ -569,7 +572,7 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
     // regions, see the note above updateCeilingIs.
     const untouched = { u: { S: 'y'.repeat(10) } }
     const written = await updateCeilingIs(TABLE, shortPair('9'), oneSet(), ctx.task)
-    const alongside = await updateCeilingIs(TABLE, shortPair('a'), oneSet({ untouched }), ctx.task)
+    const alongside = await updateCeilingIs(TABLE, shortPair('a'), oneSet({ untouched }))
     expect(alongside - written).toBe(itemBytes(untouched))
     expect(alongside).toBeLessThan(MAX_ITEM_BYTES)
   })
@@ -581,7 +584,7 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
     const byAlias = await updateCeilingIs(TABLE, shortPair('8'), oneSet({
       expression: 'SET #twelvechars = :pad',
       names: { '#twelvechars': 'b' },
-    }), ctx.task)
+    }))
     expect(byAlias).toBe(byName)
     expect(byName).toBeLessThan(MAX_ITEM_BYTES)
   })

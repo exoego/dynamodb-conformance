@@ -76,11 +76,122 @@ const withoutComments = (text) =>
 const recordsObservation = (block) =>
   /\b(?:observeSplit|recordObserved)\s*\(/.test(withoutComments(block))
 
-// A test whose split answer comes out of a multi-step helper hands its task to
-// that helper instead of calling the sink itself. That counts only when the test
-// really passes `ctx.task` on and the file really calls the sink somewhere.
-const handsTaskToRecorder = (block, source) =>
-  /\bctx\.task\b/.test(withoutComments(block)) && recordsObservation(source)
+// A split test may hand its task to a helper instead of calling the sink itself.
+// This follows the hand-off through the file's own function declarations: from
+// a call that passes the task, into the function it names, to the parameter
+// that received it, and on until something passes that parameter to
+// recordObserved or observeSplit. Anything it cannot read (a computed callee,
+// an arrow function, a spread) counts as not recording, which fails the row
+// loudly rather than letting a sibling test's recorder vouch for it.
+const SINKS = new Set(['recordObserved', 'observeSplit'])
+
+const skipString = (text, i) => {
+  for (let j = i + 1; j < text.length; j++) {
+    if (text[j] === '\\') j++
+    else if (text[j] === text[i]) return j
+  }
+  return text.length
+}
+
+/** The text inside the bracket at `open`, up to its match. */
+const bracketed = (text, open) => {
+  let depth = 0
+  for (let i = open; i < text.length; i++) {
+    const c = text[i]
+    if (c === "'" || c === '"' || c === '`') i = skipString(text, i)
+    else if ('([{'.includes(c)) depth++
+    else if (')]}'.includes(c) && --depth === 0) return text.slice(open + 1, i)
+  }
+  return null
+}
+
+/** Top-level comma-separated parts. Angle brackets count as nesting in a parameter list. */
+const splitTopLevel = (inner, { angles = false } = {}) => {
+  const parts = []
+  let depth = 0
+  let from = 0
+  for (let i = 0; i < inner.length; i++) {
+    const c = inner[i]
+    if (c === "'" || c === '"' || c === '`') i = skipString(inner, i)
+    else if ('([{'.includes(c) || (angles && c === '<')) depth++
+    else if (')]}'.includes(c) || (angles && c === '>' && inner[i - 1] !== '=')) depth--
+    else if (c === ',' && depth === 0) {
+      parts.push(inner.slice(from, i).trim())
+      from = i + 1
+    }
+  }
+  if (inner.slice(from).trim()) parts.push(inner.slice(from).trim())
+  return parts
+}
+
+/** Every call in `text` passing `arg` as a whole argument, with its position. */
+const callsPassing = (text, arg) => {
+  const found = []
+  for (const m of text.matchAll(/(?<![.\w])([A-Za-z_$][\w$]*)\s*\(/g)) {
+    const inner = bracketed(text, m.index + m[0].length - 1)
+    if (inner === null) continue
+    splitTopLevel(inner).forEach((part, index) => {
+      if (part === arg) found.push({ name: m[1], index })
+    })
+  }
+  return found
+}
+
+/** A function declaration's parameter names and body, or null. */
+const functionIn = (source, name) => {
+  const m = new RegExp(`\\bfunction\\s+${name}\\s*\\(`).exec(source)
+  if (!m) return null
+  const open = m.index + m[0].length - 1
+  const params = bracketed(source, open)
+  const bodyOpen = source.indexOf('{', open + params.length + 2)
+  return {
+    params: splitTopLevel(params, { angles: true }).map((p) => p.match(/^[A-Za-z_$][\w$]*/)?.[0]),
+    body: withoutComments(bracketed(source, bodyOpen) ?? ''),
+  }
+}
+
+/** The bodies that pass the task to a sink, reached from `name`'s parameter at `index`. */
+const recordersVia = (source, name, index, depth = 4) => {
+  const fn = functionIn(source, name)
+  const param = fn?.params[index]
+  if (!param) return []
+  const reached = []
+  for (const call of callsPassing(fn.body, param)) {
+    if (SINKS.has(call.name)) {
+      if (call.index === 0) reached.push(fn.body)
+    } else if (depth > 0) {
+      reached.push(...recordersVia(source, call.name, call.index, depth - 1))
+    }
+  }
+  return reached
+}
+
+/** The recording code a test's block reaches: its own sink calls, or a helper's. */
+const recordersReached = (block, source) => {
+  const code = withoutComments(block)
+  const reached = recordsObservation(block) ? [code] : []
+  for (const call of callsPassing(code, 'ctx.task')) {
+    if (!SINKS.has(call.name)) reached.push(...recordersVia(source, call.name, call.index))
+  }
+  return reached
+}
+
+/** The accepted details the reached recording code actually stamps, constants resolved. */
+const stampedDetails = (recorders, source) => {
+  const code = withoutComments(source)
+  const details = new Set()
+  for (const text of recorders) {
+    for (const m of text.matchAll(/\bdetail\s*:\s*('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|[A-Za-z_$][\w$]*)/g)) {
+      const value = m[1]
+      if (/^['"]/.test(value)) details.add(value.slice(1, -1))
+      else {
+        const constant = new RegExp(`\\bconst\\s+${value}\\s*=\\s*('(?:[^'\\\\]|\\\\.)*'|"(?:[^"\\\\]|\\\\.)*")`).exec(code)
+        if (constant) details.add(constant[1].slice(1, -1))
+      }
+    }
+  }
+  return details
+}
 
 describe('every registry row resolves to a wired split test', () => {
   it('no two rows share a test block, which keeps per-test assertions exact', () => {
@@ -126,19 +237,21 @@ describe('every registry row resolves to a wired split test', () => {
         expect(block, `no it() block in ${row.test.file} for ${row.test.fullName}`).not.toBeNull()
         expect(block).toContain(row.id)
         expect(
-          recordsObservation(block) || handsTaskToRecorder(block, source),
+          recordersReached(block, source).length,
           `${row.test.fullName} never records an observation`,
-        ).toBe(true)
+        ).toBeGreaterThan(0)
       })
 
-      it('has every accepted detail it records present verbatim in the test file', () => {
-        // An accepted answer is stamped from a literal in the test file, so a
-        // reworded registry detail silently stops matching unless the test
-        // moves in lockstep. The file rather than the block, because a shared
-        // helper may do the stamping. Rejected answers are captured verbatim
-        // from the target at run time and need no literal.
+      it('has every accepted detail it records stamped by the code the test reaches', () => {
+        // An accepted answer is stamped from a literal, so a reworded registry
+        // detail silently stops matching unless the test moves in lockstep. The
+        // literal has to be in the recording code this test actually reaches,
+        // its own block or a helper it hands its task to, not merely somewhere
+        // in the file. Rejected answers are captured verbatim from the target at
+        // run time and need no literal.
+        const stamped = stampedDetails(recordersReached(block ?? '', source ?? ''), source ?? '')
         for (const detail of acceptedDetails) {
-          expect(source, `detail "${detail}" not found in ${row.test.file}`).toContain(detail)
+          expect([...stamped], `detail "${detail}" is not stamped by what ${row.test.fullName} reaches`).toContain(detail)
         }
       })
 
@@ -213,18 +326,42 @@ describe('recordsObservation', () => {
   })
 })
 
-describe('handsTaskToRecorder', () => {
-  const recorder = 'function helper(task) { recordObserved(task, obs) }'
+describe('recordersReached and stampedDetails', () => {
+  const file = [
+    "const STAMP = 'stamped here'",
+    'function outer(a, task) { inner(task, a) }',
+    "function inner(t, a) { recordObserved(t, { outcome: 'accepted', detail: STAMP }) }",
+    'function inert(task) { return task }',
+    "function other(t) { recordObserved(t, { outcome: 'accepted', detail: 'elsewhere' }) }",
+  ].join('\n')
+  const reached = (block) => recordersReached(block, file)
 
-  it('counts a test that passes ctx.task to a file that records', () => {
-    expect(handsTaskToRecorder('await helper(ctx.task)', recorder)).toBe(true)
+  it('follows the task through a helper to the one that records', () => {
+    expect(reached('await outer(1, ctx.task)')).toHaveLength(1)
+    expect([...stampedDetails(reached('await outer(1, ctx.task)'), file)]).toEqual(['stamped here'])
   })
 
-  it('does not count ctx.task named only in a comment', () => {
-    expect(handsTaskToRecorder('// passes ctx.task later\nawait helper()', recorder)).toBe(false)
+  it('does not count a helper that receives the task and never records it', () => {
+    expect(reached('await inert(ctx.task)')).toHaveLength(0)
   })
 
-  it('does not count a file that never records', () => {
-    expect(handsTaskToRecorder('await helper(ctx.task)', 'function helper(task) {}')).toBe(false)
+  it('does not count ctx.task that is named but not passed to anything', () => {
+    expect(reached('void ctx.task; await outer(1, undefined)')).toHaveLength(0)
+    expect(reached('// hands ctx.task to outer(1, ctx.task)\nawait outer(1)')).toHaveLength(0)
+  })
+
+  it('does not count the task passed in a position the helper does not record', () => {
+    expect(reached('await outer(ctx.task, 1)')).toHaveLength(0)
+  })
+
+  it('counts a block that records directly, with the details it stamps', () => {
+    const block = "recordObserved(ctx.task, { outcome: 'accepted', detail: 'inline' })"
+    expect([...stampedDetails(reached(block), file)]).toEqual(['inline'])
+  })
+
+  it('does not count a detail that appears only in a comment', () => {
+    const commented = "function c(t) {\n  // detail: 'ghost'\n  recordObserved(t, { outcome: 'accepted', detail: STAMP })\n}\nconst STAMP = 'real'"
+    const found = stampedDetails(recordersReached('c(ctx.task)', commented), commented)
+    expect([...found]).toEqual(['real'])
   })
 })
