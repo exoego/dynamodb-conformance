@@ -872,8 +872,23 @@ jobs:
 
       # From npm rather than the upstream shell installer, so the version is
       # pinned by a lockfile-shaped thing and nothing pipes curl into sh.
+      #
+      # The npm package is a wrapper: its postinstall fetches the binary from
+      # GitHub's release CDN and does not retry. A connection reset there failed
+      # this step twice on 2026-08-12, and with no engine the suite never ran,
+      # so the row went out carried. Three attempts ride out a reset without
+      # loosening the pin.
       - name: Install wasm-pack
-        run: npm install -g wasm-pack@0.15.0
+        run: |
+          for attempt in 1 2 3; do
+            if npm install -g wasm-pack@0.15.0; then exit 0; fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "::warning::wasm-pack install attempt $attempt failed, retrying"
+              sleep $((attempt * 5))
+            fi
+          done
+          echo "::error::wasm-pack install failed after 3 attempts"
+          exit 1
 
       - name: Build and start the wasm engine
         env:
