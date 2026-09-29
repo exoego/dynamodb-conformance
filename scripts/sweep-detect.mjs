@@ -25,7 +25,10 @@
  * provenance; a human adjudicates and commits the row by hand. That gate is
  * the whole integrity story - see registry/README.md. Automated writes here
  * would launder a regional AWS defect, or plain noise, straight into the
- * baseline every target is scored against.
+ * baseline every target is scored against. A row that drifted and now
+ * answers as recorded again gets a comment on its open drift issue, so an
+ * earlier verdict does not stand unchallenged; closing it is still a human's
+ * call.
  *
  * The health verdicts also drive the observed-set bookkeeping: with
  * --record-health the per-region resolved/unresolved outcome is recorded into
@@ -165,23 +168,11 @@ export function detectRegistryDrift(verdictsByRegion, registry) {
   const tests = byTest(verdictsByRegion)
   const findings = []
   for (const row of registry.splits) {
-    const observed = tests.get(`${row.test.file}\n${row.test.fullName}`)
-    if (!observed) continue
-
-    const expected = {}
-    const actual = {}
-    for (const region of Object.keys(row.regions)) {
-      expected[region] = sameObservation(row.regions[region], row.regions[row.pinned])
-        ? 'pass'
-        : 'fail'
-      const v = observed.regions[region]
-      if (v === 'pass' || v === 'fail') actual[region] = v
-    }
-
-    const mismatched = Object.keys(actual).filter((r) => actual[r] !== expected[r])
+    const reading = readRow(row, tests)
+    if (!reading) continue
+    const { expected, actual, mismatched, definite } = reading
     if (mismatched.length === 0) continue
 
-    const definite = Object.keys(row.regions).every((r) => r in actual)
     const answers = new Set(Object.values(actual))
     const converged = definite && answers.size === 1
     findings.push({
@@ -194,6 +185,52 @@ export function detectRegistryDrift(verdictsByRegion, registry) {
     })
   }
   return findings
+}
+
+/**
+ * Admitted rows the sweep saw answered exactly as recorded: every named region
+ * gave a definite verdict and each one is the verdict the row implies.
+ *
+ * Silence was the old reading of this, and it left a drift issue filed on an
+ * earlier sweep standing as if its verdict still held (#179 kept recommending
+ * a row be retired after the region that had converged moved back). A row
+ * with a named region indeterminate or absent is not reported: the sweep
+ * cannot vouch for a region it did not hear from.
+ */
+export function detectMatchingRows(verdictsByRegion, registry) {
+  const tests = byTest(verdictsByRegion)
+  const matching = []
+  for (const row of registry.splits) {
+    const reading = readRow(row, tests)
+    if (!reading || !reading.definite || reading.mismatched.length > 0) continue
+    matching.push({ id: row.id, test: row.test })
+  }
+  return matching
+}
+
+// What the sweep saw on one admitted row: the verdict the row implies in each
+// named region, the definite verdicts observed, which of those contradict the
+// row, and whether every named region answered. Null when the sweep did not
+// run the row's test at all.
+function readRow(row, tests) {
+  const observed = tests.get(`${row.test.file}\n${row.test.fullName}`)
+  if (!observed) return null
+
+  const expected = {}
+  const actual = {}
+  for (const region of Object.keys(row.regions)) {
+    expected[region] = sameObservation(row.regions[region], row.regions[row.pinned])
+      ? 'pass'
+      : 'fail'
+    const v = observed.regions[region]
+    if (v === 'pass' || v === 'fail') actual[region] = v
+  }
+  return {
+    expected,
+    actual,
+    mismatched: Object.keys(actual).filter((r) => actual[r] !== expected[r]),
+    definite: Object.keys(row.regions).every((r) => r in actual),
+  }
 }
 
 /**
@@ -441,10 +478,32 @@ export function buildDriftIssue(finding, { date, runUrl }) {
   }
   lines.push('', '### Next step', '', HUMAN_GATE)
   return {
-    title: `Registry drift: ${row.id} (${kind})`,
+    title: `${driftTitlePrefix(row.id)}${kind})`,
     labels: ['registry-drift'],
     body: lines.join('\n'),
   }
+}
+
+// Every drift issue for a row starts with this, whichever kind it was filed
+// as. The opening parenthesis keeps one row id from matching another it
+// happens to prefix.
+const driftTitlePrefix = (id) => `Registry drift: ${id} (`
+
+export function buildMatchComment(match, { date, runUrl }) {
+  return [
+    `## Registry drift: \`${match.id}\` matches again`,
+    '',
+    provenance({ date, runUrl }),
+    '',
+    'Every region named in the row gave a definite answer, and each one matches what the row records, whether because the drift reverted or because the row has been re-recorded since. The row is accurate as it stands, so this issue can be closed once a maintainer has checked.',
+    '',
+    `- **Test:** \`${match.test.file}\``,
+    `- **Name:** ${match.test.fullName}`,
+    '',
+    '### Next step',
+    '',
+    HUMAN_GATE,
+  ].join('\n')
 }
 
 export function buildPageIssue(page, { date, runUrl }) {
@@ -499,10 +558,7 @@ export function fileIssue(issue, { exec = gh } = {}) {
   } catch {
     // The label already existing is the steady state.
   }
-  const open = JSON.parse(
-    exec(['issue', 'list', '--label', label, '--state', 'open', '--json', 'number,title']),
-  )
-  const existing = open.find((i) => i.title === issue.title)
+  const existing = listOpenIssues(label, { exec }).find((i) => i.title === issue.title)
   if (existing) {
     exec(['issue', 'comment', String(existing.number), '--body', issue.body])
     return { action: 'commented', number: existing.number }
@@ -518,6 +574,57 @@ export function fileIssue(issue, { exec = gh } = {}) {
     issue.body,
   ])
   return { action: 'created' }
+}
+
+function listOpenIssues(label, { exec = gh } = {}) {
+  return JSON.parse(
+    exec(['issue', 'list', '--label', label, '--state', 'open', '--json', 'number,title']),
+  )
+}
+
+/**
+ * Comment on every open drift issue for a row that matches again. Never
+ * creates one: a row behaving as recorded is the steady state, and an issue
+ * per row per week would bury the ones that need a decision. Closing is left
+ * to a maintainer, as with every other issue the sweep raises. Most rows match
+ * most weeks, so a caller handling several passes `open` in, listed once.
+ */
+export function commentOnOpenDriftIssue(match, body, { exec = gh, open = listOpenIssues('registry-drift', { exec }) } = {}) {
+  const numbers = open
+    .filter((i) => i.title.startsWith(driftTitlePrefix(match.id)))
+    .map((i) => i.number)
+  for (const number of numbers) {
+    exec(['issue', 'comment', String(number), '--body', body])
+  }
+  return { action: numbers.length ? 'commented' : 'none', numbers }
+}
+
+/**
+ * Note every matching row on its open drift issue, best-effort. These comments
+ * are a courtesy to whoever reads the issue, so a gh failure is logged and the
+ * sweep carries on: it must not cost the week's report or the confirmation of
+ * a real split candidate, both of which come after this in run().
+ */
+export function noteMatchesAgain(matching, { date, runUrl, exec = gh } = {}) {
+  const outcome = { noted: [], failed: [] }
+  if (matching.length === 0) return outcome
+  let open
+  try {
+    open = listOpenIssues('registry-drift', { exec })
+  } catch (e) {
+    outcome.failed.push(...matching.map((m) => ({ id: m.id, error: e.message })))
+    return outcome
+  }
+  for (const match of matching) {
+    try {
+      const body = buildMatchComment(match, { date, runUrl })
+      const { numbers } = commentOnOpenDriftIssue(match, body, { exec, open })
+      if (numbers.length) outcome.noted.push({ id: match.id, numbers })
+    } catch (e) {
+      outcome.failed.push({ id: match.id, error: e.message })
+    }
+  }
+  return outcome
 }
 
 // ── CLI ──────────────────────────────────────────────────────────────────────
@@ -612,6 +719,7 @@ export async function run(args, { runTest } = {}) {
 
   const candidates = detectSplitCandidates(verdictsByRegion, registry)
   const drift = detectRegistryDrift(verdictsByRegion, registry)
+  const matching = detectMatchingRows(verdictsByRegion, registry)
 
   // Record each region's outcome; a region dropped by this sweep pages in the
   // same act (see scripts/lib/observed.mjs for why the two must not be split).
@@ -654,13 +762,26 @@ export async function run(args, { runTest } = {}) {
     ...pages.map((p) => buildPageIssue(p, { date: args.date, runUrl: args.runUrl })),
   ])
 
+  // A row that matches again closes the loop on any drift issue still open
+  // for it, in the same pass that files new drift, so the two cannot disagree
+  // about the same sweep.
+  if (args.fileIssues) {
+    const { noted, failed } = noteMatchesAgain(matching, { date: args.date, runUrl: args.runUrl })
+    for (const { id, numbers } of noted) console.log(`noted as matching again on #${numbers.join(', #')}: ${id}`)
+    for (const { id, error } of failed) console.log(`::warning::could not note ${id} as matching again: ${error}`)
+  } else {
+    for (const match of matching) {
+      console.log(`would comment "matches again" on an open drift issue for ${match.id}, if there is one`)
+    }
+  }
+
   const writeReport = (confirmationState, confirmed = [], discarded = []) => {
     if (!args.out) return
     mkdirSync(dirname(args.out), { recursive: true })
     writeFileSync(
       args.out,
       JSON.stringify(
-        { date: args.date, confirmationState, regions: health, candidates, confirmed, discarded, drift, pages },
+        { date: args.date, confirmationState, regions: health, candidates, confirmed, discarded, drift, matching, pages },
         null,
         2,
       ) + '\n',

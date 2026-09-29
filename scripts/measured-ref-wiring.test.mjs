@@ -153,3 +153,38 @@ describe('the measured identity survives the trip between workflows', () => {
     ).toBe(false)
   })
 })
+
+describe("a scheduled red is triaged against the measured suite's own capture", () => {
+  // A scheduled run measures the latest release tag, so the question a red
+  // run's triage has to answer is whether eu-west-2 has moved since that tag
+  // was cut. The tag carries the weekly capture as it stood then, in the tree
+  // the job checks out. A dated file answers against whatever week it was
+  // taken, and every probe added since is invisible to it; main's latest
+  // capture would absorb drift the tag still fails on, and call the next
+  // week's red a flake.
+  const wf = loadYaml(read('conformance'))
+  const job = wf.jobs['test-dynamodb']
+
+  it('checks out the measured ref, which is what makes its capture the right baseline', () => {
+    const checkout = job.steps.find((s) => String(s.uses).startsWith('actions/checkout'))
+    expect(checkout, 'test-dynamodb no longer checks anything out').toBeDefined()
+    expect(checkout.with?.ref).toBe('${{ needs.changes.outputs.ref }}')
+  })
+
+  it('diffs against the committed weekly capture, not a dated one', () => {
+    const verdict = job.steps.find((s) => s.name === 'Compute the drift verdict')
+    expect(verdict, 'test-dynamodb no longer has a "Compute the drift verdict" step').toBeDefined()
+    const baseline = uncommented(verdict.run).match(/--baseline\s+(\S+)/)
+    expect(baseline, 'the drift verdict step no longer passes --baseline').not.toBeNull()
+    expect(baseline[1]).toBe('captures/cross-region-latest.json')
+  })
+
+  it('reads the file the weekly capture writes, so the baseline stays fed', () => {
+    const capture = wf.jobs['capture-cross-region'].steps.find((s) =>
+      String(s.run).includes('capture-validation-messages.mjs'),
+    )
+    expect(capture, 'capture-cross-region no longer runs the capture').toBeDefined()
+    expect(capture.run).toContain('> captures/cross-region-latest.json')
+    expect(capture.run).toContain('eu-west-2')
+  })
+})

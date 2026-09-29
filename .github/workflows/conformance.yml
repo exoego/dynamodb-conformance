@@ -258,6 +258,13 @@ jobs:
       # and diff it against the committed baseline so the failure can be labelled
       # drift-versus-flake. continue-on-error: a capture hiccup must not block the
       # issue - the reporter falls back to a generic triage note without a verdict.
+      #
+      # The baseline is the weekly capture in the tree this job checked out,
+      # which on a schedule is the release tag being measured. So the diff asks
+      # whether eu-west-2 has moved since that tag was cut, which is what would
+      # turn its run red. A fixed file stops describing eu-west-2 within weeks
+      # and can't see any probe added after it, and main's latest capture would
+      # absorb drift the tag still fails on and call the next week's red a flake.
       - name: Compute the drift verdict
         if: failure() && github.event_name == 'schedule'
         continue-on-error: true
@@ -266,13 +273,12 @@ jobs:
         run: |
           node scripts/capture-validation-messages.mjs eu-west-2 > "$RUNNER_TEMP/euw2.json"
           node scripts/drift-diff.mjs "$RUNNER_TEMP/euw2.json" \
-            --baseline captures/2026-07-13-empty-set-member.json \
+            --baseline captures/cross-region-latest.json \
             --region eu-west-2 --out "$RUNNER_TEMP/drift.json"
 
       # Keep what the verdict was read from. The issue asserts drift and names
       # probes, and the capture behind that claim otherwise dies with the
-      # runner, leaving a maintainer no way to check the reading or reuse it as
-      # the next baseline.
+      # runner, leaving a maintainer no way to check the reading.
       - name: Upload the drift evidence
         if: failure() && github.event_name == 'schedule'
         continue-on-error: true
@@ -872,8 +878,23 @@ jobs:
 
       # From npm rather than the upstream shell installer, so the version is
       # pinned by a lockfile-shaped thing and nothing pipes curl into sh.
+      #
+      # The npm package is a wrapper: its postinstall fetches the binary from
+      # GitHub's release CDN and does not retry. A connection reset there failed
+      # this step twice on 2026-08-12, and with no engine the suite never ran,
+      # so the row went out carried. Three attempts ride out a reset without
+      # loosening the pin.
       - name: Install wasm-pack
-        run: npm install -g wasm-pack@0.15.0
+        run: |
+          for attempt in 1 2 3; do
+            if npm install -g wasm-pack@0.15.0; then exit 0; fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "::warning::wasm-pack install attempt $attempt failed, retrying"
+              sleep $((attempt * 5))
+            fi
+          done
+          echo "::error::wasm-pack install failed after 3 attempts"
+          exit 1
 
       - name: Build and start the wasm engine
         env:
