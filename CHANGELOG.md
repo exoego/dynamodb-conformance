@@ -8,6 +8,8 @@ section its date and version, so several branches can write ahead of one.
 
 ## Unreleased
 
+## 2026-09-29 (3.5.0)
+
 Five Scan error messages are now regional splits. The validation-framework
 rollout reached Scan's parameter checks in September, and eu-west-2,
 eu-central-1, us-west-1 and ap-northeast-2 now word the errors for `Segment` >=
