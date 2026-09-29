@@ -42,9 +42,10 @@ the batch and transact write surfaces, captured against eu-west-2 and us-east-1.
 - **Nesting depth on batch and transact writes.** A Put item nested beyond the
   32-level cap is refused up front by `BatchWriteItem` and
   `TransactWriteItems`. UpdateItem checks the depth of an
-  `ExpressionAttributeValues` entry, but `TransactWriteItems` does not check it
-  for any action. An Update that writes a too deep value into the item still
-  cancels with a `ValidationError` reason on the stored-item cap.
+  `ExpressionAttributeValues` entry in most regions, but `TransactWriteItems`
+  does not check it for any action in any region. An Update that writes a too
+  deep value into the item still cancels with a `ValidationError` reason on the
+  stored-item cap.
 
 ## 2026-09-20 (3.4.0)
 

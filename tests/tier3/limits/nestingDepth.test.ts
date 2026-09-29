@@ -132,9 +132,10 @@ describe('Nesting depth — 32-level document limit', { tags: ['put-item', 'upda
 
 // The same 32-level cap applies to the items a batch or a transaction writes.
 // Captured against eu-west-2 and us-east-1 real DynamoDB, 2026-09-12: a too
-// deep Put item is a top-level ValidationException on both surfaces. Unlike
-// UpdateItem, TransactWriteItems does not check the depth of
-// ExpressionAttributeValues for any action, in all 33 regions. An Update that
+// deep Put item is a top-level ValidationException on both surfaces.
+// TransactWriteItems does not check the depth of ExpressionAttributeValues for
+// any action, in all 33 regions, where UpdateItem checks it in most regions
+// (registry row update-item-nesting-depth-expression-value). An Update that
 // writes a too deep value into the item still cancels on the stored-item cap.
 
 // no negative-path: acceptance-mixed (asserts accepted and rejected cases)
@@ -255,7 +256,8 @@ describe('Nesting depth — TransactWriteItems', { tags: ['transactions', 'put-i
   it('does not check the depth of an Update ExpressionAttributeValue (the condition is evaluated)', async () => {
     // The value stays out of the item, so only the condition sees it. Against an
     // item with no `data`, `#d = :deep` is false and the transaction cancels on
-    // the condition. UpdateItem rejects the same request with ValidationException.
+    // the condition. UpdateItem rejects the same request with ValidationException
+    // in most regions.
     await ddb.send(
       new PutItemCommand({
         TableName: hashTableDef.name,
