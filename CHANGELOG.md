@@ -23,6 +23,15 @@ The negative `Segment` ordering test now accepts either wording, since it only
 checks which validation fires. The capture harness gains the matching Scan
 probes and a `--table-prefix` option for taking them locally.
 
+The nesting-depth row moves af-south-1, ap-southeast-3, ap-southeast-4,
+ap-southeast-5 and il-central-1 to the strict side, leaving 22 regions strict
+and 11 lax. ap-northeast-1 answers both ways and stays lax for now.
+
+UpdateItem's item size is now a regional split, across eleven tests.
+Twenty-two regions, eu-west-2 among them, size an update by what the statement
+writes, as the suite already pinned, while ten cap the finished item at 409,600
+like any other write. Engines that apply the plain cap are credited in those ten.
+
 Fourteen cases for the 4096-byte expression cap and the 32-level nesting cap on
 the batch and transact write surfaces, captured against eu-west-2 and us-east-1.
 
