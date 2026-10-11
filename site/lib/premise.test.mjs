@@ -17,12 +17,10 @@ const UNRELATED = "tests/tier1/putItem/basic.test.ts::PutItem writes an item";
 
 // A target that is clean in its headline region and fails in one other.
 //
-// Coverage is 80%, which caps the row at B. That is deliberate: at full
-// coverage a zero-divergence row grades A+ and any regional failure at all
-// makes its worst region grade A, so the letter comparison fires before the
-// registry matching is ever reached. Capping the row puts both readings in the
-// same band and leaves the registry rule as the thing under test. The A+ case
-// gets its own test at the bottom, because tripping is what it is meant to do.
+// Coverage is 80%. It was chosen when this rule also compared letters, to keep
+// both readings in one band so the registry matching stayed the thing under
+// test; the letter half has since moved to lib/regional-note.mjs, and the
+// tests at the bottom pin that it no longer lives here.
 const target = ({ failed, names, worst, coverage = 800 }) => ({
   targets: {
     alpha: {
@@ -77,30 +75,26 @@ test("naming fewer tests than the row declares is uncheckable", () => {
   assert.match(r.uncheckable[0], /declares 3 fail\(s\) but names 1/);
 });
 
-test("enough confirmed splits to move the letter is still a breach", () => {
-  // Confirmed splits explain the drift but do not license any amount of it:
-  // the row publishes its headline letter, and this compares that against what
-  // its worst region would grade. Every one of these 90 failures is recorded,
-  // so the registry rule is satisfied and the letter rule is what binds.
+test("enough confirmed splits to move the letter is no longer a breach here", () => {
+  // This rule used to compare the published letter with the worst region's and
+  // fail the build when they differed. That fired on 11 October 2026, and the
+  // revisit (#271) kept the criteria: a letter may fail to hold in a region
+  // provided the row says so, which lib/regional-note.mjs checks in the built
+  // pages. Every one of these 90 failures is recorded, so this rule is content.
   const names = Array.from({ length: 90 }, () => CONFIRMED);
   const r = checkAPlusPremise(target({ failed: 90, names, worst: 9 }), [SPLIT]);
-  assert.equal(r.unconfirmed.length, 1);
-  assert.match(r.unconfirmed[0], /publishes B from its headline region but its worst region grades C/);
+  assert.equal(r.guarded, 1);
+  assert.deepEqual(r.unconfirmed, []);
+  assert.deepEqual(r.uncheckable, []);
 });
 
-test("an A+ row failing anywhere at all trips the letter comparison", () => {
-  // Documented behaviour, not an accident. At full coverage a zero-divergence
-  // row is A+ and its worst region can only be A or lower, so the first target
-  // to earn A+ while failing any regional split will fail this check. That is
-  // the claim the guard exists to question - read it as a prompt to revisit the
-  // criteria in the open, not as a defect in the target that tripped it.
+test("an A+ row failing a confirmed split elsewhere is not a breach here either", () => {
   const r = checkAPlusPremise(
     target({ failed: 1, names: [CONFIRMED], worst: 0.1, coverage: 1000 }),
     [SPLIT],
   );
   assert.equal(r.guarded, 1);
-  assert.equal(r.unconfirmed.length, 1);
-  assert.match(r.unconfirmed[0], /publishes A\+ from its headline region but its worst region grades A/);
+  assert.deepEqual(r.unconfirmed, []);
 });
 
 test("a row that is perfect everywhere needs nothing confirmed", () => {

@@ -67,6 +67,10 @@
       <div webc:if="$data.target.current.divergenceWorstLabel" class="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400 max-w-xs sm:ml-auto">
         up to <span class="font-mono tnum" @text="$data.target.current.divergenceWorstLabel"></span> in the others<span webc:if="$data.target.current.divergenceValue === 0">, only on <a href="/ground-truth" class="underline decoration-dotted underline-offset-2 hover:text-brand-700 dark:hover:text-brand-300">behaviours where real DynamoDB itself disagrees between regions</a></span>
       </div>
+      <!-- And where that range moves the letter (#271). The letter above is
+           still the one the row publishes; this names the regions that would
+           grade it lower, and the cause links to their figures below. -->
+      <p webc:if="regionalLetter($data.target.current, $data.target.slug)" class="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400 max-w-xs sm:ml-auto" :data-regional-note="$data.target.slug"><span @text="regionalLetter($data.target.current, $data.target.slug) + ', '"></span><a href="#regions" class="underline decoration-dotted underline-offset-2 hover:text-brand-700 dark:hover:text-brand-300" @text="$data.regionalCause"></a></p>
       <div class="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
         <span class="font-mono tnum" @text="$data.target.current.coverage"></span> of the suite implemented<span webc:if="$data.target.current.unsupported"> · <span class="tnum" @text="formatNumber($data.target.current.unsupported)"></span> tests it doesn't attempt</span>
       </div>
@@ -139,6 +143,9 @@
             <span class="block text-xs leading-snug text-zinc-500 dark:text-zinc-400">
               <span class="font-medium text-zinc-600 dark:text-zinc-300" @text="gradeLine(v)"></span><span webc:if="regionClause(v)" @text="' ' + regionClause(v)"></span> · covers <span class="tnum" @text="v.coverage"></span><span webc:if="capClause(v)" @text="' · ' + capClause(v)"></span>
             </span>
+            <!-- Unlinked: the whole card is already a link to the build's page,
+                 where the note links to its regional figures. -->
+            <span webc:if="regionalLetter(v)" class="block mt-0.5 text-[0.7rem] leading-snug text-zinc-500 dark:text-zinc-400" :data-regional-note="v.slug" @text="regionalNote(v)"></span>
           </span>
         </a>
       </li>

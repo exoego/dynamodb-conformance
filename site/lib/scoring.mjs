@@ -37,6 +37,10 @@ import {
   effectiveOf,
   gradeOf,
   gradingCriteriaEffectiveLabel,
+  regionalClauseOf,
+  regionalGapOf,
+  regionalLetterOf,
+  REGIONAL_CAUSE,
 } from "dynamodb-conformance/scripts/lib/grade.mjs";
 
 export { DISPLAY, REPO, TARGETS, CHANNELS_SHOWN, GROUND_TRUTH_SLUG, configurationOf, display, distributionOf, isVariant, projectOf, repoUrl, label, tierOf };
@@ -53,6 +57,10 @@ export { axesOf };
 // never stored on the row - so every surface that shows a letter shows the
 // one implied by the figures beside it.
 export { A_PLUS, BASELINE_GRADE, BASELINE_LABEL, COVERAGE_DIVISOR, GRADE_BANDS, GRADING_CRITERIA_EFFECTIVE, GRADING_VERSION, bandOf, effectiveOf, gradeOf, gradingCriteriaEffectiveLabel };
+
+// Where a row's letter does not hold in every region (#271), from the suite so
+// the board, the target page and the README table name the same regions.
+export { REGIONAL_CAUSE, regionalGapOf };
 
 // The one-line reading beside a grade chip: the qualifier in words, the
 // exact figure after it. The percentage stays for anyone who wants the
@@ -128,6 +136,19 @@ export function regionClauseOf(row) {
   if (rest === 0) return `in all ${regions(observed)}`;
   if (!row.divergenceWorstLabel) return `in ${cohort} of ${regions(observed)}`;
   return `in ${regions(cohort)} · up to ${row.divergenceWorstLabel} in the other ${rest}`;
+}
+
+// The lower letter a row would earn in the regions that answer some tests
+// differently, "B against eu-south-2 and me-central-1", or "" where the letter
+// holds. Templates print it beside REGIONAL_CAUSE, which links to the regional
+// drilldown; plain-text surfaces take regionalClauseForRow, which joins the two.
+// The baseline has no letter, so it has nothing to qualify.
+export function regionalLetterForRow(row, slug) {
+  return gradeForRow(row, slug).letter === null ? "" : regionalLetterOf(row?.regionalGap ?? null);
+}
+
+export function regionalClauseForRow(row, slug) {
+  return gradeForRow(row, slug).letter === null ? "" : regionalClauseOf(row?.regionalGap ?? null);
 }
 
 // Targets maintained by the person who also runs this board. The conflict of

@@ -8,6 +8,16 @@ section its date and version, so several branches can write ahead of one.
 
 ## Unreleased
 
+The board, each target's page and the results table now say when a target's
+letter would not hold in every region. Scored against a region that answers some
+tests differently, a target can earn a lower letter than the one its row
+publishes, and the row now names those regions and that letter, for example "B
+against eu-south-2 and me-central-1, where real DynamoDB answers some tests
+differently". The grading criteria do not change and no letter moves, so the
+grading version stays at 1. A note can come and go between runs as regions
+converge and diverge, with no change in the target
+([#271](https://github.com/paritysuite/dynamodb-conformance/issues/271)).
+
 ## 2026-10-09 (3.6.1)
 
 3.6.0 was cut but never published. eu-west-2 changed how it validates
