@@ -64,7 +64,7 @@ import {
   validateMeasured,
 } from './lib/measured.mjs'
 import { isObserved, observedRegions } from './lib/observed.mjs'
-import { BASELINE_LABEL, compareGrades, gradeOf } from './lib/grade.mjs'
+import { BASELINE_LABEL, compareGrades, gradeOf, regionalClauseOf, regionalGapOf } from './lib/grade.mjs'
 import {
   configurationOf,
   display,
@@ -687,14 +687,16 @@ const tierDivergence = (t) =>
  *  cohortCount to publish the "N of M" cohort the README's Regions column shows. */
 const observedCount = (summary) => summary.regions?.observed?.length ?? 0
 
-// Regional variation is deliberately not rendered here. Real DynamoDB differs
-// between regions on three of ~1000 behaviours, which moves a target's figure
-// by at most 0.3 points - far less than the cost of explaining regional
-// divergence to a reader who does not know it exists. Worse, the earlier
-// per-region label actively misled: a target matching 6 regions exactly read as
-// narrower than one matching 33 equally badly, even when the first diverges
-// less in its worst region than the second does in its best. The caveat is
-// stated in the caption and the per-region breakdown is a click away.
+// Regional figures are deliberately not rendered here. The earlier per-region
+// label actively misled: a target matching 6 regions exactly read as narrower
+// than one matching 33 equally badly, even when the first diverges less in its
+// worst region than the second does in its best. The caveat is stated in the
+// caption and the per-region breakdown is a click away.
+//
+// The one exception is a letter that does not hold in every region (#271). A
+// letter is the first thing a reader takes from a row, so where some region
+// would grade it lower the grade cell carries a footnote saying which, rather
+// than leaving that to a page the reader may never open.
 
 export function tableRows(summary) {
   const rows = Object.entries(summary.targets).map(([slug, t]) => {
@@ -721,6 +723,11 @@ export function tableRows(summary) {
       slug,
       target: label(slug),
       grade: gradeOf(divergenceRate, coverageRate).letter ?? '-',
+      regionalGap: regionalGapOf(
+        divergenceRate,
+        coverageRate,
+        Object.entries(t.regions).map(([region, r]) => ({ region, divergence: axesOf(r).divergence })),
+      ),
       tier1: pct(tierDivergence(best.tiers.tier1)),
       tier2: pct(tierDivergence(best.tiers.tier2)),
       tier3: pct(tierDivergence(best.tiers.tier3)),
@@ -1028,14 +1035,25 @@ export function renderTable(summary) {
   ])
   const carried = rendered.some((r) => r.date !== tableDate)
   const measured = (date) => (carried ? ` ${date === tableDate ? '' : date} |` : '')
+  // A footnote rather than a longer cell: the note runs to a sentence, and the
+  // column would widen for every row to fit the one or two that carry it.
+  const footnoteOf = (r) => `regions-${r.slug}`
   const fmt = ({ row: r, name, date }) =>
-    `| ${name} | ${r.grade} | ${r.version} | ${r.divergence} | ${r.coverage} | ${r.failed} | ${r.skipped} | ${r.tier1} | ${r.tier2} | ${r.tier3} | ${r.cohort ?? '-'} |${measured(date)}`
+    `| ${name} | ${r.grade}${r.regionalGap ? `[^${footnoteOf(r)}]` : ''} | ${r.version} | ${r.divergence} | ${r.coverage} | ${r.failed} | ${r.skipped} | ${r.tier1} | ${r.tier2} | ${r.tier3} | ${r.cohort ?? '-'} |${measured(date)}`
   const body = [
     `| Target | Grade | Version | Divergence | Coverage | Fail | Skip | Tier 1 | Tier 2 | Tier 3 | Regions |${carried ? ' Measured |' : ''}`,
     `|--------|-------|---------|-----------|----------|------|------|--------|--------|--------|---------|${carried ? '----------|' : ''}`,
     ...rendered.map(fmt),
   ].join('\n')
-  return `${tableCaption(summary.regions, summary.groundTruth, tableDate, carried, summary.suite ?? null)}\n\n${body}`
+  const notes = rendered
+    .filter(({ row: r }) => r.regionalGap)
+    .map(
+      ({ row: r }) =>
+        `[^${footnoteOf(r)}]: ${regionalClauseOf(r.regionalGap)}. Per-region figures are on its ` +
+        `[target page](https://paritysuite.org/targets/${r.slug}#regions).`,
+    )
+  const table = `${tableCaption(summary.regions, summary.groundTruth, tableDate, carried, summary.suite ?? null)}\n\n${body}`
+  return notes.length ? `${table}\n\n${notes.join('\n')}` : table
 }
 
 // ── CLI ──────────────────────────────────────────────────────────────────────

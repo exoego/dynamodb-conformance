@@ -10,7 +10,7 @@
 // the same day supersedes the earlier result), and a target not re-tested in a
 // run is carried forward at its last measured value.
 
-import { axesOf, dynamodbRow, gradeOf, label, display, repoUrl, sortRows, suiteSizeOf, CAPABILITIES, GRADING_CRITERIA_EFFECTIVE, GROUND_TRUTH_SLUG } from "./scoring.mjs";
+import { axesOf, dynamodbRow, gradeOf, label, display, regionalGapOf, repoUrl, sortRows, suiteSizeOf, CAPABILITIES, GRADING_CRITERIA_EFFECTIVE, GROUND_TRUTH_SLUG } from "./scoring.mjs";
 
 /**
  * Whether a run may carry a letter: measured on or after the day the criteria
@@ -249,6 +249,14 @@ function enrichSnapshot(s, summary) {
       sm.divergenceWorst == null || sm.divergenceWorst === (divergenceValue ?? 0)
         ? null
         : `${sm.divergenceWorst.toFixed(1)}%`,
+    // The regions whose answers would give this row a lower letter, if any.
+    // Read from the same per-region figures as the range above, against this
+    // row's own coverage.
+    regionalGap: regionalGapOf(
+      divergenceValue,
+      coverageValue,
+      (sm.regions ?? []).map((r) => ({ region: r.region, divergence: r.divergenceValue })),
+    ),
     hasRegions: true,
   };
 }
