@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-10-11T11:11:26.762Z",
+  "capturedAt": "2026-10-18T09:09:33.357Z",
   "regions": {
     "eu-west-2": {
       "region": "eu-west-2",
@@ -75,7 +75,7 @@
           "note": "BatchWrite 26 requests",
           "threw": true,
           "name": "ValidationException",
-          "message": "1 validation error detected: Value '{_conformance_capdrift_h_1791717086766919391=[WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-0, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-1, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-2, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-3, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-4, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-5, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-6, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-7, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-8, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-9, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-10, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-11, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-12, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-13, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-14, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-15, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-16, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-17, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-18, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-19, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-20, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-21, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-22, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-23, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-24, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-25, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null)]}' at 'requestItems' failed to satisfy constraint: Map value must satisfy constraint: [Member must have length less than or equal to 25, Member must have length greater than or equal to 1]",
+          "message": "1 validation error detected: Value '{_conformance_capdrift_h_179231457336059725=[WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-0, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-1, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-2, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-3, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-4, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-5, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-6, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-7, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-8, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-9, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-10, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-11, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-12, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-13, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-14, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-15, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-16, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-17, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-18, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-19, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-20, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-21, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-22, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-23, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-24, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-25, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null)]}' at 'requestItems' failed to satisfy constraint: Map value must satisfy constraint: [Member must have length less than or equal to 25, Member must have length greater than or equal to 1]",
           "n": 1,
           "fields": [
             "requestItems"
@@ -1258,7 +1258,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717086766919391": [
+              "_conformance_capdrift_h_179231457336059725": [
                 {
                   "a": {
                     "M": {
@@ -1379,7 +1379,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717086766919391": [
+              "_conformance_capdrift_h_179231457336059725": [
                 {
                   "l": {
                     "L": [
@@ -1534,7 +1534,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717086766919391": [
+              "_conformance_capdrift_h_179231457336059725": [
                 {
                   "l": {
                     "L": [
@@ -1750,7 +1750,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717086766919391": [
+              "_conformance_capdrift_h_179231457336059725": [
                 {
                   "a": {
                     "M": {
@@ -2513,7 +2513,7 @@
           "note": "BatchWrite 26 requests",
           "threw": true,
           "name": "ValidationException",
-          "message": "1 validation error detected: Value '{_conformance_capdrift_h_1791717125431414523=[WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@483470e1}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@483474a2}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@48347863}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@48347c24}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@48347fe5}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@483483a6}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@48348767}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@48348b28}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@48348ee9}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@483492aa}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81beb00}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81beec1}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81bf282}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81bf643}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81bfa04}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81bfdc5}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81c0186}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81c0547}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81c0908}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81c0cc9}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81c5f5f}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81c6320}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81c66e1}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81c6aa2}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81c6e63}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=com.amazonaws.dynamodb.v20120810.AttributeValue@a81c7224}, workloadProfileName=null), deleteRequest=null)]}' at 'requestItems' failed to satisfy constraint: Map value must satisfy constraint: [Member must have length less than or equal to 25, Member must have length greater than or equal to 1]",
+          "message": "1 validation error detected: Value '{_conformance_capdrift_h_1792314610886970548=[WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-0, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-1, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-2, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-3, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-4, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-5, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-6, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-7, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-8, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-9, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-10, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-11, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-12, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-13, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-14, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-15, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-16, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-17, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-18, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-19, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-20, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-21, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-22, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-23, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-24, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-25, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null)]}' at 'requestItems' failed to satisfy constraint: Map value must satisfy constraint: [Member must have length less than or equal to 25, Member must have length greater than or equal to 1]",
           "n": 1,
           "fields": [
             "requestItems"
@@ -2526,7 +2526,7 @@
           "note": "CreateTable 3 keySchema",
           "threw": true,
           "name": "ValidationException",
-          "message": "1 validation error detected: Value '[com.amazonaws.dynamodb.v20120810.KeySchemaElement@ad28eb1d, com.amazonaws.dynamodb.v20120810.KeySchemaElement@38b9654b, com.amazonaws.dynamodb.v20120810.KeySchemaElement@3e80eb03]' at 'keySchema' failed to satisfy constraint: Member must have length less than or equal to 2",
+          "message": "1 validation error detected: Value '[KeySchemaElement(attributeName=pk, keyType=HASH), KeySchemaElement(attributeName=sk, keyType=RANGE), KeySchemaElement(attributeName=extra, keyType=RANGE)]' at 'keySchema' failed to satisfy constraint: Member must have length less than or equal to 2",
           "n": 1,
           "fields": [
             "keySchema"
@@ -3696,7 +3696,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717125431414523": [
+              "_conformance_capdrift_h_1792314610886970548": [
                 {
                   "a": {
                     "M": {
@@ -3817,7 +3817,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717125431414523": [
+              "_conformance_capdrift_h_1792314610886970548": [
                 {
                   "l": {
                     "L": [
@@ -3864,11 +3864,11 @@
                   },
                   {
                     "M": {
-                      "y": {
-                        "S": "y1"
-                      },
                       "x": {
                         "S": "x1"
+                      },
+                      "y": {
+                        "S": "y1"
                       }
                     }
                   }
@@ -3903,11 +3903,11 @@
                     },
                     {
                       "M": {
-                        "y": {
-                          "S": "y1"
-                        },
                         "x": {
                           "S": "x1"
+                        },
+                        "y": {
+                          "S": "y1"
                         }
                       }
                     }
@@ -3945,11 +3945,11 @@
                     },
                     {
                       "M": {
-                        "y": {
-                          "S": "y1"
-                        },
                         "x": {
                           "S": "x1"
+                        },
+                        "y": {
+                          "S": "y1"
                         }
                       }
                     }
@@ -3972,7 +3972,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717125431414523": [
+              "_conformance_capdrift_h_1792314610886970548": [
                 {
                   "l": {
                     "L": [
@@ -3988,11 +3988,11 @@
                       },
                       {
                         "M": {
-                          "y": {
-                            "S": "y1"
-                          },
                           "x": {
                             "S": "x1"
+                          },
+                          "y": {
+                            "S": "y1"
                           }
                         }
                       }
@@ -4046,11 +4046,11 @@
                   },
                   {
                     "M": {
-                      "y": {
-                        "S": "y1"
-                      },
                       "x": {
                         "S": "x1"
+                      },
+                      "y": {
+                        "S": "y1"
                       }
                     }
                   }
@@ -4102,11 +4102,11 @@
                     },
                     {
                       "M": {
-                        "y": {
-                          "S": "y1"
-                        },
                         "x": {
                           "S": "x1"
+                        },
+                        "y": {
+                          "S": "y1"
                         }
                       }
                     }
@@ -4161,11 +4161,11 @@
                     },
                     {
                       "M": {
-                        "y": {
-                          "S": "y1"
-                        },
                         "x": {
                           "S": "x1"
+                        },
+                        "y": {
+                          "S": "y1"
                         }
                       }
                     }
@@ -4188,7 +4188,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717125431414523": [
+              "_conformance_capdrift_h_1792314610886970548": [
                 {
                   "a": {
                     "M": {
@@ -4221,11 +4221,11 @@
                       },
                       {
                         "M": {
-                          "y": {
-                            "S": "y1"
-                          },
                           "x": {
                             "S": "x1"
+                          },
+                          "y": {
+                            "S": "y1"
                           }
                         }
                       }
@@ -4951,7 +4951,7 @@
           "note": "BatchWrite 26 requests",
           "threw": true,
           "name": "ValidationException",
-          "message": "1 validation error detected: Value '{_conformance_capdrift_h_1791717162584912177=[WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-0, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-1, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-2, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-3, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-4, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-5, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-6, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-7, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-8, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-9, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-10, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-11, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-12, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-13, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-14, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-15, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-16, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-17, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-18, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-19, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-20, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-21, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-22, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-23, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-24, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-25, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null)]}' at 'requestItems' failed to satisfy constraint: Map value must satisfy constraint: [Member must have length less than or equal to 25, Member must have length greater than or equal to 1]",
+          "message": "1 validation error detected: Value '{_conformance_capdrift_h_1792314634974527409=[WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-0, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-1, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-2, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-3, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-4, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-5, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-6, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-7, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-8, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-9, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-10, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-11, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-12, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-13, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-14, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-15, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-16, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-17, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-18, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-19, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-20, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-21, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-22, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-23, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-24, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-25, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null)]}' at 'requestItems' failed to satisfy constraint: Map value must satisfy constraint: [Member must have length less than or equal to 25, Member must have length greater than or equal to 1]",
           "n": 1,
           "fields": [
             "requestItems"
@@ -6134,7 +6134,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717162584912177": [
+              "_conformance_capdrift_h_1792314634974527409": [
                 {
                   "a": {
                     "M": {
@@ -6255,7 +6255,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717162584912177": [
+              "_conformance_capdrift_h_1792314634974527409": [
                 {
                   "l": {
                     "L": [
@@ -6292,21 +6292,21 @@
                 "L": [
                   {
                     "M": {
-                      "x": {
-                        "S": "x0"
-                      },
                       "y": {
                         "S": "y0"
+                      },
+                      "x": {
+                        "S": "x0"
                       }
                     }
                   },
                   {
                     "M": {
-                      "y": {
-                        "S": "y1"
-                      },
                       "x": {
                         "S": "x1"
+                      },
+                      "y": {
+                        "S": "y1"
                       }
                     }
                   }
@@ -6331,21 +6331,21 @@
                   "L": [
                     {
                       "M": {
-                        "x": {
-                          "S": "x0"
-                        },
                         "y": {
                           "S": "y0"
+                        },
+                        "x": {
+                          "S": "x0"
                         }
                       }
                     },
                     {
                       "M": {
-                        "y": {
-                          "S": "y1"
-                        },
                         "x": {
                           "S": "x1"
+                        },
+                        "y": {
+                          "S": "y1"
                         }
                       }
                     }
@@ -6373,21 +6373,21 @@
                   "L": [
                     {
                       "M": {
-                        "x": {
-                          "S": "x0"
-                        },
                         "y": {
                           "S": "y0"
+                        },
+                        "x": {
+                          "S": "x0"
                         }
                       }
                     },
                     {
                       "M": {
-                        "y": {
-                          "S": "y1"
-                        },
                         "x": {
                           "S": "x1"
+                        },
+                        "y": {
+                          "S": "y1"
                         }
                       }
                     }
@@ -6410,27 +6410,27 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717162584912177": [
+              "_conformance_capdrift_h_1792314634974527409": [
                 {
                   "l": {
                     "L": [
                       {
                         "M": {
-                          "x": {
-                            "S": "x0"
-                          },
                           "y": {
                             "S": "y0"
+                          },
+                          "x": {
+                            "S": "x0"
                           }
                         }
                       },
                       {
                         "M": {
-                          "y": {
-                            "S": "y1"
-                          },
                           "x": {
                             "S": "x1"
+                          },
+                          "y": {
+                            "S": "y1"
                           }
                         }
                       }
@@ -6455,18 +6455,18 @@
             "Item": {
               "a": {
                 "M": {
-                  "c": {
-                    "S": "cc"
-                  },
-                  "b": {
-                    "S": "bb"
-                  },
                   "d": {
                     "M": {
                       "e": {
                         "S": "ee"
                       }
                     }
+                  },
+                  "b": {
+                    "S": "bb"
+                  },
+                  "c": {
+                    "S": "cc"
                   }
                 }
               },
@@ -6474,21 +6474,21 @@
                 "L": [
                   {
                     "M": {
-                      "x": {
-                        "S": "x0"
-                      },
                       "y": {
                         "S": "y0"
+                      },
+                      "x": {
+                        "S": "x0"
                       }
                     }
                   },
                   {
                     "M": {
-                      "y": {
-                        "S": "y1"
-                      },
                       "x": {
                         "S": "x1"
+                      },
+                      "y": {
+                        "S": "y1"
                       }
                     }
                   }
@@ -6511,18 +6511,18 @@
               {
                 "a": {
                   "M": {
-                    "c": {
-                      "S": "cc"
-                    },
-                    "b": {
-                      "S": "bb"
-                    },
                     "d": {
                       "M": {
                         "e": {
                           "S": "ee"
                         }
                       }
+                    },
+                    "b": {
+                      "S": "bb"
+                    },
+                    "c": {
+                      "S": "cc"
                     }
                   }
                 },
@@ -6530,21 +6530,21 @@
                   "L": [
                     {
                       "M": {
-                        "x": {
-                          "S": "x0"
-                        },
                         "y": {
                           "S": "y0"
+                        },
+                        "x": {
+                          "S": "x0"
                         }
                       }
                     },
                     {
                       "M": {
-                        "y": {
-                          "S": "y1"
-                        },
                         "x": {
                           "S": "x1"
+                        },
+                        "y": {
+                          "S": "y1"
                         }
                       }
                     }
@@ -6570,18 +6570,18 @@
               {
                 "a": {
                   "M": {
-                    "c": {
-                      "S": "cc"
-                    },
-                    "b": {
-                      "S": "bb"
-                    },
                     "d": {
                       "M": {
                         "e": {
                           "S": "ee"
                         }
                       }
+                    },
+                    "b": {
+                      "S": "bb"
+                    },
+                    "c": {
+                      "S": "cc"
                     }
                   }
                 },
@@ -6589,21 +6589,21 @@
                   "L": [
                     {
                       "M": {
-                        "x": {
-                          "S": "x0"
-                        },
                         "y": {
                           "S": "y0"
+                        },
+                        "x": {
+                          "S": "x0"
                         }
                       }
                     },
                     {
                       "M": {
-                        "y": {
-                          "S": "y1"
-                        },
                         "x": {
                           "S": "x1"
+                        },
+                        "y": {
+                          "S": "y1"
                         }
                       }
                     }
@@ -6626,22 +6626,22 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717162584912177": [
+              "_conformance_capdrift_h_1792314634974527409": [
                 {
                   "a": {
                     "M": {
-                      "c": {
-                        "S": "cc"
-                      },
-                      "b": {
-                        "S": "bb"
-                      },
                       "d": {
                         "M": {
                           "e": {
                             "S": "ee"
                           }
                         }
+                      },
+                      "b": {
+                        "S": "bb"
+                      },
+                      "c": {
+                        "S": "cc"
                       }
                     }
                   },
@@ -6649,21 +6649,21 @@
                     "L": [
                       {
                         "M": {
-                          "x": {
-                            "S": "x0"
-                          },
                           "y": {
                             "S": "y0"
+                          },
+                          "x": {
+                            "S": "x0"
                           }
                         }
                       },
                       {
                         "M": {
-                          "y": {
-                            "S": "y1"
-                          },
                           "x": {
                             "S": "x1"
+                          },
+                          "y": {
+                            "S": "y1"
                           }
                         }
                       }
@@ -7389,7 +7389,7 @@
           "note": "BatchWrite 26 requests",
           "threw": true,
           "name": "ValidationException",
-          "message": "1 validation error detected: Value '{_conformance_capdrift_h_1791717208633274206=[WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-0, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-1, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-2, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-3, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-4, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-5, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-6, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-7, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-8, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-9, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-10, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-11, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-12, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-13, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-14, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-15, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-16, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-17, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-18, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-19, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-20, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-21, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-22, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-23, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-24, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-25, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null)]}' at 'requestItems' failed to satisfy constraint: Map value must satisfy constraint: [Member must have length less than or equal to 25, Member must have length greater than or equal to 1]",
+          "message": "1 validation error detected: Value '{_conformance_capdrift_h_1792314684989126915=[WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-0, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-1, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-2, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-3, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-4, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-5, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-6, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-7, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-8, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-9, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-10, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-11, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-12, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-13, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-14, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-15, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-16, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-17, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-18, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-19, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-20, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-21, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-22, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-23, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-24, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null), WriteRequest(putRequest=PutRequest(item={pk=AttributeValue(s=bw-25, n=null, b=null, iNT=null, dECIMAL=null, dOUBLE=null, sS=null, nS=null, bS=null, iNTSET=null, dECIMALSET=null, dOUBLESET=null, m=null, l=null, nULL=null, bOOL=null)}, workloadProfileName=null), deleteRequest=null)]}' at 'requestItems' failed to satisfy constraint: Map value must satisfy constraint: [Member must have length less than or equal to 25, Member must have length greater than or equal to 1]",
           "n": 1,
           "fields": [
             "requestItems"
@@ -8572,7 +8572,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717208633274206": [
+              "_conformance_capdrift_h_1792314684989126915": [
                 {
                   "a": {
                     "M": {
@@ -8693,7 +8693,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717208633274206": [
+              "_conformance_capdrift_h_1792314684989126915": [
                 {
                   "l": {
                     "L": [
@@ -8848,7 +8848,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717208633274206": [
+              "_conformance_capdrift_h_1792314684989126915": [
                 {
                   "l": {
                     "L": [
@@ -9064,7 +9064,7 @@
           "fields": [],
           "response": {
             "Responses": {
-              "_conformance_capdrift_h_1791717208633274206": [
+              "_conformance_capdrift_h_1792314684989126915": [
                 {
                   "a": {
                     "M": {
