@@ -6,7 +6,7 @@
     "commit": "1a1777965a3d0218c9dec54064604738deeca593",
     "version": "3.6.1",
     "region": "eu-west-2",
-    "measuredAt": "2026-10-11T11:06:29Z"
+    "measuredAt": "2026-10-18T09:09:13Z"
   },
   "regions": {
     "observed": [
@@ -190,24 +190,24 @@
   "groundTruth": {
     "slug": "dynamodb",
     "rate": 100,
-    "runDate": "2026-10-11",
+    "runDate": "2026-10-18",
     "derived": true,
     "testsObserved": 1266,
     "suiteSize": 1266,
     "lanes": [
       {
         "name": "gating",
-        "runDate": "2026-10-11",
+        "runDate": "2026-10-18",
         "tests": 1246
       },
       {
         "name": "integrations",
-        "runDate": "2026-10-11",
+        "runDate": "2026-10-18",
         "tests": 3
       },
       {
         "name": "gsi",
-        "runDate": "2026-10-11",
+        "runDate": "2026-10-18",
         "tests": 17
       }
     ],
@@ -1174,7 +1174,7 @@
         }
       },
       "version": "4.0.0",
-      "runDate": "2026-10-11"
+      "runDate": "2026-10-18"
     },
     "dynamodb-local": {
       "headline": {
@@ -2107,8 +2107,8 @@
           }
         }
       },
-      "version": "ff89bd48ff32",
-      "runDate": "2026-10-11"
+      "version": "6ada631ec7aa",
+      "runDate": "2026-10-18"
     },
     "dynoxide": {
       "headline": {
@@ -3042,7 +3042,7 @@
         }
       },
       "version": "1.3.0",
-      "runDate": "2026-10-11",
+      "runDate": "2026-10-18",
       "regionFailures": {
         "ap-east-2": [
           "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
@@ -4046,7 +4046,7 @@
         }
       },
       "version": "1.3.0",
-      "runDate": "2026-10-11",
+      "runDate": "2026-10-18",
       "regionFailures": {
         "ap-east-2": [
           "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
@@ -5048,7 +5048,7 @@
         }
       },
       "version": "v0.1.13",
-      "runDate": "2026-10-11"
+      "runDate": "2026-10-18"
     },
     "extenddb-sqlite": {
       "headline": {
@@ -5982,18 +5982,18 @@
         }
       },
       "version": "v0.1.13",
-      "runDate": "2026-10-11"
+      "runDate": "2026-10-18"
     },
     "floci": {
       "headline": {
-        "region": "af-south-1",
-        "rate": 99.9
+        "region": "ap-east-2",
+        "rate": 100
       },
       "regions": {
         "af-south-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6011,17 +6011,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-east-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6039,17 +6039,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-east-2": {
-          "rate": 99.5,
-          "passed": 1253,
-          "failed": 6,
+          "rate": 100,
+          "passed": 1259,
+          "failed": 0,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6067,17 +6067,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 419,
-              "f": 6,
+              "p": 425,
+              "f": 0,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-northeast-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6095,17 +6095,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-northeast-2": {
-          "rate": 99.5,
-          "passed": 1253,
-          "failed": 6,
+          "rate": 100,
+          "passed": 1259,
+          "failed": 0,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6123,17 +6123,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 419,
-              "f": 6,
+              "p": 425,
+              "f": 0,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-northeast-3": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6151,17 +6151,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-south-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6179,17 +6179,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-south-2": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6207,17 +6207,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-southeast-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6235,17 +6235,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-southeast-2": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6263,17 +6263,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-southeast-3": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6291,17 +6291,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-southeast-4": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6319,17 +6319,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-southeast-5": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6347,17 +6347,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-southeast-6": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6375,17 +6375,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ap-southeast-7": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6403,17 +6403,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ca-central-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6431,17 +6431,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "ca-west-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6459,17 +6459,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "eu-central-1": {
-          "rate": 99.5,
-          "passed": 1253,
-          "failed": 6,
+          "rate": 100,
+          "passed": 1259,
+          "failed": 0,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6487,17 +6487,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 419,
-              "f": 6,
+              "p": 425,
+              "f": 0,
               "s": 0,
               "i": 0
             }
           }
         },
         "eu-central-2": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6515,17 +6515,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "eu-north-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6543,17 +6543,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "eu-south-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6571,17 +6571,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "eu-south-2": {
-          "rate": 98.8,
-          "passed": 1244,
-          "failed": 15,
+          "rate": 98.5,
+          "passed": 1240,
+          "failed": 19,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6599,17 +6599,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 410,
-              "f": 15,
+              "p": 406,
+              "f": 19,
               "s": 0,
               "i": 0
             }
           }
         },
         "eu-west-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6627,17 +6627,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "eu-west-2": {
-          "rate": 99.5,
-          "passed": 1253,
-          "failed": 6,
+          "rate": 100,
+          "passed": 1259,
+          "failed": 0,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6655,17 +6655,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 419,
-              "f": 6,
+              "p": 425,
+              "f": 0,
               "s": 0,
               "i": 0
             }
           }
         },
         "eu-west-3": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6683,17 +6683,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "il-central-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6711,17 +6711,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "me-central-1": {
-          "rate": 98.7,
-          "passed": 1243,
-          "failed": 16,
+          "rate": 98.4,
+          "passed": 1239,
+          "failed": 20,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6739,17 +6739,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 409,
-              "f": 16,
+              "p": 405,
+              "f": 20,
               "s": 0,
               "i": 0
             }
           }
         },
         "mx-central-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6767,17 +6767,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "sa-east-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6795,17 +6795,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "us-east-1": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6823,17 +6823,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "us-east-2": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6851,17 +6851,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         },
         "us-west-1": {
-          "rate": 99.5,
-          "passed": 1253,
-          "failed": 6,
+          "rate": 100,
+          "passed": 1259,
+          "failed": 0,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6879,17 +6879,17 @@
               "i": 0
             },
             "tier3": {
-              "p": 419,
-              "f": 6,
+              "p": 425,
+              "f": 0,
               "s": 0,
               "i": 0
             }
           }
         },
         "us-west-2": {
-          "rate": 99.9,
-          "passed": 1258,
-          "failed": 1,
+          "rate": 99.6,
+          "passed": 1254,
+          "failed": 5,
           "skipped": 7,
           "indeterminate": 0,
           "count": 1266,
@@ -6907,40 +6907,267 @@
               "i": 0
             },
             "tier3": {
-              "p": 424,
-              "f": 1,
+              "p": 420,
+              "f": 5,
               "s": 0,
               "i": 0
             }
           }
         }
       },
-      "version": "e97cd0c1dc2a",
-      "runDate": "2026-10-11"
+      "version": "e0b292df4dc9",
+      "runDate": "2026-10-18",
+      "regionFailures": {
+        "af-south-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-east-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-northeast-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-northeast-3": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-south-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-south-2": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-southeast-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-southeast-2": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-southeast-3": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-southeast-4": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-southeast-5": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-southeast-6": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ap-southeast-7": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ca-central-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "ca-west-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "eu-central-2": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "eu-north-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "eu-south-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "eu-south-2": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem charges per action charges a second SET clause exactly 19 bytes",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem charges per action charges the clause, not the attribute name or its alias",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem charges per action charges the clause, not the value it writes",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem charges per action does not charge for an attribute the statement leaves alone",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem does not charge for the key buys back a sort key’s own bytes as well",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem through a document path charges a SET through a list index exactly one byte more",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key",
+          "tests/tier3/limits/nestingDepth.test.ts::Nesting depth — 32-level document limit rejects a 32-level ExpressionAttributeValue with ValidationException",
+          "tests/tier3/validation-ordering/putItem.test.ts::PutItem — validation ordering empty TableName with invalid ReturnValues reports only tableName",
+          "tests/tier3/validation-ordering/updateItem.test.ts::UpdateItem — validation ordering rejects invalid ReturnValues (UpdateItem reports the first enum error)"
+        ],
+        "eu-west-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "eu-west-3": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "il-central-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "me-central-1": [
+          "tests/tier3/error-messages/batchGetItem.test.ts::BatchGetItem — exact error messages empty RequestItems: full required-parameter error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem charges per action charges a REMOVE alongside a SET exactly 2 bytes",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem charges per action charges a second SET clause exactly 19 bytes",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem charges per action charges the clause, not the attribute name or its alias",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem charges per action charges the clause, not the value it writes",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem charges per action does not charge for an attribute the statement leaves alone",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem does not charge for the key buys back a sort key’s own bytes as well",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem does not charge for the key buys back the same headroom from the key name as from the key value",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem does not charge for the key sits below 409,600 at a one-byte key, so the exclusion binds",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — UpdateItem through a document path charges a SET through a list index exactly one byte more",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — a PartiQL UPDATE does not inherit the exclusion writes what UpdateItem refuses at the same key",
+          "tests/tier3/limits/itemSizeBySurface.test.ts::Item size limit by surface — a transacted Update does not inherit the exclusion writes what UpdateItem refuses at the same key",
+          "tests/tier3/limits/nestingDepth.test.ts::Nesting depth — 32-level document limit rejects a 32-level ExpressionAttributeValue with ValidationException",
+          "tests/tier3/validation-ordering/putItem.test.ts::PutItem — validation ordering empty TableName with invalid ReturnValues reports only tableName",
+          "tests/tier3/validation-ordering/updateItem.test.ts::UpdateItem — validation ordering rejects invalid ReturnValues (UpdateItem reports the first enum error)"
+        ],
+        "mx-central-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "sa-east-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "us-east-1": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "us-east-2": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ],
+        "us-west-2": [
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Limit of 0: full minimum-value error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Segment >= TotalSegments: full out-of-range error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error",
+          "tests/tier3/error-messages/scan.test.ts::Scan — exact error messages negative Segment: full minimum-value error"
+        ]
+      }
     },
     "kumo": {
       "headline": {
         "region": "eu-south-2",
-        "rate": 43.1
+        "rate": 43
       },
       "regions": {
         "af-south-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -6953,22 +7180,22 @@
           }
         },
         "ap-east-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -6981,22 +7208,22 @@
           }
         },
         "ap-east-2": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7009,22 +7236,22 @@
           }
         },
         "ap-northeast-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7037,22 +7264,22 @@
           }
         },
         "ap-northeast-2": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7065,22 +7292,22 @@
           }
         },
         "ap-northeast-3": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7093,22 +7320,22 @@
           }
         },
         "ap-south-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7121,22 +7348,22 @@
           }
         },
         "ap-south-2": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7149,22 +7376,22 @@
           }
         },
         "ap-southeast-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7177,22 +7404,22 @@
           }
         },
         "ap-southeast-2": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7205,22 +7432,22 @@
           }
         },
         "ap-southeast-3": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7233,22 +7460,22 @@
           }
         },
         "ap-southeast-4": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7261,22 +7488,22 @@
           }
         },
         "ap-southeast-5": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7289,22 +7516,22 @@
           }
         },
         "ap-southeast-6": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7317,22 +7544,22 @@
           }
         },
         "ap-southeast-7": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7345,22 +7572,22 @@
           }
         },
         "ca-central-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7373,22 +7600,22 @@
           }
         },
         "ca-west-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7401,22 +7628,22 @@
           }
         },
         "eu-central-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7429,22 +7656,22 @@
           }
         },
         "eu-central-2": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7457,22 +7684,22 @@
           }
         },
         "eu-north-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7485,22 +7712,22 @@
           }
         },
         "eu-south-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7513,22 +7740,22 @@
           }
         },
         "eu-south-2": {
-          "rate": 43.1,
-          "passed": 429,
-          "failed": 566,
+          "rate": 43,
+          "passed": 428,
+          "failed": 567,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7541,22 +7768,22 @@
           }
         },
         "eu-west-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7569,22 +7796,22 @@
           }
         },
         "eu-west-2": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7597,22 +7824,22 @@
           }
         },
         "eu-west-3": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7625,22 +7852,22 @@
           }
         },
         "il-central-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7653,22 +7880,22 @@
           }
         },
         "me-central-1": {
-          "rate": 43.1,
-          "passed": 429,
-          "failed": 566,
+          "rate": 43,
+          "passed": 428,
+          "failed": 567,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7681,22 +7908,22 @@
           }
         },
         "mx-central-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7709,22 +7936,22 @@
           }
         },
         "sa-east-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7737,22 +7964,22 @@
           }
         },
         "us-east-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7765,22 +7992,22 @@
           }
         },
         "us-east-2": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7793,22 +8020,22 @@
           }
         },
         "us-west-1": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7821,22 +8048,22 @@
           }
         },
         "us-west-2": {
-          "rate": 42.2,
-          "passed": 420,
-          "failed": 575,
+          "rate": 42.1,
+          "passed": 419,
+          "failed": 576,
           "skipped": 271,
           "indeterminate": 0,
           "count": 1266,
           "tiers": {
             "tier1": {
-              "p": 264,
-              "f": 232,
+              "p": 262,
+              "f": 234,
               "s": 0,
               "i": 0
             },
             "tier2": {
-              "p": 64,
-              "f": 48,
+              "p": 65,
+              "f": 47,
               "s": 233,
               "i": 0
             },
@@ -7850,7 +8077,7 @@
         }
       },
       "version": "76e97ef55735",
-      "runDate": "2026-10-11"
+      "runDate": "2026-10-18"
     },
     "localstack": {
       "headline": {
@@ -8783,8 +9010,8 @@
           }
         }
       },
-      "version": "2026.9.1",
-      "runDate": "2026-10-11"
+      "version": "2026.10.0",
+      "runDate": "2026-10-18"
     },
     "ministack": {
       "headline": {
@@ -9717,8 +9944,8 @@
           }
         }
       },
-      "version": "f90981c85c9b",
-      "runDate": "2026-10-11"
+      "version": "88f507c57e16",
+      "runDate": "2026-10-18"
     }
   }
 }
