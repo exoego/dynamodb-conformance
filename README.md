@@ -170,7 +170,7 @@ A new test goes in whichever sub-directory matches what it asserts. If you care 
 | GetItem | basic, validation, projection, consumedCapacity | | error messages |
 | UpdateItem | basic, conditions (incl. parens, non-existent key branch), validation, paths, index write-capacity ladder | | error messages, item size (charged on what the statement writes, plus a per-clause cost) |
 | DeleteItem | basic, conditions (incl. parens), validation, index write capacity | | error messages |
-| Query | basic, GSI, LSI, expressions (incl. KeyCondition + Filter parens), select, numericKeys, binaryKeys, pagination, consumedCapacity (sized before the filter and the projection) | | error messages, validation ordering |
+| Query | basic, GSI, LSI, expressions (incl. KeyCondition + Filter parens), select, numericKeys, binaryKeys, pagination, consumedCapacity (sized before the filter and the projection) | multi-attribute GSI keys | error messages, validation ordering |
 | Scan | basic, validation, GSI (incl. pagination), LSI (incl. pagination), parallel, select, filterOperators, filterExpression parens, consumedCapacity (sized before the filter and the projection) | | error messages, validation ordering |
 | BatchWriteItem | basic, validation, index write capacity | | error messages, item size |
 | BatchGetItem | basic, validation | | error messages |
