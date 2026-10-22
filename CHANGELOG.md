@@ -76,6 +76,18 @@ checked only that one was there. The batch tests keep their names, which still
 hold for the member itself, because a rename needs every committed results file
 re-run.
 
+Fifteen regions move to the new wording on the five Scan rows. af-south-1,
+ap-east-1, ap-northeast-3, ap-south-1, ap-southeast-1 to ap-southeast-5,
+ca-west-1, eu-north-1, eu-west-3, il-central-1, mx-central-1 and sa-east-1
+joined eu-west-2 by the 2026-10-17 sweep, which leaves 13 regions on the old
+wording, and an engine that gives it is now credited in those 13 alone. Three
+runs against all 33 regions on 2026-10-22 agreed with the sweep on every move;
+where they disagreed, a region keeps its recorded answer. That holds back
+us-east-1, which gave the new Scan wording on all three runs, and us-east-2 and
+eu-south-2, which gave the pinned answer on the other fourteen rows. me-central-1
+gave both answers to BatchGetItem's empty RequestItems across the runs and keeps
+the one its row records.
+
 ## 2026-10-09 (3.6.1)
 
 3.6.0 was cut but never published. eu-west-2 changed how it validates

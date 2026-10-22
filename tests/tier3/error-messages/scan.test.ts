@@ -38,9 +38,9 @@ describe('Scan — exact error messages', { tags: ['scan', 'data-plane', 'negati
   // row. The validation-framework rollout reached Scan's parameter checks in
   // September 2026: eu-central-1 and us-west-1 crossed before the 2026-09-19
   // sweep, ap-northeast-2 and the pinned eu-west-2 before the 2026-09-26 one,
-  // and the other 29 answering regions still give the older wording each row
-  // records. The two Segment/TotalSegments pairing checks either side of this
-  // test have not moved anywhere.
+  // and more regions have followed since. Each row records which regions are
+  // on which wording. The two Segment/TotalSegments pairing checks either side
+  // of this test have not moved anywhere.
 
   it('Segment >= TotalSegments: full out-of-range error', async (ctx) => {
     // Split behaviour (registry row scan-segment-out-of-range-message): the new
