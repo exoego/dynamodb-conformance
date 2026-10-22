@@ -541,7 +541,7 @@ describe('BatchExecuteStatement — PartiQL', { tags: ['partiql', 'data-plane', 
         expect(err).toBeInstanceOf(DynamoDBServiceException)
         const e = err as DynamoDBServiceException & { CancellationReasons?: { Item?: unknown }[] }
         expect(e.name).toBe('TransactionCanceledException')
-        expect(e.CancellationReasons?.[0]?.Item).toBeDefined()
+        expect(e.CancellationReasons?.[0]?.Item).toEqual({ pk: { S: KEY }, val: { S: 'here' } })
       }
     })
   })

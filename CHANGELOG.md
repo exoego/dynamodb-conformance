@@ -18,13 +18,17 @@ grading version stays at 1. A note can come and go between runs as regions
 converge and diverge, with no change in the target
 ([#271](https://github.com/paritysuite/dynamodb-conformance/issues/271)).
 
-A BatchExecuteStatement test of `ReturnValuesOnConditionCheckFailure` asserted
-the opposite of what DynamoDB does, in a way that could never fail. It called
-the option inert on a batch member and checked only that the member carried no
-item. DynamoDB does return the existing item with `ALL_OLD`, on the failed
-member's `Error`, and none with `NONE` or the option absent. The three tests now
-check that item exactly. They keep their names, which still hold for the member
-itself, because a rename needs every committed results file re-run.
+A BatchExecuteStatement test described `ReturnValuesOnConditionCheckFailure` as
+inert on a batch member, the opposite of what DynamoDB does, and its only check
+could not tell a target that ignores the option from one that honours it.
+DynamoDB returns the existing item with `ALL_OLD`, on the failed member's
+`Error`, and none with `NONE` or the option absent. The three tests now check
+that item exactly, so a target that ignores the option, or returns the item
+whatever the setting, now fails one or more of them. The TransactWriteItems test
+beside them checks the item on the cancellation reason exactly too, where it
+checked only that one was there. The batch tests keep their names, which still
+hold for the member itself, because a rename needs every committed results file
+re-run.
 
 ## 2026-10-09 (3.6.1)
 
