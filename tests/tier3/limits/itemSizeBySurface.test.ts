@@ -1119,8 +1119,9 @@ describe('Item size limit by surface — UpdateItem checks the charge before the
 
   it('refuses an over-limit charge even when the condition would fail', async () => {
     // Records nothing. A flat region answers ConditionalCheckFailedException
-    // here and stores nothing, so there is no stored write to confirm; the
-    // passing case below carries the flat side for this describe.
+    // here, and this file records a flat side only from a stored write, so
+    // that answer goes unrecorded and the test fails there. Nothing credits
+    // it until this describe has a registry row.
     await expectDynamoError(() => send(key('order-fails'), 'attribute_exists(nope)'), 'ValidationException', UPDATE_WORDING)
   })
 

@@ -148,10 +148,10 @@ describe('Deep requests — TransactWriteItems action order', { tags: ['transact
     expect([first, second]).toEqual([EMPTY_NAME, EMPTY_NAME])
   })
 
-  // All ten regions probed on 2026-10-09 reported the depth. On 2026-10-22
-  // eu-west-2 gave the depth on some runs and the empty map key on others, for
-  // the same request, so both pass until it settles on one.
-  it('reports a value nested 40 levels before an empty map key inside the same item', async () => {
+  it('refuses a value nested 40 levels beside an empty map key inside the same item', async () => {
+    // All ten regions probed on 2026-10-09 reported the depth. On 2026-10-22
+    // eu-west-2 gave the depth on some runs and the empty map key on others,
+    // for the same request, so both pass until it settles on one.
     const message = await refusal(
       send([{ Put: { TableName: A, Item: { ...key(S('a')), m: { M: { '': S('x') } }, d: deep(40) } } }]),
     )

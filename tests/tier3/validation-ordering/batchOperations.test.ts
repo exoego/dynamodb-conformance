@@ -201,7 +201,7 @@ describe('Batch operations — enum and ordering checks', { tags: ['batch', 'dat
     expect(message).toBe(one(ENUM_RCC))
   })
 
-  it('BatchWriteItem reports an unknown ReturnConsumedCapacity alone over a malformed table name', async () => {
+  it('BatchWriteItem reports an unknown ReturnConsumedCapacity beside a malformed table name', async () => {
     const message = await refusal(() =>
       ddb.send(
         new BatchWriteItemCommand({

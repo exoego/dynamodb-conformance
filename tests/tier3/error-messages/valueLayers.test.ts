@@ -31,11 +31,11 @@ declareTables(hashTableDef)
 //            `ExpressionAttributeValues contains invalid value: ` wrapper.
 //
 // eu-west-2 runs the current layer on transactions too, where the other three
-// regions run the older one (a later probe of eight regions found eu-north-1
-// with eu-west-2); those tests accept exactly the two answers. On 2026-10-22
-// eu-west-2 and eu-north-1 had moved BatchWriteItem to the current layer as
-// well, bare, while us-east-1 still ran the older one, so the BatchWriteItem
-// tests accept either layer as a whole too.
+// regions run the older one (a probe of eight regions on 2026-10-09 found
+// eu-north-1 with eu-west-2); those tests accept exactly the two answers. On
+// 2026-10-22 eu-west-2 and eu-north-1 had moved BatchWriteItem to the current
+// layer as well, bare, while us-east-1 still ran the older one, so the
+// BatchWriteItem tests accept either layer as a whole too.
 
 const T = hashTableDef.name
 const S = (s: string): AttributeValue => ({ S: s })
@@ -177,7 +177,7 @@ describe('Number values — messages by operation', { tags: ['put-item', 'update
     expect({ get, batchGet, query }).toEqual({ get: CURRENT, batchGet: CURRENT, query: CURRENT })
   })
 
-  it('BatchWriteItem refuses a malformed number bare, in the older wording', async () => {
+  it('BatchWriteItem refuses a malformed number bare, in one layer for every shape', async () => {
     const got = await eachShape((v) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ PutRequest: { Item: { pk: S('layer-n'), n: v } } }] } })))
     // Either layer, as a whole: see the note at the top of the file.
     expect([OLDER, CURRENT]).toContainEqual(got)
@@ -334,7 +334,7 @@ describe('Duplicate set members — messages by operation', { tags: ['put-item',
     })
   })
 
-  it('BatchWriteItem refuses a duplicate in an item and a delete key bare, in the older wording', async () => {
+  it('BatchWriteItem refuses a duplicate in an item and a delete key bare, in one layer for both', async () => {
     const put = await eachSet((d) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ PutRequest: { Item: { pk: S('layer-d'), s: d } } }] } })))
     const del = await eachSet((d) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ DeleteRequest: { Key: { pk: d } } }] } })))
     // Either layer, as a whole, and the same one for both requests: see the
@@ -361,8 +361,11 @@ describe('Duplicate set members — transactions by region', { tags: ['transacti
   it('TransactWriteItems refuses a duplicate in a Put item and a Delete key up front', async () => {
     const put = await eachSet((d) => ddb.send(new TransactWriteItemsCommand({ TransactItems: [{ Put: { TableName: T, Item: { pk: S('layer-d'), s: d } } }] })))
     const del = await eachSet((d) => ddb.send(new TransactWriteItemsCommand({ TransactItems: [{ Delete: { TableName: T, Key: { pk: d } } }] })))
-    eitherLayer(put, DUPE_OLDER)
-    eitherLayer(del, DUPE_OLDER)
+    // The same layer for both actions, as one value.
+    expect([
+      { put: DUPE_OLDER, del: DUPE_OLDER },
+      { put: DUPE_CURRENT, del: DUPE_CURRENT },
+    ]).toContainEqual({ put, del })
   })
 
   it('TransactWriteItems refuses a duplicate in a condition or update value of every action type up front', async () => {
@@ -373,10 +376,13 @@ describe('Duplicate set members — transactions by region', { tags: ['transacti
       (d) => ({ Delete: { TableName: T, Key: { pk: S('layer-d') }, ...cond, ExpressionAttributeValues: { ':t': d } } }),
       (d) => ({ ConditionCheck: { TableName: T, Key: { pk: S('layer-d') }, ...cond, ExpressionAttributeValues: { ':t': d } } }),
     ]
+    const got: string[][] = []
     for (const shape of shapes) {
-      const got = await eachSet((d) => ddb.send(new TransactWriteItemsCommand({ TransactItems: [shape(d)] })))
-      eitherLayer(got, DUPE_OLDER.map((m) => forKey(m, ':t')))
+      got.push(await eachSet((d) => ddb.send(new TransactWriteItemsCommand({ TransactItems: [shape(d)] }))))
     }
+    // Every action type in the same layer, as one value.
+    const older = DUPE_OLDER.map((m) => forKey(m, ':t'))
+    expect([shapes.map(() => older), shapes.map(() => DUPE_CURRENT)]).toContainEqual(got)
   })
 
   it('TransactGetItems refuses a duplicate in a key up front', async () => {

@@ -222,7 +222,7 @@ describe('BatchWriteItem — exact error messages', { tags: ['batch', 'data-plan
     )
   })
 
-  it('empty request list for a table: full map-value constraint message', async () => {
+  it('empty request list for a table: exact constraint message', async () => {
     // BatchWriteItem is moving to the newer validation layer. On 2026-10-22
     // eu-west-2 and eu-north-1 named the empty list by its member path, while
     // us-east-1 still echoed the map as it did on 2026-10-09. The assertion
