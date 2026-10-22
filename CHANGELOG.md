@@ -18,6 +18,14 @@ grading version stays at 1. A note can come and go between runs as regions
 converge and diverge, with no change in the target
 ([#271](https://github.com/paritysuite/dynamodb-conformance/issues/271)).
 
+A BatchExecuteStatement test of `ReturnValuesOnConditionCheckFailure` asserted
+the opposite of what DynamoDB does, in a way that could never fail. It called
+the option inert on a batch member and checked only that the member carried no
+item. DynamoDB does return the existing item with `ALL_OLD`, on the failed
+member's `Error`, and none with `NONE` or the option absent. The three tests now
+check that item exactly. They keep their names, which still hold for the member
+itself, because a rename needs every committed results file re-run.
+
 ## 2026-10-09 (3.6.1)
 
 3.6.0 was cut but never published. eu-west-2 changed how it validates
