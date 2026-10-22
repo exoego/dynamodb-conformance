@@ -8,6 +8,8 @@ section its date and version, so several branches can write ahead of one.
 
 ## Unreleased
 
+## 2026-10-22 (3.7.0)
+
 The suite grows from 1,266 tests to 1,678, so every target's figures move. The
 new tests come from captures against real DynamoDB, most of them taken in
 October, and mostly cover rejection paths and the order errors are reported
