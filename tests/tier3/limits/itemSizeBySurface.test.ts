@@ -42,7 +42,7 @@ declareTables(itemSizeTableDef, itemSizeCompositeTableDef, longKeyNameTableDef)
 // Six of the seven are flat: the ceiling is the item's own size, exactly
 // 409,600, with no key exclusion and no per-action term. Standalone UpdateItem
 // is the outlier in eu-west-2 and has its own describes below. It is not the
-// outlier everywhere: in ten regions UpdateItem is flat too (see the note above
+// outlier everywhere: in some regions UpdateItem is flat too (see the note above
 // updateCeilingIs).
 //
 // The reporting split follows whether the size can be known from the request
@@ -345,14 +345,13 @@ const operandCost = (...elements: (string | number)[]) =>
 const targetCost = (first: string, ...rest: (string | number)[]) =>
   utf8Bytes(first) + rest.reduce<number>((total, element) => total + 4 + elementBytes(element), 0)
 
-// The statement-sized rule is regional. Ten regions (ap-south-2, ap-southeast-6,
-// ap-southeast-7, ca-central-1, eu-central-2, eu-south-1, eu-south-2, eu-west-1,
-// me-central-1 and us-east-2) size an UpdateItem like every other write: the
-// finished item, capped at exactly 409,600, with no key exclusion and no
-// per-clause cost. So every case below that puts the ceiling under 409,600 fails
-// there on its first refusal, which those regions accept and store. The other 22
-// apply the rule; ap-northeast-1 has answered both ways and is in no row.
-// Measured across all 33 regions on 2026-09-28 and 2026-09-29.
+// The statement-sized rule is regional. Some regions size an UpdateItem like
+// every other write: the finished item, capped at exactly 409,600, with no key
+// exclusion and no per-clause cost. So every case below that puts the ceiling
+// under 409,600 fails there on its first refusal, which those regions accept and
+// store. First measured across all 33 regions on 2026-09-28 and 2026-09-29, when
+// ten regions were flat; regions have moved since, so each test's registry row,
+// not this note, records which regions are on which side.
 //
 // Each such test is a split, and what it records for per-region scoring is only
 // the flat side: that the target stored an update this rule refuses, confirmed
@@ -481,8 +480,8 @@ describe('Item size limit by surface — UpdateItem does not charge for the key'
   const shortKey = () => ({ accepted: { pk: { S: 'K' } }, refused: { pk: { S: 'L' } } })
 
   it('sits below 409,600 at a one-byte key, so the exclusion binds', async (ctx) => {
-    // Split behaviour (registry row update-item-size-short-key): flat in ten
-    // regions, see the note above updateCeilingIs.
+    // Split behaviour (registry row update-item-size-short-key): the row
+    // records the flat regions, see the note above updateCeilingIs.
     const keys = shortKey()
     keysToClean.push(keys.accepted, keys.refused)
     const ceiling = await updateCeilingIs(TABLE, keys, oneSet(), ctx.task)
@@ -505,8 +504,8 @@ describe('Item size limit by surface — UpdateItem does not charge for the key'
   // Sixteen bytes of key name and one of value buys back what two bytes of name
   // and fifteen of value does.
   it('buys back the same headroom from the key name as from the key value', async (ctx) => {
-    // Split behaviour (registry row update-item-size-key-name): flat in ten
-    // regions, see the note above updateCeilingIs.
+    // Split behaviour (registry row update-item-size-key-name): the row
+    // records the flat regions, see the note above updateCeilingIs.
     const byValue = { accepted: { pk: { S: 'v'.repeat(15) } }, refused: { pk: { S: 'w'.repeat(15) } } }
     keysToClean.push(byValue.accepted, byValue.refused)
     const byName = {
@@ -525,8 +524,8 @@ describe('Item size limit by surface — UpdateItem does not charge for the key'
   })
 
   it('buys back a sort key’s own bytes as well', async (ctx) => {
-    // Split behaviour (registry row update-item-size-sort-key): flat in ten
-    // regions, see the note above updateCeilingIs.
+    // Split behaviour (registry row update-item-size-sort-key): the row
+    // records the flat regions, see the note above updateCeilingIs.
     const hashOnly = { accepted: { pk: { S: 'S' } }, refused: { pk: { S: 'T' } } }
     keysToClean.push(hashOnly.accepted, hashOnly.refused)
     const withSort = {
@@ -553,8 +552,8 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
   }
 
   it('charges a second SET clause exactly 19 bytes', async (ctx) => {
-    // Split behaviour (registry row update-item-size-second-set): flat in ten
-    // regions, see the note above updateCeilingIs.
+    // Split behaviour (registry row update-item-size-second-set): the row
+    // records the flat regions, see the note above updateCeilingIs.
     const one = await updateCeilingIs(TABLE, shortPair('1'), oneSet(), ctx.task)
     const two = await updateCeilingIs(TABLE, shortPair('2'), oneSet({
       expression: 'SET b = :pad, c = :c',
@@ -566,8 +565,8 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
   })
 
   it('charges a REMOVE alongside a SET exactly 2 bytes', async (ctx) => {
-    // Split behaviour (registry row update-item-size-remove): flat in ten
-    // regions, see the note above updateCeilingIs.
+    // Split behaviour (registry row update-item-size-remove): the row
+    // records the flat regions, see the note above updateCeilingIs.
     const setOnly = await updateCeilingIs(TABLE, shortPair('3'), oneSet(), ctx.task)
     const withRemove = await updateCeilingIs(TABLE, shortPair('4'), oneSet({
       expression: 'SET b = :pad REMOVE r',
@@ -581,8 +580,8 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
   // bytes costs what one writing a single byte costs, and the threshold does not
   // move when the attribute is reached through an alias instead of by name.
   it('charges the clause, not the value it writes', async (ctx) => {
-    // Split behaviour (registry row update-item-size-clause-not-value): flat in ten
-    // regions, see the note above updateCeilingIs.
+    // Split behaviour (registry row update-item-size-clause-not-value): the row
+    // records the flat regions, see the note above updateCeilingIs.
     const small = await updateCeilingIs(TABLE, shortPair('5'), oneSet({
       expression: 'SET b = :pad, c = :c',
       values: { ':c': { S: 'y' } },
@@ -607,8 +606,8 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
   // bytes exactly as a key attribute does — which is what shows the exclusion is
   // about what the update writes rather than about keys.
   it('does not charge for an attribute the statement leaves alone', async (ctx) => {
-    // Split behaviour (registry row update-item-size-untouched-attribute): flat in ten
-    // regions, see the note above updateCeilingIs.
+    // Split behaviour (registry row update-item-size-untouched-attribute): the row
+    // records the flat regions, see the note above updateCeilingIs.
     const untouched = { u: { S: 'y'.repeat(10) } }
     const written = await updateCeilingIs(TABLE, shortPair('9'), oneSet(), ctx.task)
     const alongside = await updateCeilingIs(TABLE, shortPair('a'), oneSet({ untouched }))
@@ -617,8 +616,8 @@ describe('Item size limit by surface — UpdateItem charges per action', { tags:
   })
 
   it('charges the clause, not the attribute name or its alias', async (ctx) => {
-    // Split behaviour (registry row update-item-size-alias): flat in ten
-    // regions, see the note above updateCeilingIs.
+    // Split behaviour (registry row update-item-size-alias): the row
+    // records the flat regions, see the note above updateCeilingIs.
     const byName = await updateCeilingIs(TABLE, shortPair('7'), oneSet(), ctx.task)
     const byAlias = await updateCeilingIs(TABLE, shortPair('8'), oneSet({
       expression: 'SET #twelvechars = :pad',
@@ -711,8 +710,8 @@ describe('Item size limit by surface — UpdateItem through a document path', { 
   // threshold rather than against either constant, so what fails is the one byte
   // rather than a figure nothing else checks.
   it('charges a SET through a list index exactly one byte more', async (ctx) => {
-    // Split behaviour (registry row update-item-size-list-index): flat in ten
-    // regions, see the note above updateCeilingIs.
+    // Split behaviour (registry row update-item-size-list-index): the row
+    // records the flat regions, see the note above updateCeilingIs.
     const plainly = (at: Record<string, AttributeValue>) => (padding: number) =>
       update(at, 'SET d = :whole', { ':whole': wholeList(padding) })
     const throughIndex = (at: Record<string, AttributeValue>) => (padding: number) =>
@@ -779,8 +778,8 @@ describe('Item size limit by surface — a PartiQL UPDATE does not inherit the e
   beforeEach(({ skip }) => { if (!supported) skip() })
 
   it('writes what UpdateItem refuses at the same key', async (ctx) => {
-    // Split behaviour (registry row partiql-update-size-exclusion): flat in ten
-    // regions, see the note above updateCeilingIs.
+    // Split behaviour (registry row partiql-update-size-exclusion): the row
+    // records the flat regions, see the note above updateCeilingIs.
     const { at, item } = await keyUpdateItemRefusesAt('X', ctx.task)
     await ddb.send(new ExecuteStatementCommand({
       Statement: `UPDATE "${TABLE}" SET p = ? WHERE pk = ?`,
