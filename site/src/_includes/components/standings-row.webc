@@ -84,6 +84,12 @@
              Same phrase as the nested build rows below and the target page,
              so a build cannot read differently from the board. -->
         <p webc:if="regionClause(row)" class="standing-regions text-xs text-zinc-500 dark:text-zinc-400 mb-1.5" @text="gradeLine(row) + ' ' + regionClause(row)"></p>
+        <!-- Where the letter does not hold in every region (#271), with the
+             cause on the regions' answers rather than on the target. The
+             attribute is what the build check finds the note by. A run page's
+             row leaves the cause unlinked: the drilldown it would open is
+             today's, not that run's. -->
+        <p webc:if="regionalLetter(row)" class="standing-regional text-xs text-zinc-500 dark:text-zinc-400 mb-1.5" :data-regional-note="row.slug"><span @text="regionalLetter(row) + ', '"></span><a webc:if="!runId" :href="'/targets/' + row.slug + '#regions'" class="underline decoration-dotted underline-offset-2 hover:text-brand-700 dark:hover:text-brand-300" @text="$data.regionalCause"></a><span webc:else @text="$data.regionalCause"></span></p>
         <p webc:if="capClause(row)" class="standing-cap text-xs text-zinc-500 dark:text-zinc-400 mb-1.5" @text="capClause(row)"></p>
         <!-- The bar draws coverage alone; the judgement lives in the chip.
              Its old fill was coloured by divergence, which made a broad,
@@ -180,6 +186,7 @@
                  presented undated reads as this run's measurement. -->
             <span webc:if="v.carried" class="text-[0.7rem] italic text-zinc-500 dark:text-zinc-400">· last measured <time :datetime="v.runDate" @text="dateLabel(v.runDate)"></time></span>
           </p>
+          <p webc:if="regionalLetter(v)" class="standing-regional text-[0.7rem] leading-snug text-zinc-500 dark:text-zinc-400 mb-1" :data-regional-note="v.slug"><span @text="regionalLetter(v) + ', '"></span><a webc:if="!runId" :href="'/targets/' + v.slug + '#regions'" class="underline decoration-dotted underline-offset-2 hover:text-brand-700 dark:hover:text-brand-300" @text="$data.regionalCause"></a><span webc:else @text="$data.regionalCause"></span></p>
           <div
             class="h-1.5 rounded-full bg-zinc-200 dark:bg-white/10 overflow-hidden"
             role="meter"

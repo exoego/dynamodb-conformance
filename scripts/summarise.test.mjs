@@ -9,7 +9,7 @@ import { GROUND_TRUTH_SLUG, axesOf, isTargetResultFile, loadScoringContext, scor
 import { classifyResults } from './lib/classify.mjs'
 import { splitFor } from './lib/registry.mjs'
 import { committedGradingInputs } from './lib/measured.mjs'
-import { BASELINE_LABEL, gradeOf } from './lib/grade.mjs'
+import { BASELINE_LABEL, REGIONAL_CAUSE, gradeOf } from './lib/grade.mjs'
 import { readManifest, suiteIdentities, suiteSizeOf } from './suite-manifest.mjs'
 import {
   DISPLAY,
@@ -1095,24 +1095,21 @@ describe('committed results pipeline', () => {
   })
 
   it('a zero-divergence headline stays honest across regions (the A+ tripwire)', () => {
-    // Two facts hold today and the top grade leans on both, so they are
-    // asserted rather than assumed.
+    // A target with zero fails in its headline region may fail elsewhere only
+    // on the registry's confirmed splits - and that is checked by name, not by
+    // count. A count match would hold just as well for a target failing three
+    // unrelated tests while passing the three splits; asserting the failing
+    // tests ARE the split tests turns the target page's "only where real
+    // DynamoDB itself disagrees between regions" from an inference into a
+    // checked fact. A breach here means a non-split behaviour is varying by
+    // region - the scoring model changed underneath the claim the methodology
+    // makes.
     //
-    // First, the identity: a target with zero fails in its headline region
-    // may fail elsewhere only on the registry's confirmed splits - and that
-    // is checked by name, not by count. A count match would hold just as
-    // well for a target failing three unrelated tests while passing the
-    // three splits; asserting the failing tests ARE the split tests turns
-    // the target page's "only where real DynamoDB itself disagrees between
-    // regions" from an inference into a checked fact. A breach here means a
-    // non-split behaviour is varying by region - the scoring model changed
-    // underneath the claim the methodology makes.
-    //
-    // Second, the tripwire: the letter survives the target's worst region. If
-    // real DynamoDB's regions ever drift far enough apart that a target can be
-    // perfect in one and grade lower in another, an unconditional A+ stops
-    // being honest. This failing is the signal to revisit the criteria in the
-    // open, under a bumped GRADING_VERSION, not to loosen the assertion.
+    // This half used to carry a second assertion: that the letter survives the
+    // target's worst region. It fired on 11 October 2026, and the revisit it
+    // asked for (#271) kept the criteria and moved the claim. A letter may now
+    // fail to hold in a region provided the row says so, and that is asserted
+    // for every target, not only zero-divergence ones, in the test below.
     let guarded = 0
     for (const [slug, t] of Object.entries(fresh.targets)) {
       const headline = t.regions[t.headline.region];
@@ -1134,28 +1131,6 @@ describe('committed results pipeline', () => {
           ).toBeTruthy();
         }
       }
-
-      // A note on the day this first fires. The comparison is the published
-      // letter against the worst region's, so at full coverage it reads A+
-      // versus A: the first target ever to earn A+ while any confirmed split
-      // exists will fail this, and the trigger is the ordinary A+ case rather
-      // than an anomaly. That is deliberate - an A+ that holds only in the
-      // headline region is the claim this guard exists to question - but read
-      // it as a prompt to revisit the criteria in the open, not as a defect in
-      // the target that tripped it.
-      // The tolerance is the row's own letter, not the A band. Three splits in
-      // a thousand tests is 0.3% against 5%, so the band could not bind until
-      // the registry grew seventeenfold. Comparing the letter the headline
-      // publishes against the one its worst region earns binds from the first
-      // split that would move it.
-      const coverage = axesOf(headline).coverage;
-      const worst = Math.max(
-        ...Object.values(t.regions).map((r) => axesOf(r).divergence ?? 0),
-      )
-      expect(
-        gradeOf(worst, coverage).letter,
-        `${slug} publishes ${gradeOf(0, coverage).letter} from ${t.headline.region} but its worst region earns less - revisit the A+ criteria before publishing`,
-      ).toBe(gradeOf(0, coverage).letter);
     }
 
     // The loop above only runs for a target at exactly zero headline
@@ -1168,6 +1143,47 @@ describe('committed results pipeline', () => {
     // quiet pass here is the honest verdict rather than a fault. The tripwire
     // re-arms automatically the moment any row returns to zero divergence.
     if (guarded === 0) return
+  })
+
+  it('a letter that does not hold in every region says so in the results table', () => {
+    // Worked out here from the committed figures rather than through
+    // regionalGapOf, so the table is checked against a second reading of the
+    // data and not against the function that produced it. A helper that
+    // stopped finding gaps would otherwise render no note and agree with itself.
+    const ORDER = ['A+', 'A', 'B', 'C', 'D', 'F']
+    const lines = renderTable(fresh).split('\n')
+    let checked = 0
+    for (const [slug, t] of Object.entries(fresh.targets)) {
+      const { divergence, coverage } = axesOf(t.regions[t.headline.region])
+      const published = gradeOf(divergence, coverage).letter
+      if (published === null) continue
+      checked++
+
+      const lower = Object.entries(t.regions)
+        .map(([region, r]) => ({ region, letter: gradeOf(axesOf(r).divergence, coverage).letter }))
+        .filter(({ letter }) => letter !== null && ORDER.indexOf(letter) > ORDER.indexOf(published))
+      const ref = `[^regions-${slug}]`
+      const cell = lines.find((l) => l.startsWith('|') && l.includes(ref))
+      const note = lines.find((l) => l.startsWith(`${ref}:`))
+
+      if (lower.length === 0) {
+        expect(cell, `${slug}'s letter holds everywhere, so its grade cell carries no note`).toBeUndefined()
+        expect(note, `${slug}'s letter holds everywhere, so the table carries no note for it`).toBeUndefined()
+        continue
+      }
+      // The published letter is still the one in the cell: the note qualifies
+      // it, it does not replace it.
+      expect(cell ?? '', `${slug} grades lower in ${lower.map((l) => l.region).join(', ')} and its grade cell does not say so`).toContain(
+        `| ${published}${ref} |`,
+      )
+      expect(note, `${slug}'s grade cell points at a note the table does not carry`).toBeDefined()
+      expect(note).toContain(REGIONAL_CAUSE)
+      for (const letter of new Set(lower.map((l) => l.letter))) expect(note).toContain(`${letter} against `)
+      if (lower.length <= 3) for (const { region } of lower) expect(note).toContain(region)
+    }
+    // Every scored target is in scope, so an empty pass means the table had
+    // nothing to grade, not that every letter held.
+    expect(checked, 'no scored target reached the regional-note check').toBeGreaterThan(0)
   })
 
   it('the ground truth earns its 100%: the real run scores 100% against its own region', () => {
