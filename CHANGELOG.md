@@ -18,6 +18,18 @@ grading version stays at 1. A note can come and go between runs as regions
 converge and diverge, with no change in the target
 ([#271](https://github.com/paritysuite/dynamodb-conformance/issues/271)).
 
+A BatchExecuteStatement test described `ReturnValuesOnConditionCheckFailure` as
+inert on a batch member, the opposite of what DynamoDB does, and its only check
+could not tell a target that ignores the option from one that honours it.
+DynamoDB returns the existing item with `ALL_OLD`, on the failed member's
+`Error`, and none with `NONE` or the option absent. The three tests now check
+that item exactly, so a target that ignores the option, or returns the item
+whatever the setting, now fails one or more of them. The TransactWriteItems test
+beside them checks the item on the cancellation reason exactly too, where it
+checked only that one was there. The batch tests keep their names, which still
+hold for the member itself, because a rename needs every committed results file
+re-run.
+
 Fifteen regions move to the new wording on the five Scan rows. af-south-1,
 ap-east-1, ap-northeast-3, ap-south-1, ap-southeast-1 to ap-southeast-5,
 ca-west-1, eu-north-1, eu-west-3, il-central-1, mx-central-1 and sa-east-1
