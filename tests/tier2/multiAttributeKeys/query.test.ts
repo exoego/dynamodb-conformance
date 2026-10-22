@@ -24,6 +24,8 @@ import {
 // a prefix of the RANGE attributes with no gap, and only the last attribute it
 // names may carry a range condition; the clauses can be written in any order.
 // A page's LastEvaluatedKey carries the table key and every index key attribute.
+// tests/tier3/error-messages/queryMultiAttributeKey.test.ts pins the wording of
+// the refusals.
 //
 // The table is created here rather than from a shared def: TestTableDef models
 // one RANGE attribute per index.
@@ -147,7 +149,6 @@ describe('Query - GSI with a multi-attribute key', { tags: ['query', 'gsi', 'dat
     await expectDynamoError(
       () => query('h = :h AND a = :a AND c = :c'),
       'ValidationException',
-      'RANGE key attributes b must have equality conditions specified in the query because a condition is present on key attribute c',
     )
   })
 
@@ -155,7 +156,6 @@ describe('Query - GSI with a multi-attribute key', { tags: ['query', 'gsi', 'dat
     await expectDynamoError(
       () => query('h = :h AND a = :a AND b > :b AND c = :c'),
       'ValidationException',
-      'RANGE key attributes b must have equality conditions specified in the query because a condition is present on key attribute c',
     )
   })
 
@@ -163,7 +163,6 @@ describe('Query - GSI with a multi-attribute key', { tags: ['query', 'gsi', 'dat
     await expectDynamoError(
       () => query('h = :h AND b = :b'),
       'ValidationException',
-      'RANGE key attributes a must have equality conditions specified in the query because a condition is present on key attribute b',
     )
   })
 })

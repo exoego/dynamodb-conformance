@@ -55,7 +55,7 @@ describe('PartiQL functions - exact error messages', { tags: ['partiql', 'data-p
   beforeEach(({ skip }) => { if (!supported) skip() })
 
   afterAll(async () => {
-    await cleanupItems(T, [{ pk: { S: ITEM } }])
+    await cleanupItems(T, [{ pk: { S: ITEM } }, { pk: { S: 'pq-fn-msg-insert' } }])
   })
 
   /** Run a statement and hand back the exception it raises. */

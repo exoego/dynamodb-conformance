@@ -33,7 +33,7 @@ describe('PartiQL - grammar', { tags: ['partiql', 'data-plane'] }, () => {
   const SN = compositeNTableDef.name
 
   const numberKeys = ['7310000', '7.3', '-7.3'].map((n) => ({ pk: { N: n } }))
-  const insertedNumberKeys = ['7320000', '7.325'].map((n) => ({ pk: { N: n } }))
+  const insertedNumberKeys = ['7320000', '7.325', '7330000'].map((n) => ({ pk: { N: n } }))
   const stringKeys = ['pq-grammar-a', 'pq-grammar-b', 'pq-grammar-c'].map((s) => ({ pk: { S: s } }))
   const orderKeys = ['1', '2', '3'].map((n) => ({ pk: { S: 'pq-grammar-order' }, sk: { N: n } }))
 

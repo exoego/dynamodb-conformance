@@ -77,15 +77,13 @@ describe('PartiQL - FROM-first UPDATE', { tags: ['partiql', 'data-plane'] }, () 
   it('FROM ... WHERE ... REMOVE removes the attribute', async () => {
     const pk = await seed('pq-ff-remove')
     await run(`FROM "${T}" WHERE pk = '${pk}' REMOVE b`)
-    expect((await stored(pk))?.b).toBeUndefined()
+    expect(await stored(pk)).toEqual({ pk: { S: pk }, a: { N: '1' } })
   })
 
   it('SET and REMOVE can follow each other', async () => {
     const pk = await seed('pq-ff-set-remove')
     await run(`FROM "${T}" WHERE pk = '${pk}' SET c = 2 REMOVE a`)
-    const item = await stored(pk)
-    expect(item?.c).toEqual({ N: '2' })
-    expect(item?.a).toBeUndefined()
+    expect(await stored(pk)).toEqual({ pk: { S: pk }, b: { S: 'bee' }, c: { N: '2' } })
   })
 
   it('RETURNING ALL NEW * returns the updated item', async () => {
@@ -118,7 +116,7 @@ describe('PartiQL - FROM-first UPDATE', { tags: ['partiql', 'data-plane'] }, () 
       () => run(`FROM "${T}" WHERE pk = '${pk}' AND a = 2 SET c = 5`),
       'ConditionalCheckFailedException',
     )
-    expect((await stored(pk))?.c).toBeUndefined()
+    expect(await stored(pk)).toEqual({ pk: { S: pk }, a: { N: '1' }, b: { S: 'bee' } })
   })
 
   it('a key that matches no item fails its condition and creates nothing', async () => {

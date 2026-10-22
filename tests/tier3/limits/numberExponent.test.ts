@@ -38,7 +38,7 @@ describe('Number limits - exponents', { tags: ['put-item', 'get-item', 'delete-i
   const S = hashTableDef.name
   const N = hashNTableDef.name
   const SN = compositeNTableDef.name
-  const keys = ['nx-zero', 'nx-small', 'nx-update', 'nx-condition'].map((s) => ({ pk: { S: s } }))
+  const keys = ['nx-rejected', 'nx-zero', 'nx-small', 'nx-update', 'nx-condition'].map((s) => ({ pk: { S: s } }))
 
   afterAll(async () => {
     await cleanupItems(S, keys)
@@ -83,7 +83,7 @@ describe('Number limits - exponents', { tags: ['put-item', 'get-item', 'delete-i
   it('the smallest magnitude written with an exponent is accepted', async () => {
     await put('1e-130', 'nx-small')()
     const res = await ddb.send(new GetItemCommand({ TableName: S, Key: { pk: { S: 'nx-small' } }, ConsistentRead: true }))
-    expect(res.Item!.val.N).toBeDefined()
+    expect(Number(res.Item!.val.N)).toBe(1e-130)
   })
 
   it('an UpdateExpression value with an exponent past a 32-bit integer overflows', async () => {

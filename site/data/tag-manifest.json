@@ -445,13 +445,6 @@
         "lsi"
       ]
     },
-    "tests/tier1/query/multiAttributeGsiKey.test.ts": {
-      "Query - GSI with a multi-attribute key": [
-        "query",
-        "gsi",
-        "data-plane"
-      ]
-    },
     "tests/tier1/query/numericKeys.test.ts": {
       "Query — numeric sort key": [
         "query",
@@ -756,6 +749,13 @@
         "control-plane",
         "cloud-only",
         "slow"
+      ]
+    },
+    "tests/tier2/multiAttributeKeys/query.test.ts": {
+      "Query - GSI with a multi-attribute key": [
+        "query",
+        "gsi",
+        "data-plane"
       ]
     },
     "tests/tier2/partiql/batchExecuteStatement.test.ts": {
@@ -1187,6 +1187,14 @@
     "tests/tier3/error-messages/queryKeyConditionOperands.test.ts": {
       "Query - KeyConditionExpression operand types": [
         "query",
+        "data-plane",
+        "negative-path"
+      ]
+    },
+    "tests/tier3/error-messages/queryMultiAttributeKey.test.ts": {
+      "Query - multi-attribute GSI key exact error messages": [
+        "query",
+        "gsi",
         "data-plane",
         "negative-path"
       ]
