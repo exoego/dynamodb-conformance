@@ -159,7 +159,7 @@ describe('Number precision — DynamoDB number limits and edge cases', { tags: [
         ConsistentRead: true,
       }),
     )
-    expect(result.Item!.val.N).toBeDefined()
+    expect(Number(result.Item!.val.N)).toBe(1e-130)
   })
 
   it('rejects number below minimum positive: 1E-131', async () => {
