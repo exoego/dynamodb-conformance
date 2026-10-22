@@ -42,6 +42,8 @@ describe('Number limits - exponents', { tags: ['put-item', 'get-item', 'delete-i
 
   afterAll(async () => {
     await cleanupItems(S, keys)
+    // Written only if a target accepts the overflowing UpdateItem key below.
+    await cleanupItems(N, [{ pk: { N: '1e99999999999' } }])
   })
 
   function put(value: string, pk = 'nx-rejected') {

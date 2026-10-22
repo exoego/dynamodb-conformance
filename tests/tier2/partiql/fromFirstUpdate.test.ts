@@ -59,6 +59,10 @@ describe('PartiQL - FROM-first UPDATE', { tags: ['partiql', 'data-plane'] }, () 
     return pk
   }
 
+  // The item `seed` writes, plus whatever a statement should have added.
+  const seeded = (pk: string, added: Record<string, AttributeValue> = {}) =>
+    ({ pk: { S: pk }, a: { N: '1' }, b: { S: 'bee' }, ...added })
+
   async function stored(pk: string): Promise<Record<string, AttributeValue> | undefined> {
     const res = await ddb.send(new GetItemCommand({ TableName: T, Key: { pk: { S: pk } }, ConsistentRead: true }))
     return res.Item
@@ -71,7 +75,7 @@ describe('PartiQL - FROM-first UPDATE', { tags: ['partiql', 'data-plane'] }, () 
   it('FROM ... WHERE ... SET updates the item', async () => {
     const pk = await seed('pq-ff-set')
     await run(`FROM "${T}" WHERE pk = '${pk}' SET c = 1`)
-    expect((await stored(pk))?.c).toEqual({ N: '1' })
+    expect(await stored(pk)).toEqual(seeded(pk, { c: { N: '1' } }))
   })
 
   it('FROM ... WHERE ... REMOVE removes the attribute', async () => {
@@ -95,19 +99,19 @@ describe('PartiQL - FROM-first UPDATE', { tags: ['partiql', 'data-plane'] }, () 
   it('the keywords are case-insensitive', async () => {
     const pk = await seed('pq-ff-lower')
     await run(`from "${T}" where pk = '${pk}' set e = 4`)
-    expect((await stored(pk))?.e).toEqual({ N: '4' })
+    expect(await stored(pk)).toEqual(seeded(pk, { e: { N: '4' } }))
   })
 
   it('takes parameters', async () => {
     const pk = await seed('pq-ff-params')
     await run(`FROM "${T}" WHERE pk = ? SET c = ?`, [{ S: pk }, { N: '7' }])
-    expect((await stored(pk))?.c).toEqual({ N: '7' })
+    expect(await stored(pk)).toEqual(seeded(pk, { c: { N: '7' } }))
   })
 
   it('a further condition in the WHERE that holds lets the update through', async () => {
     const pk = await seed('pq-ff-condition')
     await run(`FROM "${T}" WHERE pk = '${pk}' AND a = 1 SET c = 5`)
-    expect((await stored(pk))?.c).toEqual({ N: '5' })
+    expect(await stored(pk)).toEqual(seeded(pk, { c: { N: '5' } }))
   })
 
   it('a further condition in the WHERE that fails stops the update', async () => {
@@ -133,7 +137,7 @@ describe('PartiQL - FROM-first UPDATE', { tags: ['partiql', 'data-plane'] }, () 
     await ddb.send(new ExecuteTransactionCommand({
       TransactStatements: [{ Statement: `FROM "${T}" WHERE pk = '${pk}' SET c = 1` }],
     }))
-    expect((await stored(pk))?.c).toEqual({ N: '1' })
+    expect(await stored(pk)).toEqual(seeded(pk, { c: { N: '1' } }))
   })
 
   it('BatchExecuteStatement runs it', async () => {
@@ -143,6 +147,6 @@ describe('PartiQL - FROM-first UPDATE', { tags: ['partiql', 'data-plane'] }, () 
     }))
     expect(res.Responses).toHaveLength(1)
     expect(res.Responses![0].Error).toBeUndefined()
-    expect((await stored(pk))?.c).toEqual({ N: '1' })
+    expect(await stored(pk)).toEqual(seeded(pk, { c: { N: '1' } }))
   })
 })
