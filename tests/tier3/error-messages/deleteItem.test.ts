@@ -94,7 +94,7 @@ describe('DeleteItem — exact error messages', { tags: ['delete-item', 'data-pl
   })
 })
 
-describe('DeleteItem - request validation envelope', { tags: ['delete-item', 'data-plane', 'negative-path'] }, () => {
+describe('DeleteItem — request validation envelope', { tags: ['delete-item', 'data-plane', 'negative-path'] }, () => {
   // DeleteItem reports each of these request-validation errors inside the
   // `1 validation error detected: ` envelope, as PutItem and UpdateItem do.
   // The ExpressionAttributeValues message carries no ": ConditionExpression is

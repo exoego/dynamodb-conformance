@@ -73,7 +73,7 @@ describe('Query — validation ordering', { tags: ['query', 'data-plane', 'negat
   })
 })
 
-describe('Query - ConditionalOperator beside Select', { tags: ['query', 'legacy', 'data-plane', 'negative-path'] }, () => {
+describe('Query — ConditionalOperator beside Select', { tags: ['query', 'legacy', 'data-plane', 'negative-path'] }, () => {
   it('reports XOR with two QueryFilter conditions before an unknown Select', async () => {
     // Bare, in the newer enum form, and on its own: the Select error is not
     // joined to it. Both regions (eu-west-2, us-east-1, 2026-10-09).

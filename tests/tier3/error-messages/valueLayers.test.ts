@@ -31,7 +31,8 @@ declareTables(hashTableDef)
 //            `ExpressionAttributeValues contains invalid value: ` wrapper.
 //
 // eu-west-2 runs the current layer on transactions too, where the other three
-// regions run the older one; those tests accept exactly the two answers.
+// regions run the older one (a later probe of eight regions found eu-north-1
+// with eu-west-2); those tests accept exactly the two answers.
 
 const T = hashTableDef.name
 const S = (s: string): AttributeValue => ({ S: s })
@@ -39,7 +40,7 @@ const N = (n: string): AttributeValue => ({ N: n })
 const one = (m: string) => `1 validation error detected: ${m}`
 const forKey = (m: string, k: string) => `ExpressionAttributeValues contains invalid value: ${m} for key ${k}`
 
-const written = [{ pk: S('vl-n') }, { pk: S('vl-n-expected') }, { pk: S('vl-d') }]
+const written = [{ pk: S('layer-n') }, { pk: S('layer-n-expected') }, { pk: S('layer-d') }]
 afterAll(async () => {
   await cleanupItems(T, written)
 })
@@ -77,7 +78,7 @@ async function eachShape(send: (v: AttributeValue, raw: string) => Promise<unkno
   return got
 }
 
-describe('Number values - messages by operation', { tags: ['put-item', 'update-item', 'delete-item', 'get-item', 'query', 'batch', 'data-plane', 'negative-path'] }, () => {
+describe('Number values — messages by operation', { tags: ['put-item', 'update-item', 'delete-item', 'get-item', 'query', 'batch', 'data-plane', 'negative-path'] }, () => {
   it('PutItem refuses every malformed number in an item inside the validation envelope', async () => {
     // Exponents past an int, NaN and Infinity, stray spaces and too many
     // digits: every one is enveloped (eu-west-2 and us-east-1).
@@ -103,14 +104,14 @@ describe('Number values - messages by operation', { tags: ['put-item', 'update-i
     ]
     const got: string[] = []
     for (const [n] of cases) {
-      got.push(await refusal(() => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('vl-n'), n: N(n) } }))))
+      got.push(await refusal(() => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('layer-n'), n: N(n) } }))))
     }
     expect(got).toEqual(cases.map(([, m]) => one(m)))
   })
 
   it('PutItem refuses a malformed number set member and a nested number inside the envelope', async () => {
-    const member = await eachShape((_, raw) => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('vl-n'), n: { NS: ['1', raw] } } })))
-    const nested = await eachShape((v) => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('vl-n'), n: { M: { x: { L: [v] } } } } })))
+    const member = await eachShape((_, raw) => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('layer-n'), n: { NS: ['1', raw] } } })))
+    const nested = await eachShape((v) => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('layer-n'), n: { M: { x: { L: [v] } } } } })))
     expect({ member, nested }).toEqual({ member: CURRENT.map(one), nested: CURRENT.map(one) })
   })
 
@@ -119,7 +120,7 @@ describe('Number values - messages by operation', { tags: ['put-item', 'update-i
       ddb.send(
         new PutItemCommand({
           TableName: T,
-          Item: { pk: S('vl-n') },
+          Item: { pk: S('layer-n') },
           ConditionExpression: 'attribute_not_exists(pk) OR n = :v',
           ExpressionAttributeValues: { ':v': v },
         }),
@@ -129,18 +130,18 @@ describe('Number values - messages by operation', { tags: ['put-item', 'update-i
   })
 
   it('PutItem checks the numbers in Expected values and writes nothing', { tags: ['legacy'] }, async () => {
-    const got = await eachShape((v) => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('vl-n-expected') }, Expected: { n: { Value: v } } })))
+    const got = await eachShape((v) => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('layer-n-expected') }, Expected: { n: { Value: v } } })))
     expect(got).toEqual(CURRENT.map(one))
-    const item = await ddb.send(new GetItemCommand({ TableName: T, Key: { pk: S('vl-n-expected') }, ConsistentRead: true }))
+    const item = await ddb.send(new GetItemCommand({ TableName: T, Key: { pk: S('layer-n-expected') }, ConsistentRead: true }))
     expect(item.Item).toBeUndefined()
   })
 
   it('UpdateItem refuses a malformed number in a value, in AttributeUpdates and in the key inside the envelope', { tags: ['legacy'] }, async () => {
     const value = await eachShape((v) =>
-      ddb.send(new UpdateItemCommand({ TableName: T, Key: { pk: S('vl-n') }, UpdateExpression: 'SET n = :v', ExpressionAttributeValues: { ':v': v } })),
+      ddb.send(new UpdateItemCommand({ TableName: T, Key: { pk: S('layer-n') }, UpdateExpression: 'SET n = :v', ExpressionAttributeValues: { ':v': v } })),
     )
     const attributeUpdates = await eachShape((v) =>
-      ddb.send(new UpdateItemCommand({ TableName: T, Key: { pk: S('vl-n') }, AttributeUpdates: { n: { Action: 'PUT', Value: v } } })),
+      ddb.send(new UpdateItemCommand({ TableName: T, Key: { pk: S('layer-n') }, AttributeUpdates: { n: { Action: 'PUT', Value: v } } })),
     )
     const keyValue = await eachShape((v) =>
       ddb.send(new UpdateItemCommand({ TableName: T, Key: { pk: v }, UpdateExpression: 'SET n = :o', ExpressionAttributeValues: { ':o': N('1') } })),
@@ -151,7 +152,7 @@ describe('Number values - messages by operation', { tags: ['put-item', 'update-i
 
   it('DeleteItem refuses a malformed number in a condition value and in the key inside the envelope, with no wrapper', async () => {
     const value = await eachShape((v) =>
-      ddb.send(new DeleteItemCommand({ TableName: T, Key: { pk: S('vl-n') }, ConditionExpression: 'n = :v', ExpressionAttributeValues: { ':v': v } })),
+      ddb.send(new DeleteItemCommand({ TableName: T, Key: { pk: S('layer-n') }, ConditionExpression: 'n = :v', ExpressionAttributeValues: { ':v': v } })),
     )
     const keyValue = await eachShape((v) => ddb.send(new DeleteItemCommand({ TableName: T, Key: { pk: v } })))
     expect({ value, keyValue }).toEqual({ value: CURRENT.map(one), keyValue: CURRENT.map(one) })
@@ -166,7 +167,7 @@ describe('Number values - messages by operation', { tags: ['put-item', 'update-i
           TableName: T,
           KeyConditionExpression: 'pk = :p',
           FilterExpression: 'n = :v',
-          ExpressionAttributeValues: { ':p': S('vl-n'), ':v': v },
+          ExpressionAttributeValues: { ':p': S('layer-n'), ':v': v },
         }),
       ),
     )
@@ -174,22 +175,23 @@ describe('Number values - messages by operation', { tags: ['put-item', 'update-i
   })
 
   it('BatchWriteItem refuses a malformed number bare, in the older wording', async () => {
-    const got = await eachShape((v) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ PutRequest: { Item: { pk: S('vl-n'), n: v } } }] } })))
+    const got = await eachShape((v) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ PutRequest: { Item: { pk: S('layer-n'), n: v } } }] } })))
     expect(got).toEqual(OLDER)
   })
 })
 
-describe('Number values - transactions by region', { tags: ['transactions', 'data-plane', 'negative-path'] }, () => {
+describe('Number values — transactions by region', { tags: ['transactions', 'data-plane', 'negative-path'] }, () => {
   skipUnlessSupported(() => ddb.send(new TransactWriteItemsCommand({ TransactItems: [] })))
 
   // us-east-1, eu-west-1 and us-west-2 run the older layer here and eu-west-2
-  // the current one. Each answer must be one of exactly those two.
+  // the current one. A region answers every shape in the same layer, so the
+  // answers must match one of exactly those two lists as a whole.
   function eitherLayer(got: string[], older: string[], current: string[]): void {
-    got.forEach((m, i) => expect([older[i], current[i]]).toContain(m))
+    expect([older, current]).toContainEqual(got)
   }
 
   it('TransactWriteItems refuses a malformed number in a Put item up front', async () => {
-    const got = await eachShape((v) => ddb.send(new TransactWriteItemsCommand({ TransactItems: [{ Put: { TableName: T, Item: { pk: S('vl-n'), n: v } } }] })))
+    const got = await eachShape((v) => ddb.send(new TransactWriteItemsCommand({ TransactItems: [{ Put: { TableName: T, Item: { pk: S('layer-n'), n: v } } }] })))
     eitherLayer(got, OLDER, CURRENT)
   })
 
@@ -197,7 +199,7 @@ describe('Number values - transactions by region', { tags: ['transactions', 'dat
     const got = await eachShape((v) =>
       ddb.send(
         new TransactWriteItemsCommand({
-          TransactItems: [{ Update: { TableName: T, Key: { pk: S('vl-n') }, UpdateExpression: 'SET n = :v', ExpressionAttributeValues: { ':v': v } } }],
+          TransactItems: [{ Update: { TableName: T, Key: { pk: S('layer-n') }, UpdateExpression: 'SET n = :v', ExpressionAttributeValues: { ':v': v } } }],
         }),
       ),
     )
@@ -241,20 +243,20 @@ async function eachSet(send: (d: AttributeValue) => Promise<unknown>): Promise<s
   return got
 }
 
-describe('Duplicate set members - messages by operation', { tags: ['put-item', 'update-item', 'delete-item', 'get-item', 'query', 'batch', 'data-plane', 'negative-path'] }, () => {
+describe('Duplicate set members — messages by operation', { tags: ['put-item', 'update-item', 'delete-item', 'get-item', 'query', 'batch', 'data-plane', 'negative-path'] }, () => {
   it('PutItem refuses a duplicate in an item, a condition value and an Expected value inside the envelope', { tags: ['legacy'] }, async () => {
-    const item = await eachSet((d) => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('vl-d'), s: d } })))
+    const item = await eachSet((d) => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('layer-d'), s: d } })))
     const condition = await eachSet((d) =>
       ddb.send(
         new PutItemCommand({
           TableName: T,
-          Item: { pk: S('vl-d') },
+          Item: { pk: S('layer-d') },
           ConditionExpression: 'attribute_not_exists(pk) OR s = :t',
           ExpressionAttributeValues: { ':t': d },
         }),
       ),
     )
-    const expected = await eachSet((d) => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('vl-d') }, Expected: { s: { Value: d } } })))
+    const expected = await eachSet((d) => ddb.send(new PutItemCommand({ TableName: T, Item: { pk: S('layer-d') }, Expected: { s: { Value: d } } })))
     const want = DUPE_CURRENT.map(one)
     expect({ item, condition, expected }).toEqual({ item: want, condition: want, expected: want })
   })
@@ -264,7 +266,7 @@ describe('Duplicate set members - messages by operation', { tags: ['put-item', '
       ddb.send(
         new UpdateItemCommand({
           TableName: T,
-          Key: { pk: S('vl-d') },
+          Key: { pk: S('layer-d') },
           UpdateExpression: 'SET o = :o',
           ConditionExpression: 'attribute_not_exists(pk) OR s = :t',
           ExpressionAttributeValues: { ':o': N('1'), ':t': d },
@@ -272,7 +274,7 @@ describe('Duplicate set members - messages by operation', { tags: ['put-item', '
       ),
     )
     const attributeUpdates = await eachSet((d) =>
-      ddb.send(new UpdateItemCommand({ TableName: T, Key: { pk: S('vl-d') }, AttributeUpdates: { s: { Action: 'PUT', Value: d } } })),
+      ddb.send(new UpdateItemCommand({ TableName: T, Key: { pk: S('layer-d') }, AttributeUpdates: { s: { Action: 'PUT', Value: d } } })),
     )
     const keyValue = await eachSet((d) =>
       ddb.send(new UpdateItemCommand({ TableName: T, Key: { pk: d }, UpdateExpression: 'SET o = :o', ExpressionAttributeValues: { ':o': N('1') } })),
@@ -302,20 +304,20 @@ describe('Duplicate set members - messages by operation', { tags: ['put-item', '
           TableName: T,
           KeyConditionExpression: 'pk = :p',
           FilterExpression: 's = :t',
-          ExpressionAttributeValues: { ':p': S('vl-d'), ':t': d },
+          ExpressionAttributeValues: { ':p': S('layer-d'), ':t': d },
         }),
       ),
     )
     const startKey = await eachSet((d) =>
       ddb.send(
-        new QueryCommand({ TableName: T, KeyConditionExpression: 'pk = :p', ExpressionAttributeValues: { ':p': S('vl-d') }, ExclusiveStartKey: { pk: d } }),
+        new QueryCommand({ TableName: T, KeyConditionExpression: 'pk = :p', ExpressionAttributeValues: { ':p': S('layer-d') }, ExclusiveStartKey: { pk: d } }),
       ),
     )
     const queryFilter = await eachSet((d) =>
       ddb.send(
         new QueryCommand({
           TableName: T,
-          KeyConditions: { pk: { ComparisonOperator: 'EQ', AttributeValueList: [S('vl-d')] } },
+          KeyConditions: { pk: { ComparisonOperator: 'EQ', AttributeValueList: [S('layer-d')] } },
           QueryFilter: { s: { ComparisonOperator: 'EQ', AttributeValueList: [d] } },
         }),
       ),
@@ -329,25 +331,26 @@ describe('Duplicate set members - messages by operation', { tags: ['put-item', '
   })
 
   it('BatchWriteItem refuses a duplicate in an item and a delete key bare, in the older wording', async () => {
-    const put = await eachSet((d) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ PutRequest: { Item: { pk: S('vl-d'), s: d } } }] } })))
+    const put = await eachSet((d) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ PutRequest: { Item: { pk: S('layer-d'), s: d } } }] } })))
     const del = await eachSet((d) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ DeleteRequest: { Key: { pk: d } } }] } })))
     expect({ put, del }).toEqual({ put: DUPE_OLDER, del: DUPE_OLDER })
   })
 })
 
-describe('Duplicate set members - transactions by region', { tags: ['transactions', 'data-plane', 'negative-path'] }, () => {
+describe('Duplicate set members — transactions by region', { tags: ['transactions', 'data-plane', 'negative-path'] }, () => {
   skipUnlessSupported(() => ddb.send(new TransactWriteItemsCommand({ TransactItems: [] })))
 
   // The transaction operations check every action's sets before running any
   // of them, so a duplicate is a top-level ValidationException, never a
   // cancellation. us-east-1, eu-west-1 and us-west-2 answer in the older
-  // layer and eu-west-2 in the current one; exactly those two answers.
+  // layer and eu-west-2 in the current one, every shape in the same layer, so
+  // the answers must match one of exactly those two lists as a whole.
   function eitherLayer(got: string[], older: string[]): void {
-    got.forEach((m, i) => expect([older[i], DUPE_CURRENT[i]]).toContain(m))
+    expect([older, DUPE_CURRENT]).toContainEqual(got)
   }
 
   it('TransactWriteItems refuses a duplicate in a Put item and a Delete key up front', async () => {
-    const put = await eachSet((d) => ddb.send(new TransactWriteItemsCommand({ TransactItems: [{ Put: { TableName: T, Item: { pk: S('vl-d'), s: d } } }] })))
+    const put = await eachSet((d) => ddb.send(new TransactWriteItemsCommand({ TransactItems: [{ Put: { TableName: T, Item: { pk: S('layer-d'), s: d } } }] })))
     const del = await eachSet((d) => ddb.send(new TransactWriteItemsCommand({ TransactItems: [{ Delete: { TableName: T, Key: { pk: d } } }] })))
     eitherLayer(put, DUPE_OLDER)
     eitherLayer(del, DUPE_OLDER)
@@ -356,10 +359,10 @@ describe('Duplicate set members - transactions by region', { tags: ['transaction
   it('TransactWriteItems refuses a duplicate in a condition or update value of every action type up front', async () => {
     const cond = { ConditionExpression: 'attribute_not_exists(pk) OR s = :t' }
     const shapes: ((d: AttributeValue) => any)[] = [
-      (d) => ({ Put: { TableName: T, Item: { pk: S('vl-d') }, ...cond, ExpressionAttributeValues: { ':t': d } } }),
-      (d) => ({ Update: { TableName: T, Key: { pk: S('vl-d') }, UpdateExpression: 'SET s = :t', ExpressionAttributeValues: { ':t': d } } }),
-      (d) => ({ Delete: { TableName: T, Key: { pk: S('vl-d') }, ...cond, ExpressionAttributeValues: { ':t': d } } }),
-      (d) => ({ ConditionCheck: { TableName: T, Key: { pk: S('vl-d') }, ...cond, ExpressionAttributeValues: { ':t': d } } }),
+      (d) => ({ Put: { TableName: T, Item: { pk: S('layer-d') }, ...cond, ExpressionAttributeValues: { ':t': d } } }),
+      (d) => ({ Update: { TableName: T, Key: { pk: S('layer-d') }, UpdateExpression: 'SET s = :t', ExpressionAttributeValues: { ':t': d } } }),
+      (d) => ({ Delete: { TableName: T, Key: { pk: S('layer-d') }, ...cond, ExpressionAttributeValues: { ':t': d } } }),
+      (d) => ({ ConditionCheck: { TableName: T, Key: { pk: S('layer-d') }, ...cond, ExpressionAttributeValues: { ':t': d } } }),
     ]
     for (const shape of shapes) {
       const got = await eachSet((d) => ddb.send(new TransactWriteItemsCommand({ TransactItems: [shape(d)] })))

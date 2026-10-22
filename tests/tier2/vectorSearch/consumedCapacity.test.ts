@@ -408,7 +408,7 @@ async function writeUnits(item: Record<string, AttributeValue>): Promise<number 
   return res.ConsumedCapacity?.CapacityUnits
 }
 
-describe('PutItem - a vector attribute is billed at four bytes per dimension', { tags: ['put-item', 'data-plane', 'vector'] }, () => {
+describe('PutItem — a vector attribute is billed at four bytes per dimension', { tags: ['put-item', 'data-plane', 'vector'] }, () => {
   skipUnlessVectorSearch()
 
   it('bills a three-dimension vector at 12 bytes, whatever numbers it holds', async () => {
@@ -423,7 +423,7 @@ describe('PutItem - a vector attribute is billed at four bytes per dimension', {
 })
 
 // no negative-path: acceptance-mixed (asserts accepted and rejected cases)
-describe('GetItem and the 400KB gate - a vector is sized by its numbers', { tags: ['put-item', 'get-item', 'data-plane', 'vector'] }, () => {
+describe('GetItem and the 400KB gate — a vector is sized by its numbers', { tags: ['put-item', 'get-item', 'data-plane', 'vector'] }, () => {
   skipUnlessVectorSearch()
 
   it('charges a read for the numbers the vector holds, not its billed size', async () => {

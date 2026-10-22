@@ -375,7 +375,7 @@ describe('PutItem — exact error messages', { tags: ['put-item', 'data-plane'] 
   })
 })
 
-describe('PutItem - request validation envelope', { tags: ['put-item', 'data-plane', 'negative-path'] }, () => {
+describe('PutItem — request validation envelope', { tags: ['put-item', 'data-plane', 'negative-path'] }, () => {
   // Each of these is reported inside the `1 validation error detected: `
   // envelope, and the ExpressionAttributeValues message carries no
   // ": ConditionExpression is null" suffix. Both regions (eu-west-2,

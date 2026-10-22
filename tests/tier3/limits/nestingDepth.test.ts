@@ -61,7 +61,8 @@ function depthOf(v: AttributeValue | undefined): number {
 // Captured in us-east-1, eu-west-2, eu-central-1, eu-north-1 and
 // ap-northeast-1, 2026-10-08, and again in us-east-1 and eu-west-2, 2026-10-09.
 // A BatchWriteItem item is refused without the envelope, a PutItem item with
-// it. Both regions agree on every form below unless a test says otherwise.
+// it. Every region captured agrees on every form below unless a test says
+// otherwise.
 const NEST_BARE =
   'Nesting Levels have exceeded supported limits: Attributes in the item have nested levels beyond supported limit'
 const NEST_SINGLE = `1 validation error detected: ${NEST_BARE}`
@@ -426,7 +427,7 @@ describe('Nesting depth — TransactWriteItems', { tags: ['transactions', 'put-i
     }
   })
 
-  // A second limit sits one level past the first. The 30 regions that still run
+  // A second limit sits one level past the first. The regions that still run
   // the transaction with a 32-level value refuse a value nested 33 or more
   // levels before running it, naming the key. The regions that already check
   // every value up front (eu-north-1, ap-northeast-2, and eu-west-2 from

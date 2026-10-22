@@ -157,7 +157,7 @@ describe('CreateTable — validation ordering', { tags: ['create-table', 'contro
   })
 })
 
-describe('CreateTable - index name errors across index kinds', { tags: ['create-table', 'gsi', 'lsi', 'control-plane', 'negative-path'] }, () => {
+describe('CreateTable — index name errors across index kinds', { tags: ['create-table', 'gsi', 'lsi', 'control-plane', 'negative-path'] }, () => {
   // Two-character index names on both a GSI and an LSI: the GSI's error comes
   // first whichever order the request lists them in, and whatever the names
   // sort to. Both regions (eu-west-2, us-east-1, 2026-10-09).

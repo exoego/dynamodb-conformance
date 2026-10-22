@@ -916,12 +916,12 @@
         "data-plane",
         "vector"
       ],
-      "PutItem - a vector attribute is billed at four bytes per dimension": [
+      "PutItem — a vector attribute is billed at four bytes per dimension": [
         "put-item",
         "data-plane",
         "vector"
       ],
-      "GetItem and the 400KB gate - a vector is sized by its numbers": [
+      "GetItem and the 400KB gate — a vector is sized by its numbers": [
         "put-item",
         "get-item",
         "data-plane",
@@ -1029,7 +1029,7 @@
         "data-plane",
         "negative-path"
       ],
-      "DeleteItem - request validation envelope": [
+      "DeleteItem — request validation envelope": [
         "delete-item",
         "data-plane",
         "negative-path"
@@ -1107,7 +1107,7 @@
         "put-item",
         "data-plane"
       ],
-      "PutItem - request validation envelope": [
+      "PutItem — request validation envelope": [
         "put-item",
         "data-plane",
         "negative-path"
@@ -1144,7 +1144,7 @@
         "vector",
         "negative-path"
       ],
-      "SearchVectors - request shape errors": [
+      "SearchVectors — request shape errors": [
         "search-vectors",
         "data-plane",
         "vector",
@@ -1182,7 +1182,7 @@
       ]
     },
     "tests/tier3/error-messages/valueLayers.test.ts": {
-      "Number values - messages by operation": [
+      "Number values — messages by operation": [
         "put-item",
         "update-item",
         "delete-item",
@@ -1192,12 +1192,12 @@
         "data-plane",
         "negative-path"
       ],
-      "Number values - transactions by region": [
+      "Number values — transactions by region": [
         "transactions",
         "data-plane",
         "negative-path"
       ],
-      "Duplicate set members - messages by operation": [
+      "Duplicate set members — messages by operation": [
         "put-item",
         "update-item",
         "delete-item",
@@ -1207,7 +1207,7 @@
         "data-plane",
         "negative-path"
       ],
-      "Duplicate set members - transactions by region": [
+      "Duplicate set members — transactions by region": [
         "transactions",
         "data-plane",
         "negative-path"
@@ -1466,7 +1466,7 @@
         "control-plane",
         "negative-path"
       ],
-      "CreateTable - index name errors across index kinds": [
+      "CreateTable — index name errors across index kinds": [
         "create-table",
         "gsi",
         "lsi",
@@ -1475,7 +1475,7 @@
       ]
     },
     "tests/tier3/validation-ordering/deepRequests.test.ts": {
-      "Deep requests - legacy conditions": [
+      "Deep requests — legacy conditions": [
         "put-item",
         "update-item",
         "scan",
@@ -1483,12 +1483,12 @@
         "data-plane",
         "negative-path"
       ],
-      "Deep requests - TransactWriteItems action order": [
+      "Deep requests — TransactWriteItems action order": [
         "transactions",
         "data-plane",
         "negative-path"
       ],
-      "Deep requests - DeleteItem ReturnValues": [
+      "Deep requests — DeleteItem ReturnValues": [
         "delete-item",
         "data-plane",
         "negative-path"
@@ -1529,7 +1529,7 @@
         "data-plane",
         "negative-path"
       ],
-      "Query - ConditionalOperator beside Select": [
+      "Query — ConditionalOperator beside Select": [
         "query",
         "legacy",
         "data-plane",
@@ -1561,7 +1561,7 @@
         "data-plane",
         "negative-path"
       ],
-      "UpdateItem - member errors beside a missing Key": [
+      "UpdateItem — member errors beside a missing Key": [
         "update-item",
         "data-plane",
         "negative-path"
@@ -1622,7 +1622,7 @@
           "legacy"
         ]
       },
-      "DeleteItem - request validation envelope": {
+      "DeleteItem — request validation envelope": {
         "ExpressionAttributeValues or ExpressionAttributeNames without an expression": [
           "legacy"
         ],
@@ -1637,7 +1637,7 @@
           "legacy"
         ]
       },
-      "PutItem - request validation envelope": {
+      "PutItem — request validation envelope": {
         "a malformed Expected condition": [
           "legacy"
         ]
@@ -1651,7 +1651,7 @@
       }
     },
     "tests/tier3/error-messages/valueLayers.test.ts": {
-      "Number values - messages by operation": {
+      "Number values — messages by operation": {
         "PutItem checks the numbers in Expected values and writes nothing": [
           "legacy"
         ],
@@ -1659,7 +1659,7 @@
           "legacy"
         ]
       },
-      "Duplicate set members - messages by operation": {
+      "Duplicate set members — messages by operation": {
         "PutItem refuses a duplicate in an item, a condition value and an Expected value inside the envelope": [
           "legacy"
         ],
@@ -1672,14 +1672,14 @@
       }
     },
     "tests/tier3/validation-ordering/deepRequests.test.ts": {
-      "Deep requests - DeleteItem ReturnValues": {
+      "Deep requests — DeleteItem ReturnValues": {
         "refuses an unknown ReturnValues in the older wording when an Expected value is nested 63 levels": [
           "legacy"
         ]
       }
     },
     "tests/tier3/validation-ordering/updateItem.test.ts": {
-      "UpdateItem - member errors beside a missing Key": {
+      "UpdateItem — member errors beside a missing Key": {
         "joins XOR with two Expected conditions to the missing key": [
           "legacy"
         ]

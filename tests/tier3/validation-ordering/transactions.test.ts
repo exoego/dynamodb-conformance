@@ -19,8 +19,9 @@ declareTables(hashTableDef)
 //
 // Member constraints (the enums, the TransactItems length, the
 // ClientRequestToken length, a table name's pattern) are checked before the
-// request is read any further, and every failing member is reported in one
-// `N validation errors detected:` message. Everything else (a missing table, a
+// request is read any further, and the failing members are reported together
+// in one `N validation errors detected:` message (a too-long token is the
+// exception in some regions; see its test). Everything else (a missing table, a
 // duplicate target, a key that does not match the schema) comes after.
 
 const ENUM_RCC =

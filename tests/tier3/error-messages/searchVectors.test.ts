@@ -183,7 +183,7 @@ describe('SearchVectors — exact error messages', { tags: ['search-vectors', 'd
   })
 })
 
-describe('SearchVectors - request shape errors', { tags: ['search-vectors', 'data-plane', 'vector', 'negative-path'] }, () => {
+describe('SearchVectors — request shape errors', { tags: ['search-vectors', 'data-plane', 'vector', 'negative-path'] }, () => {
   skipUnlessVectorSearch()
 
   // SearchVectors reads its body with a strict deserialiser before it

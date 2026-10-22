@@ -58,7 +58,7 @@ async function refusal(send: () => Promise<unknown>): Promise<string> {
   return ''
 }
 
-describe('Deep requests - legacy conditions', { tags: ['put-item', 'update-item', 'scan', 'legacy', 'data-plane', 'negative-path'] }, () => {
+describe('Deep requests — legacy conditions', { tags: ['put-item', 'update-item', 'scan', 'legacy', 'data-plane', 'negative-path'] }, () => {
   // Past the second limit, PutItem and UpdateItem check ConditionalOperator in
   // its older enum form, and that check comes before the depth of an
   // Expected value. At 33 and 40 levels the newer `[ALL, OR]` form is
@@ -93,10 +93,11 @@ describe('Deep requests - legacy conditions', { tags: ['put-item', 'update-item'
   })
 
   it('Scan with one ScanFilter condition nested 40 levels and ConditionalOperator AND', async () => {
-    // Split by validation layer: seven of ten regions report the depth first
-    // (us-east-1, us-east-2, us-west-2, eu-west-1, eu-north-1, ap-northeast-1,
-    // ca-central-1); eu-west-2, eu-central-1 and ap-southeast-2 report the
-    // ConditionalOperator misuse first. Exactly those two answers.
+    // Split by validation layer: seven of the ten regions probed report the
+    // depth first (us-east-1, us-east-2, us-west-2, eu-west-1, eu-north-1,
+    // ap-northeast-1, ca-central-1); eu-west-2, eu-central-1 and
+    // ap-southeast-2 report the ConditionalOperator misuse first. Exactly those
+    // two answers.
     const message = await refusal(() =>
       ddb.send(
         new ScanCommand({
@@ -110,15 +111,15 @@ describe('Deep requests - legacy conditions', { tags: ['put-item', 'update-item'
   })
 })
 
-describe('Deep requests - TransactWriteItems action order', { tags: ['transactions', 'data-plane', 'negative-path'] }, () => {
+describe('Deep requests — TransactWriteItems action order', { tags: ['transactions', 'data-plane', 'negative-path'] }, () => {
   // An empty TransactItems is rejected by any target that implements the
   // operation, so this separates "not implemented" from "implemented".
   skipUnlessSupported(() => ddb.send(new TransactWriteItemsCommand({ TransactItems: [] })))
 
   // TransactWriteItems checks its actions one at a time, in request order, and
   // reports the first problem it meets: a later action's error never beats an
-  // earlier action's, whatever kind either is. 10 of 10 regions unless a test
-  // says otherwise.
+  // earlier action's, whatever kind either is. All ten regions probed agree
+  // unless a test says otherwise.
   const send = (TransactItems: any[]) => () => ddb.send(new TransactWriteItemsCommand({ TransactItems }))
 
   it('reports a Put item nested 40 levels before an empty attribute name in a later Put', async () => {
@@ -172,8 +173,8 @@ describe('Deep requests - TransactWriteItems action order', { tags: ['transactio
   })
 
   it('reports an earlier ConditionCheck value nested 40 levels before a later empty attribute name', async () => {
-    // Regional wording: eight of ten regions name the value's key; eu-west-2
-    // and eu-north-1 give the nesting message bare. Exactly those two answers.
+    // Regional wording: eight of the ten regions probed name the value's key;
+    // eu-west-2 and eu-north-1 give the nesting message bare. Exactly those two answers.
     const message = await refusal(
       send([
         {
@@ -305,7 +306,7 @@ describe('Deep requests - TransactWriteItems action order', { tags: ['transactio
   })
 })
 
-describe('Deep requests - DeleteItem ReturnValues', { tags: ['delete-item', 'data-plane', 'negative-path'] }, () => {
+describe('Deep requests — DeleteItem ReturnValues', { tags: ['delete-item', 'data-plane', 'negative-path'] }, () => {
   // Past the second limit DeleteItem reads ReturnValues in its older form, as
   // PutItem and UpdateItem do: an unknown value gets the per-value enum
   // message, and UPDATED_NEW gets the bare "ALL_OLD or NONE" message, both

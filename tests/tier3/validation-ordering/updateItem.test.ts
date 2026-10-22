@@ -74,7 +74,7 @@ describe('UpdateItem — validation ordering', { tags: ['update-item', 'data-pla
   })
 })
 
-describe('UpdateItem - member errors beside a missing Key', { tags: ['update-item', 'data-plane', 'negative-path'] }, () => {
+describe('UpdateItem — member errors beside a missing Key', { tags: ['update-item', 'data-plane', 'negative-path'] }, () => {
   // With Key left out altogether, an empty table name and a ConditionalOperator
   // outside its enum are reported in the older per-value form and joined with
   // the missing key in one message, member by member: ReturnConsumedCapacity,

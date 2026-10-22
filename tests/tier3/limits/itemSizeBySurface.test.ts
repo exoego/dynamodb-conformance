@@ -838,7 +838,7 @@ describe('Item size limit by surface — UpdateItem charges each kind of clause'
   // clause under test is accepted at the predicted padding and refused one byte
   // over. Keys are short and the seeds small, so the statement's charge, not the
   // finished item, is what binds; the read-back confirms the padding landed.
-  // Split behaviour: the ten flat regions (see the note above updateCeilingIs)
+  // Split behaviour: the flat regions (see the note above updateCeilingIs)
   // store the refused write, which is what each test records for scoring.
   interface ChargeShape {
     /** Runs alongside `SET b = :pad`, which is prepended. */
@@ -1118,6 +1118,9 @@ describe('Item size limit by surface — UpdateItem checks the charge before the
   }
 
   it('refuses an over-limit charge even when the condition would fail', async () => {
+    // Records nothing. A flat region answers ConditionalCheckFailedException
+    // here and stores nothing, so there is no stored write to confirm; the
+    // passing case below carries the flat side for this describe.
     await expectDynamoError(() => send(key('order-fails'), 'attribute_exists(nope)'), 'ValidationException', UPDATE_WORDING)
   })
 
