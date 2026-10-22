@@ -89,6 +89,33 @@ test("fails a note rendered without the attribute the check finds it by", () => 
   assert.match(problems.join(), /states the regional cause 2 time\(s\) but carries 1 note\(s\)/);
 });
 
+// The shape change-note.webc renders, with a changelog entry quoting a note.
+const changeNote = (body) =>
+  `<details data-dismiss data-change-note class="x"><summary>i</summary><div><p>Suite on 22 Oct</p><div><p>${body}</p></div></div></details>`;
+const QUOTE = `for example "B against eu-south-2 and me-central-1, ${REGIONAL_CAUSE}"`;
+
+test("leaves the note's wording out of the count where a changelog entry quotes it", () => {
+  const problems = checkRegionalNotes(expectedRegionalNotes(SUMMARY), [
+    page("targets/gappy/index.html", "gappy", note("gappy", GOOD), changeNote(QUOTE)),
+    page("targets/steady/index.html", "steady", changeNote(QUOTE)),
+  ]);
+  assert.deepEqual(problems, []);
+});
+
+test("still fails a note without its attribute beside a quoting changelog entry", () => {
+  const problems = checkRegionalNotes(expectedRegionalNotes(SUMMARY), [
+    page("targets/steady/index.html", "steady", changeNote(QUOTE), `<p>B against us-east-1, ${REGIONAL_CAUSE}</p>`),
+  ]);
+  assert.match(problems.join(), /states the regional cause 1 time\(s\) but carries 0 note\(s\)/);
+});
+
+test("counts the cause in a popover that is not a changelog entry", () => {
+  const problems = checkRegionalNotes(expectedRegionalNotes(SUMMARY), [
+    page("targets/steady/index.html", "steady", `<details><summary>i</summary><p>${QUOTE}</p></details>`),
+  ]);
+  assert.match(problems.join(), /states the regional cause 1 time\(s\) but carries 0 note\(s\)/);
+});
+
 test("counts the regions beyond three rather than naming them", () => {
   const wide = summaryOf({
     wide: { fails: { "af-south-1": 0, "a-1": 10, "b-1": 10, "c-1": 10, "d-1": 10 } },
