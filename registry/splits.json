@@ -1039,23 +1039,23 @@
         "file": "tests/tier3/error-messages/scan.test.ts",
         "fullName": "Scan — exact error messages Segment >= TotalSegments: full out-of-range error"
       },
-      "behaviour": "Scan with Segment equal to TotalSegments: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions answer the out-of-range sentence alone; old-cohort regions append ': Segment: 5 is not less than TotalSegments: 5'. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. ap-east-2 crossed by the 2026-10-03 sweep, which three runs from separate processes on 2026-10-07 confirmed. The other 28 answering regions are recorded on the old wording. af-south-1, ap-southeast-1, ap-southeast-3, ap-southeast-4 and ap-southeast-5 gave it on that sweep and the new wording on all three 2026-10-07 runs, so they stay recorded as old until a sweep agrees. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
+      "behaviour": "Scan with Segment equal to TotalSegments: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions answer the out-of-range sentence alone; old-cohort regions append ': Segment: 5 is not less than TotalSegments: 5'. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. ap-east-2 crossed by the 2026-10-03 sweep, which three runs from separate processes on 2026-10-07 confirmed. af-south-1, ap-east-1, ap-northeast-3, ap-south-1, ap-southeast-1 to ap-southeast-5, ca-west-1, eu-north-1, eu-west-3, il-central-1, mx-central-1 and sa-east-1 crossed by the 2026-10-17 sweep, which three runs from separate processes on 2026-10-22 confirmed. The other 13 answering regions are recorded on the old wording. us-east-1 gave it on that sweep and the new wording on all three 2026-10-22 runs, so it stays recorded as old until a sweep agrees. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
       "pinned": "eu-west-2",
       "firstObserved": "2026-09-19",
-      "lastRefreshed": "2026-10-07",
+      "lastRefreshed": "2026-10-22",
       "regions": {
         "af-south-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "ap-east-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "ap-east-2": {
@@ -1083,14 +1083,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "ap-south-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "ap-south-2": {
@@ -1104,35 +1104,35 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "ap-southeast-2": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "ap-southeast-3": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "ap-southeast-4": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "ap-southeast-5": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "ap-southeast-6": {
@@ -1160,7 +1160,7 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "eu-central-1": {
@@ -1181,7 +1181,7 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "eu-south-1": {
@@ -1216,14 +1216,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "il-central-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "me-central-1": {
@@ -1237,14 +1237,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "sa-east-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments: Segment: 5 is not less than TotalSegments: 5"
+            "message": "The Segment parameter is zero-based and must be less than parameter TotalSegments"
           }
         },
         "us-east-1": {
@@ -1282,7 +1282,9 @@
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36310693620",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/37110305157",
-        "captures/2026-10-07-sweep-follow-up.json"
+        "captures/2026-10-07-sweep-follow-up.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/39012859850",
+        "captures/2026-10-22-sweep-follow-up.json"
       ],
       "admitted": {
         "by": "Martin Hicks",
@@ -1296,23 +1298,23 @@
         "file": "tests/tier3/error-messages/scan.test.ts",
         "fullName": "Scan — exact error messages Limit of 0: full minimum-value error"
       },
-      "behaviour": "Scan with Limit 0: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions name the member as 'Limit' without echoing the value; old-cohort regions answer Value '0' at 'limit'. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. ap-east-2 crossed by the 2026-10-03 sweep, which three runs from separate processes on 2026-10-07 confirmed. The other 28 answering regions are recorded on the old wording. af-south-1, ap-southeast-1, ap-southeast-3, ap-southeast-4 and ap-southeast-5 gave it on that sweep and the new wording on all three 2026-10-07 runs, so they stay recorded as old until a sweep agrees. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
+      "behaviour": "Scan with Limit 0: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions name the member as 'Limit' without echoing the value; old-cohort regions answer Value '0' at 'limit'. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. ap-east-2 crossed by the 2026-10-03 sweep, which three runs from separate processes on 2026-10-07 confirmed. af-south-1, ap-east-1, ap-northeast-3, ap-south-1, ap-southeast-1 to ap-southeast-5, ca-west-1, eu-north-1, eu-west-3, il-central-1, mx-central-1 and sa-east-1 crossed by the 2026-10-17 sweep, which three runs from separate processes on 2026-10-22 confirmed. The other 13 answering regions are recorded on the old wording. us-east-1 gave it on that sweep and the new wording on all three 2026-10-22 runs, so it stays recorded as old until a sweep agrees. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
       "pinned": "eu-west-2",
       "firstObserved": "2026-09-19",
-      "lastRefreshed": "2026-10-07",
+      "lastRefreshed": "2026-10-22",
       "regions": {
         "af-south-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "ap-east-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "ap-east-2": {
@@ -1340,14 +1342,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "ap-south-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "ap-south-2": {
@@ -1361,35 +1363,35 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "ap-southeast-2": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "ap-southeast-3": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "ap-southeast-4": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "ap-southeast-5": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "ap-southeast-6": {
@@ -1417,7 +1419,7 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "eu-central-1": {
@@ -1438,7 +1440,7 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "eu-south-1": {
@@ -1473,14 +1475,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "il-central-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "me-central-1": {
@@ -1494,14 +1496,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "sa-east-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '0' at 'limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
+            "message": "1 validation error detected: Value at 'Limit' failed to satisfy constraint: Member must have value greater than or equal to 1"
           }
         },
         "us-east-1": {
@@ -1539,7 +1541,9 @@
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36310693620",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/37110305157",
-        "captures/2026-10-07-sweep-follow-up.json"
+        "captures/2026-10-07-sweep-follow-up.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/39012859850",
+        "captures/2026-10-22-sweep-follow-up.json"
       ],
       "admitted": {
         "by": "Martin Hicks",
@@ -1553,23 +1557,23 @@
         "file": "tests/tier3/error-messages/scan.test.ts",
         "fullName": "Scan — exact error messages negative Segment: full minimum-value error"
       },
-      "behaviour": "Scan with a negative Segment: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions name the member as 'Segment' without echoing the value; old-cohort regions answer Value '-1' at 'segment'. The validation-ordering test for the same request matches both wordings, so this row is where the per-region answers are pinned. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. ap-east-2 crossed by the 2026-10-03 sweep, which three runs from separate processes on 2026-10-07 confirmed. The other 28 answering regions are recorded on the old wording. af-south-1, ap-southeast-1, ap-southeast-3, ap-southeast-4 and ap-southeast-5 gave it on that sweep and the new wording on all three 2026-10-07 runs, so they stay recorded as old until a sweep agrees. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
+      "behaviour": "Scan with a negative Segment: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions name the member as 'Segment' without echoing the value; old-cohort regions answer Value '-1' at 'segment'. The validation-ordering test for the same request matches both wordings, so this row is where the per-region answers are pinned. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. ap-east-2 crossed by the 2026-10-03 sweep, which three runs from separate processes on 2026-10-07 confirmed. af-south-1, ap-east-1, ap-northeast-3, ap-south-1, ap-southeast-1 to ap-southeast-5, ca-west-1, eu-north-1, eu-west-3, il-central-1, mx-central-1 and sa-east-1 crossed by the 2026-10-17 sweep, which three runs from separate processes on 2026-10-22 confirmed. The other 13 answering regions are recorded on the old wording. us-east-1 gave it on that sweep and the new wording on all three 2026-10-22 runs, so it stays recorded as old until a sweep agrees. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
       "pinned": "eu-west-2",
       "firstObserved": "2026-09-19",
-      "lastRefreshed": "2026-10-07",
+      "lastRefreshed": "2026-10-22",
       "regions": {
         "af-south-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "ap-east-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "ap-east-2": {
@@ -1597,14 +1601,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "ap-south-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "ap-south-2": {
@@ -1618,35 +1622,35 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "ap-southeast-2": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "ap-southeast-3": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "ap-southeast-4": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "ap-southeast-5": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "ap-southeast-6": {
@@ -1674,7 +1678,7 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "eu-central-1": {
@@ -1695,7 +1699,7 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "eu-south-1": {
@@ -1730,14 +1734,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "il-central-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "me-central-1": {
@@ -1751,14 +1755,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "sa-east-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "1 validation error detected: Value '-1' at 'segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
+            "message": "1 validation error detected: Value at 'Segment' failed to satisfy constraint: Member must have value greater than or equal to 0"
           }
         },
         "us-east-1": {
@@ -1796,7 +1800,9 @@
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36310693620",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/37110305157",
-        "captures/2026-10-07-sweep-follow-up.json"
+        "captures/2026-10-07-sweep-follow-up.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/39012859850",
+        "captures/2026-10-22-sweep-follow-up.json"
       ],
       "admitted": {
         "by": "Martin Hicks",
@@ -1810,23 +1816,23 @@
         "file": "tests/tier3/error-messages/scan.test.ts",
         "fullName": "Scan — exact error messages malformed ExclusiveStartKey: long schema-mismatch error"
       },
-      "behaviour": "Scan with an ExclusiveStartKey that does not match the table's key schema: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions answer the short form Query already gives; old-cohort regions append ': The provided key element does not match the schema'. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. ap-east-2 crossed by the 2026-10-03 sweep, which three runs from separate processes on 2026-10-07 confirmed. The other 28 answering regions are recorded on the old wording. af-south-1, ap-southeast-1, ap-southeast-3, ap-southeast-4 and ap-southeast-5 gave it on that sweep and the new wording on all three 2026-10-07 runs, so they stay recorded as old until a sweep agrees. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
+      "behaviour": "Scan with an ExclusiveStartKey that does not match the table's key schema: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions answer the short form Query already gives; old-cohort regions append ': The provided key element does not match the schema'. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. ap-east-2 crossed by the 2026-10-03 sweep, which three runs from separate processes on 2026-10-07 confirmed. af-south-1, ap-east-1, ap-northeast-3, ap-south-1, ap-southeast-1 to ap-southeast-5, ca-west-1, eu-north-1, eu-west-3, il-central-1, mx-central-1 and sa-east-1 crossed by the 2026-10-17 sweep, which three runs from separate processes on 2026-10-22 confirmed. The other 13 answering regions are recorded on the old wording. us-east-1 gave it on that sweep and the new wording on all three 2026-10-22 runs, so it stays recorded as old until a sweep agrees. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
       "pinned": "eu-west-2",
       "firstObserved": "2026-09-19",
-      "lastRefreshed": "2026-10-07",
+      "lastRefreshed": "2026-10-22",
       "regions": {
         "af-south-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "ap-east-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "ap-east-2": {
@@ -1854,14 +1860,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "ap-south-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "ap-south-2": {
@@ -1875,35 +1881,35 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "ap-southeast-2": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "ap-southeast-3": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "ap-southeast-4": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "ap-southeast-5": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "ap-southeast-6": {
@@ -1931,7 +1937,7 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "eu-central-1": {
@@ -1952,7 +1958,7 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "eu-south-1": {
@@ -1987,14 +1993,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "il-central-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "me-central-1": {
@@ -2008,14 +2014,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "sa-east-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "The provided starting key is invalid: The provided key element does not match the schema"
+            "message": "The provided starting key is invalid"
           }
         },
         "us-east-1": {
@@ -2053,7 +2059,9 @@
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36310693620",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/37110305157",
-        "captures/2026-10-07-sweep-follow-up.json"
+        "captures/2026-10-07-sweep-follow-up.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/39012859850",
+        "captures/2026-10-22-sweep-follow-up.json"
       ],
       "admitted": {
         "by": "Martin Hicks",
@@ -2067,23 +2075,23 @@
         "file": "tests/tier3/error-messages/scan.test.ts",
         "fullName": "Scan — exact error messages Select SPECIFIC_ATTRIBUTES without ProjectionExpression: full required-projection message"
       },
-      "behaviour": "Scan with Select SPECIFIC_ATTRIBUTES and no projection: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions wrap the required-projection sentence in the '1 validation error detected: ' envelope; old-cohort regions answer it bare. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. ap-east-2 crossed by the 2026-10-03 sweep, which three runs from separate processes on 2026-10-07 confirmed. The other 28 answering regions are recorded on the old wording. af-south-1, ap-southeast-1, ap-southeast-3, ap-southeast-4 and ap-southeast-5 gave it on that sweep and the new wording on all three 2026-10-07 runs, so they stay recorded as old until a sweep agrees. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
+      "behaviour": "Scan with Select SPECIFIC_ATTRIBUTES and no projection: the 2026-06 validation-framework rollout reaching Scan's parameter checks. New-cohort regions wrap the required-projection sentence in the '1 validation error detected: ' envelope; old-cohort regions answer it bare. eu-central-1 and us-west-1 crossed before the 2026-09-19 sweep; ap-northeast-2 and the pinned eu-west-2 crossed between that sweep and the 2026-09-26 one (eu-west-2 still gave the old wording on the 2026-09-20 conformance run), so the pinned answer is now the new wording. ap-east-2 crossed by the 2026-10-03 sweep, which three runs from separate processes on 2026-10-07 confirmed. af-south-1, ap-east-1, ap-northeast-3, ap-south-1, ap-southeast-1 to ap-southeast-5, ca-west-1, eu-north-1, eu-west-3, il-central-1, mx-central-1 and sa-east-1 crossed by the 2026-10-17 sweep, which three runs from separate processes on 2026-10-22 confirmed. The other 13 answering regions are recorded on the old wording. us-east-1 gave it on that sweep and the new wording on all three 2026-10-22 runs, so it stays recorded as old until a sweep agrees. The five Scan rows move together: every region answers all five in the same cohort, and the two Segment/TotalSegments pairing checks beside them have not moved anywhere.",
       "pinned": "eu-west-2",
       "firstObserved": "2026-09-19",
-      "lastRefreshed": "2026-10-07",
+      "lastRefreshed": "2026-10-22",
       "regions": {
         "af-south-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "ap-east-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "ap-east-2": {
@@ -2111,14 +2119,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "ap-south-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "ap-south-2": {
@@ -2132,35 +2140,35 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "ap-southeast-2": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "ap-southeast-3": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "ap-southeast-4": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "ap-southeast-5": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "ap-southeast-6": {
@@ -2188,7 +2196,7 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "eu-central-1": {
@@ -2209,7 +2217,7 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "eu-south-1": {
@@ -2244,14 +2252,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "il-central-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "me-central-1": {
@@ -2265,14 +2273,14 @@
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "sa-east-1": {
           "outcome": "rejected",
           "error": {
             "name": "ValidationException",
-            "message": "Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
+            "message": "1 validation error detected: Must specify the AttributesToGet or ProjectionExpression when choosing to get SPECIFIC_ATTRIBUTES"
           }
         },
         "us-east-1": {
@@ -2310,7 +2318,9 @@
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36228579319",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/36310693620",
         "https://github.com/paritysuite/dynamodb-conformance/actions/runs/37110305157",
-        "captures/2026-10-07-sweep-follow-up.json"
+        "captures/2026-10-07-sweep-follow-up.json",
+        "https://github.com/paritysuite/dynamodb-conformance/actions/runs/39012859850",
+        "captures/2026-10-22-sweep-follow-up.json"
       ],
       "admitted": {
         "by": "Martin Hicks",
