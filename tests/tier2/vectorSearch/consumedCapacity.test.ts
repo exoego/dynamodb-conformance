@@ -358,13 +358,14 @@ describe('PutItem — VectorWriteRequestBytes', { tags: ['put-item', 'data-plane
 // and read unit boundaries and the 400KB gate: an attribute a vector index reads
 // costs its name plus four bytes per dimension on a write (1, 3, 8, 256 and 1,024
 // dimensions, with numbers from 1e-30 to 38-digit integers), and DescribeTable's
-// TableSizeBytes follows the same figure. A read and the 400KB gate size the
-// vector as the list of numbers it holds.
+// TableSizeBytes follows the same figure. The 400KB gate sizes the vector as the
+// list of numbers it holds. A read did too on 2026-10-09, but by 2026-10-22 every
+// region with vector search billed a read at the write's figure, so the read
+// test below now pins that.
 //
 // Every vector below holds 38-digit integers, 20 bytes each as numbers, so a
-// target that bills a write by the numbers lands a unit high, and one that sizes
-// a read or the gate by the billed figure lands a unit low or lets an oversized
-// item through.
+// target that bills a write or a read by the numbers lands a unit high, and one
+// that sizes the gate by the billed figure lets an oversized item through.
 
 /** A 38-digit integer: 20 bytes as a number, 4 as a billed dimension. */
 const WIDE = '12345678901234567890123456789012345678'
@@ -423,10 +424,10 @@ describe('PutItem — a vector attribute is billed at four bytes per dimension',
 })
 
 // no negative-path: acceptance-mixed (asserts accepted and rejected cases)
-describe('GetItem and the 400KB gate — a vector is sized by its numbers', { tags: ['put-item', 'get-item', 'data-plane', 'vector'] }, () => {
+describe('GetItem and the 400KB gate — how a vector is sized', { tags: ['put-item', 'get-item', 'data-plane', 'vector'] }, () => {
   skipUnlessVectorSearch()
 
-  it('charges a read for the numbers the vector holds, not its billed size', async () => {
+  it('charges a read for the vector’s billed size, not the numbers it holds', async () => {
     const item = billedItem(4096, 'r6', SIX_DIM, 6)
     const stored = 4096 - 4 * 6 + storedVectorBytes(6)
     expect(stored, 'only the numbers may take the item past 4KB').toBeGreaterThan(4096)
@@ -441,7 +442,7 @@ describe('GetItem and the 400KB gate — a vector is sized by its numbers', { ta
         ReturnConsumedCapacity: 'TOTAL',
       }),
     )
-    expect(read.ConsumedCapacity?.CapacityUnits).toBe(2)
+    expect(read.ConsumedCapacity?.CapacityUnits).toBe(1)
   })
 
   it('holds the item to 400KB with the vector sized by its numbers', async () => {

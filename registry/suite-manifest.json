@@ -1,6 +1,6 @@
 {
   "generated": "2026-10-22",
-  "commit": "789eaa3972d015e98a33cbd0ab7b28ffedffdc4b",
+  "commit": "9b844942648bd7ed2eeeea7b5ab96b3c2a7c09a2",
   "count": 1399,
   "tests": [
     "tests/tier1/batchGetItem/basic.test.ts::BatchGetItem — ProjectionExpression returns only projected attributes",
@@ -809,8 +809,8 @@
     "tests/tier2/updateTable/gsi.test.ts::UpdateTable — add GSI drops an unused AttributeDefinition supplied with a GSI add",
     "tests/tier2/updateTable/gsi.test.ts::UpdateTable — remove GSI base table operations still work after removing a GSI",
     "tests/tier2/updateTable/gsi.test.ts::UpdateTable — remove GSI removes a GSI from a table",
-    "tests/tier2/vectorSearch/consumedCapacity.test.ts::GetItem and the 400KB gate — a vector is sized by its numbers charges a read for the numbers the vector holds, not its billed size",
-    "tests/tier2/vectorSearch/consumedCapacity.test.ts::GetItem and the 400KB gate — a vector is sized by its numbers holds the item to 400KB with the vector sized by its numbers",
+    "tests/tier2/vectorSearch/consumedCapacity.test.ts::GetItem and the 400KB gate — how a vector is sized charges a read for the vector’s billed size, not the numbers it holds",
+    "tests/tier2/vectorSearch/consumedCapacity.test.ts::GetItem and the 400KB gate — how a vector is sized holds the item to 400KB with the vector sized by its numbers",
     "tests/tier2/vectorSearch/consumedCapacity.test.ts::PutItem — VectorWriteRequestBytes applies the floor per index, not per write",
     "tests/tier2/vectorSearch/consumedCapacity.test.ts::PutItem — VectorWriteRequestBytes charges a projected non-vector attribute its own item size",
     "tests/tier2/vectorSearch/consumedCapacity.test.ts::PutItem — VectorWriteRequestBytes charges four bytes per dimension",

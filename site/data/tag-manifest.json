@@ -921,7 +921,7 @@
         "data-plane",
         "vector"
       ],
-      "GetItem and the 400KB gate — a vector is sized by its numbers": [
+      "GetItem and the 400KB gate — how a vector is sized": [
         "put-item",
         "get-item",
         "data-plane",
