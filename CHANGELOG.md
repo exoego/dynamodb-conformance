@@ -9,17 +9,18 @@ section its date and version, so several branches can write ahead of one.
 ## Unreleased
 
 The suite grows from 1,266 tests to 1,678, so every target's figures move. The
-new tests come from captures against real DynamoDB in October, mostly of
-rejection paths and the order errors are reported in, where a wrong answer
-used to score as a pass.
+new tests come from captures against real DynamoDB, most of them taken in
+October, and mostly cover rejection paths and the order errors are reported
+in, where a wrong answer used to score as a pass.
 
 - **PartiQL grammar and functions.** Number literals with an exponent or no
   leading digit, comments, `ORDER BY DESC`, table aliases, unfinished statements
   and tokens left over after one, functions in `WHERE` and `SET`, `set_add` and
   `set_delete`, the `FROM`-first form of `UPDATE`, and what each write returns.
-- **PartiQL number parameters.** Exponents outside the range, and which error
-  wins when a parameter is both nested too deep and not a valid number, on
-  `ExecuteStatement`, `ExecuteTransaction` and `BatchExecuteStatement`.
+- **Numbers.** Exponents outside the range, including zero, on attribute values,
+  expression values and every key path, and in PartiQL parameters, along with
+  which error wins when a parameter is both nested too deep and not a valid
+  number.
 - **Query key conditions.** Operand types for `begins_with`, the ordering
   operators and `BETWEEN`, condition counts, and which problem is reported when a
   key condition has more than one.
@@ -27,9 +28,9 @@ used to score as a pass.
   queried and refused, and PartiQL refusing to read one while the base table and
   other indexes keep working. These sit in Tier 2, since the feature is new.
 - **Batch and transaction validation.** The enums, table-name member paths,
-  empty and malformed conditions, unused values and token length that were only
-  tested on single-item operations, and a validation-ordering file for
-  transactions.
+  empty and malformed conditions and unused values that were only tested on
+  single-item operations, `ClientRequestToken` length, and a validation-ordering
+  file for transactions.
 - **Deep requests.** Which error wins when a value nested 40, 63 or 100 levels
   sits beside another problem, and the order `TransactWriteItems` checks its
   actions in.
@@ -42,17 +43,19 @@ used to score as a pass.
 
 DynamoDB is still rolling out its newer request validation, so some regions
 answer these requests differently, and eu-west-2 gave two answers to one of
-them on the same day. Where that happens a test accepts exactly the two answers
-seen, never a looser match, and names the regions on each side. Those tests are
+them on the same day. Where that happens a test accepts the two answers seen and
+names the regions on each side. Those tests are
 listed on [#243](https://github.com/paritysuite/dynamodb-conformance/issues/243)
 to be pinned once the regions settle.
 
-Two existing checks were tightened along the way. The `1E-130` precision test
-compares the stored value rather than accepting anything that came back
-([#276](https://github.com/paritysuite/dynamodb-conformance/issues/276)), and the
-UpdateItem size notes now point at their registry rows rather than counting the
-flat regions, which had gone stale
-([#244](https://github.com/paritysuite/dynamodb-conformance/issues/244)).
+Twenty existing tests were tightened along the way: nineteen in the batch and
+transaction work, mostly exact strings where a phrase or pattern was checked,
+and the `1E-130` precision test, which now compares the stored value rather than
+accepting anything that came back
+([#276](https://github.com/paritysuite/dynamodb-conformance/issues/276)). The
+`UpdateItem` size notes also stop counting the regions that size an update like
+any other write, a count that had gone stale, and point at their registry rows
+instead ([#244](https://github.com/paritysuite/dynamodb-conformance/issues/244)).
 
 The board, each target's page and the results table now say when a target's
 letter would not hold in every region. Scored against a region that answers some
