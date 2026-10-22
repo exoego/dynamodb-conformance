@@ -8,6 +8,52 @@ section its date and version, so several branches can write ahead of one.
 
 ## Unreleased
 
+The suite grows from 1,266 tests to 1,678, so every target's figures move. The
+new tests come from captures against real DynamoDB in October, mostly of
+rejection paths and the order errors are reported in, where a wrong answer
+used to score as a pass.
+
+- **PartiQL grammar and functions.** Number literals with an exponent or no
+  leading digit, comments, `ORDER BY DESC`, table aliases, unfinished statements
+  and tokens left over after one, functions in `WHERE` and `SET`, `set_add` and
+  `set_delete`, the `FROM`-first form of `UPDATE`, and what each write returns.
+- **PartiQL number parameters.** Exponents outside the range, and which error
+  wins when a parameter is both nested too deep and not a valid number, on
+  `ExecuteStatement`, `ExecuteTransaction` and `BatchExecuteStatement`.
+- **Query key conditions.** Operand types for `begins_with`, the ordering
+  operators and `BETWEEN`, condition counts, and which problem is reported when a
+  key condition has more than one.
+- **Multi-attribute GSI keys.** A GSI with one HASH and four RANGE attributes,
+  queried and refused, and PartiQL refusing to read one while the base table and
+  other indexes keep working. These sit in Tier 2, since the feature is new.
+- **Batch and transaction validation.** The enums, table-name member paths,
+  empty and malformed conditions, unused values and token length that were only
+  tested on single-item operations, and a validation-ordering file for
+  transactions.
+- **Deep requests.** Which error wins when a value nested 40, 63 or 100 levels
+  sits beside another problem, and the order `TransactWriteItems` checks its
+  actions in.
+- **The two validation layers.** How malformed numbers and duplicate set members
+  are worded on each operation, and which are checked before a transaction runs.
+- **Sizes and billing.** Exact expression-size messages, an `UpdateItem` ceiling
+  test per clause kind, and vector billing: a vector attribute is charged 4 bytes
+  per dimension on a write and, since some time between 9 and 22 October, on a
+  read too, while the 400KB limit still counts its numbers.
+
+DynamoDB is still rolling out its newer request validation, so some regions
+answer these requests differently, and eu-west-2 gave two answers to one of
+them on the same day. Where that happens a test accepts exactly the two answers
+seen, never a looser match, and names the regions on each side. Those tests are
+listed on [#243](https://github.com/paritysuite/dynamodb-conformance/issues/243)
+to be pinned once the regions settle.
+
+Two existing checks were tightened along the way. The `1E-130` precision test
+compares the stored value rather than accepting anything that came back
+([#276](https://github.com/paritysuite/dynamodb-conformance/issues/276)), and the
+UpdateItem size notes now point at their registry rows rather than counting the
+flat regions, which had gone stale
+([#244](https://github.com/paritysuite/dynamodb-conformance/issues/244)).
+
 The board, each target's page and the results table now say when a target's
 letter would not hold in every region. Scored against a region that answers some
 tests differently, a target can earn a lower letter than the one its row
