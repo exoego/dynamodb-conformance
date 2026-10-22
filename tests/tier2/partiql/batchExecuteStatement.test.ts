@@ -478,9 +478,9 @@ describe('BatchExecuteStatement — PartiQL', { tags: ['partiql', 'data-plane', 
     })
   })
 
-  // The option is inert on a batch member: no Item comes back whatever it is set
-  // to. That is a claim about absence, so it needs the control below or it looks
-  // like an untested probe.
+  // With ALL_OLD, a batch member whose condition fails carries the existing item
+  // on its Error, never on the member itself. NONE and an absent option return
+  // no item. Captured in eu-west-2 and us-east-1 on 2026-10-10, identical in both.
   describe('ReturnValuesOnConditionCheckFailure on a batch member', () => {
     const KEY = 'batch-rvocf'
 
@@ -505,11 +505,13 @@ describe('BatchExecuteStatement — PartiQL', { tags: ['partiql', 'data-plane', 
       }))
       expect(res.Responses![0].Error?.Code).toBe('ConditionalCheckFailed')
       expect(res.Responses![0].Item).toBeUndefined()
+      expect(res.Responses![0].Error?.Item).toEqual(
+        setting === 'ALL_OLD' ? { pk: { S: KEY }, val: { S: 'here' } } : undefined,
+      )
     })
 
-    // The control. The same option on a TransactWriteItems ConditionCheck does
-    // return the failed item, so the absence above is the batch surface rather
-    // than a badly-formed request.
+    // The same option on a TransactWriteItems ConditionCheck returns the failed
+    // item on the cancellation reason, the neighbouring surface's form of it.
     //
     // It is also the one test here that leaves the batch surface, so it is the
     // one that can meet a target implementing PartiQL without transactions.
@@ -539,7 +541,7 @@ describe('BatchExecuteStatement — PartiQL', { tags: ['partiql', 'data-plane', 
         expect(err).toBeInstanceOf(DynamoDBServiceException)
         const e = err as DynamoDBServiceException & { CancellationReasons?: { Item?: unknown }[] }
         expect(e.name).toBe('TransactionCanceledException')
-        expect(e.CancellationReasons?.[0]?.Item).toBeDefined()
+        expect(e.CancellationReasons?.[0]?.Item).toEqual({ pk: { S: KEY }, val: { S: 'here' } })
       }
     })
   })
