@@ -58,6 +58,13 @@ export function expectedRegionalNotes(summary) {
 const NOTE = /<(p|span)\b[^>]*\bdata-regional-note="([^"]+)"[^>]*>([\s\S]*?)<\/\1>/g;
 const textOf = (html) => html.replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
 
+// A changelog entry can quote a note's wording, as the 3.7.0 entry does, and a
+// target page shows that entry beside the run on its date. The popover is not a
+// note, so its text is left out of the cause count rather than read as a note
+// missing its attribute. The popover holds no <details> of its own, so a lazy
+// match on the closing tag is exact.
+const CHANGE_NOTE = /<details\b[^>]*\bdata-change-note\b[^>]*>[\s\S]*?<\/details>/g;
+
 export function notesIn(html) {
   return [...html.matchAll(NOTE)].map((m) => ({ slug: m[2], text: textOf(m[3]) }));
 }
@@ -87,7 +94,8 @@ function textProblems(text, gap) {
  * exactly when expected; any other note on it (a build's card) must belong to
  * a target that is expected to carry one. Every note found must say the right
  * thing, and the cause must not appear on a page more often than the notes do,
- * which is what catches a note rendered without the attribute.
+ * outside a changelog popover, which is what catches a note rendered without
+ * the attribute.
  */
 export function checkRegionalNotes({ expected }, pages) {
   const problems = [];
@@ -103,7 +111,7 @@ export function checkRegionalNotes({ expected }, pages) {
       for (const p of textProblems(text, gap)) problems.push(`${path}: ${slug}'s note ${p}`);
     }
 
-    const causes = textOf(html).split(REGIONAL_CAUSE).length - 1;
+    const causes = textOf(html.replace(CHANGE_NOTE, "")).split(REGIONAL_CAUSE).length - 1;
     if (causes > notes.length) {
       problems.push(`${path} states the regional cause ${causes} time(s) but carries ${notes.length} note(s)`);
     }
