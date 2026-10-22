@@ -32,7 +32,10 @@ declareTables(hashTableDef)
 //
 // eu-west-2 runs the current layer on transactions too, where the other three
 // regions run the older one (a later probe of eight regions found eu-north-1
-// with eu-west-2); those tests accept exactly the two answers.
+// with eu-west-2); those tests accept exactly the two answers. On 2026-10-22
+// eu-west-2 and eu-north-1 had moved BatchWriteItem to the current layer as
+// well, bare, while us-east-1 still ran the older one, so the BatchWriteItem
+// tests accept either layer as a whole too.
 
 const T = hashTableDef.name
 const S = (s: string): AttributeValue => ({ S: s })
@@ -176,7 +179,8 @@ describe('Number values — messages by operation', { tags: ['put-item', 'update
 
   it('BatchWriteItem refuses a malformed number bare, in the older wording', async () => {
     const got = await eachShape((v) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ PutRequest: { Item: { pk: S('layer-n'), n: v } } }] } })))
-    expect(got).toEqual(OLDER)
+    // Either layer, as a whole: see the note at the top of the file.
+    expect([OLDER, CURRENT]).toContainEqual(got)
   })
 })
 
@@ -333,7 +337,12 @@ describe('Duplicate set members — messages by operation', { tags: ['put-item',
   it('BatchWriteItem refuses a duplicate in an item and a delete key bare, in the older wording', async () => {
     const put = await eachSet((d) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ PutRequest: { Item: { pk: S('layer-d'), s: d } } }] } })))
     const del = await eachSet((d) => ddb.send(new BatchWriteItemCommand({ RequestItems: { [T]: [{ DeleteRequest: { Key: { pk: d } } }] } })))
-    expect({ put, del }).toEqual({ put: DUPE_OLDER, del: DUPE_OLDER })
+    // Either layer, as a whole, and the same one for both requests: see the
+    // note at the top of the file.
+    expect([
+      { put: DUPE_OLDER, del: DUPE_OLDER },
+      { put: DUPE_CURRENT, del: DUPE_CURRENT },
+    ]).toContainEqual({ put, del })
   })
 })
 

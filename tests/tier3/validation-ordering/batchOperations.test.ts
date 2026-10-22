@@ -210,7 +210,14 @@ describe('Batch operations — enum and ordering checks', { tags: ['batch', 'dat
         }),
       ),
     )
-    expect(message).toBe(one(ENUM_RCC))
+    // On 2026-10-22 eu-west-2 and eu-north-1 had moved BatchWriteItem to the
+    // newer validation layer, which reports the malformed table name too,
+    // echoing the request as JSON, ahead of the enum. us-east-1 still reported
+    // the enum alone. Both exact answers are accepted until the regions settle.
+    expect([
+      one(ENUM_RCC),
+      `2 validation errors detected: Value '{"bad!name":[{"PutRequest":{"Item":{"pk":{"S":"vo-bw-badname"}}}}]}' at 'requestItems' failed to satisfy constraint: Map keys must satisfy constraint: [Member must have length less than or equal to 255, Member must have length greater than or equal to 3, Member must satisfy regular expression pattern: [a-zA-Z0-9_.-]+]; ${ENUM_RCC}`,
+    ]).toContain(message)
   })
 
   it('BatchGetItem refuses an unknown ReturnConsumedCapacity', async () => {

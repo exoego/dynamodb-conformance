@@ -223,17 +223,35 @@ describe('BatchWriteItem — exact error messages', { tags: ['batch', 'data-plan
   })
 
   it('empty request list for a table: full map-value constraint message', async () => {
-    await expectExactValidation(
-      new BatchWriteItemCommand({ RequestItems: { [hashTableDef.name]: [] } }),
-      `1 validation error detected: Value '{${hashTableDef.name}=[]}' at 'requestItems' failed to satisfy constraint: Map value must satisfy constraint: [Member must have length less than or equal to 25, Member must have length greater than or equal to 1]`,
-    )
+    // BatchWriteItem is moving to the newer validation layer. On 2026-10-22
+    // eu-west-2 and eu-north-1 named the empty list by its member path, while
+    // us-east-1 still echoed the map as it did on 2026-10-09. The assertion
+    // accepts both exact messages and nothing else until the regions settle.
+    try {
+      await ddb.send(new BatchWriteItemCommand({ RequestItems: { [hashTableDef.name]: [] } }))
+      expect.unreachable('should have thrown')
+    } catch (err) {
+      expect(err).toBeInstanceOf(DynamoDBServiceException)
+      expect((err as DynamoDBServiceException).name).toBe('ValidationException')
+      expect([
+        `1 validation error detected: Value '{${hashTableDef.name}=[]}' at 'requestItems' failed to satisfy constraint: Map value must satisfy constraint: [Member must have length less than or equal to 25, Member must have length greater than or equal to 1]`,
+        `1 validation error detected: Value at 'RequestItems.${hashTableDef.name}.member' failed to satisfy constraint: Member must have length greater than or equal to 1`,
+      ]).toContain((err as DynamoDBServiceException).message)
+    }
   })
 
   it('malformed table name: anchored regex on the map-keys constraint', async () => {
-    // The request is echoed in Java's toString form, and the regions print it
-    // differently (eu-west-2 shows each value as an object hash, us-east-1 its
-    // fields), so the echo floats. The table name has to be named in it, and
-    // the constraint after it is exact.
+    // On the older layer the request is echoed in Java's toString form, and
+    // the regions print it differently (some show each value as an object
+    // hash, us-east-1 its fields), so that echo floats. The table name has to
+    // be named in it, and the constraint after it is exact. On 2026-10-22
+    // eu-west-2 and eu-north-1 had moved to the newer layer, which echoes the
+    // request as JSON; that form is exact. Both are accepted until the regions
+    // settle.
+    const olderLayer =
+      /^1 validation error detected: Value '\{bad!name=\[WriteRequest\(putRequest=PutRequest\(item=\{pk=.+\}.*\)\]\}' at 'requestItems' failed to satisfy constraint: Map keys must satisfy constraint: \[Member must have length less than or equal to 255, Member must have length greater than or equal to 3, Member must satisfy regular expression pattern: \[a-zA-Z0-9_.-\]\+\]$/
+    const newerLayer =
+      `1 validation error detected: Value '{"bad!name":[{"PutRequest":{"Item":{"pk":{"S":"x"}}}}]}' at 'requestItems' failed to satisfy constraint: Map keys must satisfy constraint: [Member must have length less than or equal to 255, Member must have length greater than or equal to 3, Member must satisfy regular expression pattern: [a-zA-Z0-9_.-]+]`
     try {
       await ddb.send(
         new BatchWriteItemCommand({ RequestItems: { 'bad!name': [{ PutRequest: { Item: { pk: { S: 'x' } } } }] } }),
@@ -242,9 +260,8 @@ describe('BatchWriteItem — exact error messages', { tags: ['batch', 'data-plan
     } catch (err) {
       expect(err).toBeInstanceOf(DynamoDBServiceException)
       expect((err as DynamoDBServiceException).name).toBe('ValidationException')
-      expect((err as DynamoDBServiceException).message).toMatch(
-        /^1 validation error detected: Value '\{bad!name=\[WriteRequest\(putRequest=PutRequest\(item=\{pk=.+\}.*\)\]\}' at 'requestItems' failed to satisfy constraint: Map keys must satisfy constraint: \[Member must have length less than or equal to 255, Member must have length greater than or equal to 3, Member must satisfy regular expression pattern: \[a-zA-Z0-9_.-\]\+\]$/,
-      )
+      const message = (err as DynamoDBServiceException).message
+      expect(olderLayer.test(message) || message === newerLayer, message).toBe(true)
     }
   })
 })
