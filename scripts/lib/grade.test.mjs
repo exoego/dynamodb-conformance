@@ -7,8 +7,12 @@ import {
   COVERAGE_DIVISOR,
   GRADE_BANDS,
   GRADING_VERSION,
+  REGIONAL_CAUSE,
   compareGrades,
   gradeOf,
+  regionalClauseOf,
+  regionalGapOf,
+  regionalLetterOf,
 } from './grade.mjs'
 
 describe('gradeOf', () => {
@@ -316,5 +320,78 @@ describe('compareGrades', () => {
     expect(order([row('empty', null, null), row('worst', 90, 10)])).toEqual(['worst', 'empty'])
     expect(compareGrades(row('a', 3, 97), row('b', 3, 97))).toBe(0)
     expect(compareGrades(row('a', null, null), row('b', null, null))).toBe(0)
+  })
+})
+
+describe('regionalGapOf', () => {
+  // Figures as fractions of a 1,266-test suite, the size the board measured
+  // on 11 October 2026, so the boundary cases are the ones the board met.
+  const of = (failed) => (failed / 1266) * 100
+  const at = (entries) => Object.entries(entries).map(([region, divergence]) => ({ region, divergence }))
+
+  it('is null when every region gives the published letter', () => {
+    expect(regionalGapOf(of(1), 99.4, at({ 'af-south-1': of(1), 'me-central-1': of(16) }))).toBeNull()
+  })
+
+  it('names the regions a letter does not survive, a band boundary at a time', () => {
+    // 31 fails at 95.7% coverage is an effective 3.8, an A. 46 in me-central-1
+    // is 5.0, which the A band does not include.
+    const gap = regionalGapOf(of(31), 95.7, at({ 'af-south-1': of(31), 'eu-south-2': of(45), 'me-central-1': of(46) }))
+    expect(gap).toEqual([{ letter: 'B', regions: ['eu-south-2', 'me-central-1'] }])
+  })
+
+  it('compares the letter, not the band, so a capped row is held to its own letter', () => {
+    // Zero divergence at 88% coverage is an effective 4.0. Thirteen split fails
+    // put a region at 5.0, and the A the row publishes does not hold there.
+    const gap = regionalGapOf(0, 88, at({ 'af-south-1': 0, 'eu-west-2': of(5), 'eu-south-2': of(13) }))
+    expect(gap).toEqual([{ letter: 'B', regions: ['eu-south-2'] }])
+  })
+
+  it('takes A+ to A on any regional failure at all', () => {
+    expect(regionalGapOf(0, 100, at({ 'eu-west-2': 0, 'us-east-1': of(1) }))).toEqual([
+      { letter: 'A', regions: ['us-east-1'] },
+    ])
+  })
+
+  it('lists several lower letters nearest first, each with its regions sorted', () => {
+    const gap = regionalGapOf(4, 100, at({ x: 4, 'zz-2': 30, 'zz-1': 6, 'aa-1': 6 }))
+    expect(gap).toEqual([
+      { letter: 'B', regions: ['aa-1', 'zz-1'] },
+      { letter: 'D', regions: ['zz-2'] },
+    ])
+  })
+
+  it('skips a region with no figure rather than grading it F', () => {
+    expect(regionalGapOf(0, 100, at({ 'eu-west-2': 0, 'us-east-1': null }))).toBeNull()
+  })
+
+  it('has nothing to say about a row with no letter', () => {
+    expect(regionalGapOf(null, null, at({ 'eu-west-2': 10 }))).toBeNull()
+  })
+})
+
+describe('regionalLetterOf and regionalClauseOf', () => {
+  const gap = (...regions) => [{ letter: 'B', regions }]
+
+  it('names up to three regions and counts beyond that', () => {
+    expect(regionalLetterOf(gap('me-central-1'))).toBe('B against me-central-1')
+    expect(regionalLetterOf(gap('eu-south-2', 'me-central-1'))).toBe('B against eu-south-2 and me-central-1')
+    expect(regionalLetterOf(gap('a-1', 'b-1', 'c-1'))).toBe('B against a-1, b-1 and c-1')
+    expect(regionalLetterOf(gap('a-1', 'b-1', 'c-1', 'd-1'))).toBe('B against 4 regions')
+  })
+
+  it('separates several letters so a region list cannot run into the next letter', () => {
+    expect(regionalLetterOf([{ letter: 'B', regions: ['a-1'] }, { letter: 'C', regions: ['b-1'] }])).toBe(
+      'B against a-1; C against b-1',
+    )
+  })
+
+  it('puts the cause on the regions, and says nothing when the letter holds', () => {
+    expect(regionalClauseOf(gap('eu-south-2', 'me-central-1'))).toBe(
+      `B against eu-south-2 and me-central-1, ${REGIONAL_CAUSE}`,
+    )
+    expect(REGIONAL_CAUSE).toMatch(/real DynamoDB/)
+    expect(regionalLetterOf(null)).toBe('')
+    expect(regionalClauseOf(null)).toBe('')
   })
 })

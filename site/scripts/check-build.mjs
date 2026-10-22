@@ -29,6 +29,7 @@ import { execFileSync } from "node:child_process";
 
 import { GRADE_BANDS, gradeOf, gradingCriteriaEffectiveLabel } from "../lib/scoring.mjs";
 import { checkAPlusPremise } from "../lib/premise.mjs";
+import { checkRegionalNotes, expectedRegionalNotes } from "../lib/regional-note.mjs";
 import { checkProseLiterals } from "../lib/prose-literals.mjs";
 
 const failures = [];
@@ -541,6 +542,26 @@ try {
   if (guarded === 0) {
     console.log("  ok    the A+ premise check is vacuous: no zero-divergence row on this board");
   }
+
+  // Where a row's letter does not hold in every region, the board and the
+  // target page say so (#271). Checked in the rendered pages, against an
+  // answer worked out again from the same figures, so it fails if the note
+  // stops rendering as well as if it stops being computed. The rule and its
+  // fixtures are in lib/regional-note.mjs.
+  const regional = expectedRegionalNotes(summary);
+  const notePages = [{ path: "index.html", own: null, html: await readFile(join(out, "index.html"), "utf8") }];
+  for (const slug of Object.keys(summary?.targets ?? {})) {
+    const path = `targets/${slug}/index.html`;
+    if (!pages.includes(path)) continue;
+    notePages.push({ path, own: slug, html: await readFile(join(out, path), "utf8") });
+  }
+  const noteProblems = checkRegionalNotes(regional, notePages);
+  check(
+    regional.scored > 0 && noteProblems.length === 0,
+    "a letter that does not hold in every region says so on the board and its target page",
+    regional.scored === 0 ? "no scored row to check" : noteProblems.slice(0, 3).join("; "),
+  );
+  console.log(`        ${regional.scored} scored row(s) checked across ${notePages.length} page(s), ${regional.expected.size} with a regional note: ${[...regional.expected.keys()].join(", ") || "none"}`);
 
   // ── The disclosure, both ways round ────────────────────────────────────────
   //

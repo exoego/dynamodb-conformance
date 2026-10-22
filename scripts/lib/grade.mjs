@@ -200,6 +200,69 @@ export function compareGrades(a, b) {
   )
 }
 
+// ── Where a letter does not hold ─────────────────────────────────────────────
+//
+// A row's letter is read from the target's best-matching regions. Real DynamoDB
+// does not answer every test the same way in every region, so scored against a
+// region that answers some of them differently, a target can earn a lower
+// letter than the one it publishes - near a band boundary, a handful of split
+// tests is enough.
+//
+// The criteria do not change for it (#271). Grading from the worst region would
+// make letters follow AWS's rollout schedule, dropping a target that changed
+// nothing when one region diverged and lifting it when the region converged
+// again. So the letter stays and the row says where it does not hold, with the
+// difference put on the regions' answers rather than on the target. A note can
+// come and go between runs with no change in the target at all.
+
+/**
+ * The lower letters a target would earn in the regions its letter was not read
+ * from, nearest first: `[{ letter, regions }]`, or null when every observed
+ * region gives the published letter. `regions` is `[{ region, divergence }]`.
+ * Coverage is the row's own: withdrawal is region-invariant, so only divergence
+ * moves between regions.
+ */
+export function regionalGapOf(divergence, coverage, regions) {
+  const published = gradeOf(divergence, coverage).letter
+  if (published === null) return null
+  const lower = new Map()
+  for (const { region, divergence: d } of regions ?? []) {
+    // A region with no figure (an indeterminate run) has no letter to compare.
+    const { letter } = gradeOf(d, coverage)
+    if (letter === null || rankOf(letter) <= rankOf(published)) continue
+    if (!lower.has(letter)) lower.set(letter, [])
+    lower.get(letter).push(region)
+  }
+  if (lower.size === 0) return null
+  return [...lower]
+    .sort(([a], [b]) => rankOf(a) - rankOf(b))
+    .map(([letter, rs]) => ({ letter, regions: rs.sort() }))
+}
+
+// The cause, worded so it sits with the regions. "B in me-central-1" read as
+// the target doing worse there, when the target gives the answer most regions
+// give and it is me-central-1 that answers differently.
+export const REGIONAL_CAUSE = 'where real DynamoDB answers some tests differently'
+
+// Up to three regions are named. Beyond that the note counts them, and the
+// target page's per-region drilldown names the rest.
+const regionListOf = (rs) =>
+  rs.length > 3
+    ? `${rs.length} regions`
+    : rs.length === 1
+      ? rs[0]
+      : `${rs.slice(0, -1).join(', ')} and ${rs.at(-1)}`
+
+/** "B against eu-south-2 and me-central-1", or "" when the letter holds. */
+export function regionalLetterOf(gap) {
+  return gap ? gap.map(({ letter, regions }) => `${letter} against ${regionListOf(regions)}`).join('; ') : ''
+}
+
+/** The whole note, for surfaces that print it as plain text. */
+export function regionalClauseOf(gap) {
+  return gap ? `${regionalLetterOf(gap)}, ${REGIONAL_CAUSE}` : ''
+}
+
 // The label the baseline wears where every other row wears a letter. Real
 // DynamoDB is what a grade measures distance from, so grading it against itself
 // seats the yardstick in a band an engine had to earn its way into and the top
