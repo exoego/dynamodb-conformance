@@ -56,9 +56,9 @@ Both are shares of the whole suite, and they are never added together: an operat
 
 Rows are sorted by grade, and rows sharing a grade by the figure the letter is read from. The tier columns are divergence within that tier, so lower is better in every column but Coverage. Behaviour varies by region and over time, so these are point-in-time figures.
 
-`me-south-1` has been dropped from the observed set and is not scored against.
+`me-central-1` did not resolve the latest sweep and carries forward the last resolved data. `me-south-1` has been dropped from the observed set and is not scored against.
 
-_Suite v3.7.0, measured against real DynamoDB on 2026-10-22. Region health as of 2026-10-17._
+_Suite v3.7.0, measured against real DynamoDB on 2026-10-22. Region health as of 2026-10-24._
 
 | Target | Grade | Version | Divergence | Coverage | Fail | Skip | Tier 1 | Tier 2 | Tier 3 | Regions |
 |--------|-------|---------|-----------|----------|------|------|--------|--------|--------|---------|
